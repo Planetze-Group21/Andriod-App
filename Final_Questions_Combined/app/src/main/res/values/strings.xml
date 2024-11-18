@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">B07 Demo Summer 2024</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="delete_item">Delete Item</string>
+    <string name="add_item">Add Item</string>
+    <string name="back">Back</string>
+    <string name="recyclerview">RecyclerView</string>
+    <string name="scroller">Scroller</string>
+    <string name="spinner">Spinner</string>
+    <string name="manage_items">SetUpQ</string>
+
+    <string-array name="categories_array">
+        <item>Books</item>
+        <item>Movies</item>
+    </string-array>
+
+    <!-- SetUpQ 1-->
+    <string name="answer_1">Answer 1</string>
+    <string name="answer_2">Answer 2</string>
+    <string name="answer_3">Answer 3</string>
+    <string name="answer_4">Answer 4</string>
+    <string name="answer_5">Answer 5</string>
+    <string name="answer_6">Answer 6</string>
+
+    <string name="question">Question</string>
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+
+
+</resources>
