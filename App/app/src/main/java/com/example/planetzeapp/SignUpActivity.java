@@ -69,7 +69,7 @@ public class SignUpActivity extends AppCompatActivity {
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if (task.isSuccessful()) {
                                                 Toast.makeText(SignUpActivity.this, "Sign up successful! Verification email sent.", Toast.LENGTH_SHORT).show();
-                                                startActivity(new Intent(SignUpActivity.this, LoginActivity.class));
+                                                startActivity(new Intent(SignUpActivity.this, SignupQuestionsActivity.class));
                                             } else {
                                                 Toast.makeText(SignUpActivity.this, "Failed to send verification email: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                             }
