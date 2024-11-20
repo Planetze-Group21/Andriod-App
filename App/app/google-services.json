@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "2484055586",
+    "project_id": "planetze-group-21",
+    "storage_bucket": "planetze-group-21.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:2484055586:android:8e4f45806a1685821ae47b",
+        "android_client_info": {
+          "package_name": "com.example.planetzeapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApseBMo4Q_MsXxjqTbKAWPGgFcn_tooiw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

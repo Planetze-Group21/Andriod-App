@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">PlanetzeApp</string>
+
+    <!-- SetUpQ 1-->
+    <string name="answer_1">Answer 1</string>
+    <string name="answer_2">Answer 2</string>
+    <string name="answer_3">Answer 3</string>
+    <string name="answer_4">Answer 4</string>
+    <string name="answer_5">Answer 5</string>
+    <string name="answer_6">Answer 6</string>
+
+    <string name="question">Question</string>
+</resources>
