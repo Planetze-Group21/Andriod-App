@@ -16,10 +16,13 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -62,10 +65,37 @@ public class LoginActivity extends AppCompatActivity {
                                 (new OnSuccessListener<AuthResult>() {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
-                                        Toast.makeText(LoginActivity.this, "Login Success!",
-                                                Toast.LENGTH_SHORT).show();
-                                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                                        finish();
+                                        FirebaseUser user = auth.getCurrentUser();
+                                        if (user != null && user.isEmailVerified()) {
+                                            Toast.makeText(LoginActivity.this, "Login Success!",
+                                                    Toast.LENGTH_SHORT).show();
+                                            //user.get
+                                            startActivity(new Intent(LoginActivity.this, SignupQuestionsActivity.class));
+                                            finish();
+                                        }
+                                        else{
+                                            Toast.makeText(LoginActivity.this, "Please verify your email before logging in.",
+                                                    Toast.LENGTH_SHORT).show();
+
+                                            if (user != null) {
+                                                user.sendEmailVerification()
+                                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                            @Override
+                                                            public void onComplete(@NonNull Task<Void> task) {
+                                                                if (task.isSuccessful()) {
+                                                                    Toast.makeText(LoginActivity.this,
+                                                                            "Please verify your email.",
+                                                                            Toast.LENGTH_SHORT).show();
+                                                                } else {
+                                                                    Toast.makeText(LoginActivity.this,
+                                                                            "Failed to send verification email: "
+                                                                                    + task.getException().getMessage(),
+                                                                            Toast.LENGTH_SHORT).show();
+                                                                }
+                                                            }
+                                                        });
+                                            }
+                                        }
                                     }
                                 }).addOnFailureListener(new OnFailureListener() {
                             @Override
@@ -103,4 +133,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+
+    //private String getFinalAnswer()
 }

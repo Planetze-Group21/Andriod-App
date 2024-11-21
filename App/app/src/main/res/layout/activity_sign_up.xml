@@ -35,6 +35,41 @@
                 android:textStyle="bold"
                 android:textColor="@color/steel"/>
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <EditText
+                    android:id="@+id/last_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:autofillHints="name"
+                    android:layout_marginTop="20dp"
+                    android:layout_toRightOf="@+id/first_name"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="Last name          "
+                    android:padding="12dp"
+                    android:textColor="@color/steel"
+                    android:textColorHint="@color/mist" />
+
+                <EditText
+                    android:id="@+id/first_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:inputType="text"
+                    android:autofillHints="name"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/custom_edittext"
+                    android:drawablePadding="8dp"
+                    android:hint="First name     "
+                    android:padding="12dp"
+                    android:textColor="@color/steel"
+                    android:layout_marginEnd="16dp"
+                    android:textColorHint="@color/mist" />
+
+            </RelativeLayout>
+
             <EditText
                 android:layout_width="match_parent"
                 android:layout_height="50dp"
@@ -43,6 +78,8 @@
                 android:layout_marginTop="20dp"
                 android:padding="12dp"
                 android:hint="Email"
+                android:inputType="textEmailAddress"
+                android:autofillHints="emailAddress"
                 android:textColorHint="@color/mist"
                 android:drawableLeft="@drawable/baseline_3p_24"
                 android:drawablePadding="8dp"
@@ -56,10 +93,28 @@
                 android:layout_marginTop="20dp"
                 android:padding="12dp"
                 android:hint="Password"
+                android:inputType="textVisiblePassword"
+                android:autofillHints="password"
                 android:textColorHint="@color/mist"
                 android:drawableLeft="@drawable/baseline_create_24"
                 android:drawablePadding="8dp"
                 android:textColor="@color/steel"/>
+
+
+            <EditText
+                android:id="@+id/reenter_password"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/custom_edittext"
+                android:drawableLeft="@drawable/baseline_create_24"
+                android:drawablePadding="8dp"
+                android:hint="Re-enter password"
+                android:inputType="textVisiblePassword"
+                android:autofillHints="password"
+                android:padding="12dp"
+                android:textColor="@color/steel"
+                android:textColorHint="@color/mist" />
 
             <Button
                 android:layout_width="match_parent"
