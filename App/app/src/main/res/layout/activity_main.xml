@@ -11,44 +11,13 @@
     android:background="@drawable/planetze_bg_real"
     tools:context=".LoginActivity">
 
-    <androidx.cardview.widget.CardView
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="30dp"
-        app:cardCornerRadius="30dp"
-        app:cardElevation="20dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@drawable/custom_edittext"
-            android:orientation="vertical"
-            android:padding="24dp">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:drawableBottom="@drawable/baseline_email_24"
-                android:text="Click the verification link in your email to continue!"
-                android:textAlignment="center"
-                android:textColor="@color/steel"
-                android:textSize="30sp"
-                android:textStyle="bold" />
-
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:id="@+id/proceed_button"
-                android:text="Proceed to login"
-                android:visibility="visible"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:layout_marginTop="1dp"
-                android:backgroundTint="@color/steel"
-                app:cornerRadius="20dp"/>
-
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        android:text="Welcome to PlanetZe!"
+        android:textAlignment="center"
+        android:textColor="@color/navy"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
 </LinearLayout>

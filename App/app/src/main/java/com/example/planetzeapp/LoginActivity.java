@@ -2,6 +2,7 @@ package com.example.planetzeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,14 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.ValueEventListener;
+
+//import java.util.HashMap;
+//import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -69,8 +78,7 @@ public class LoginActivity extends AppCompatActivity {
                                         if (user != null && user.isEmailVerified()) {
                                             Toast.makeText(LoginActivity.this, "Login Success!",
                                                     Toast.LENGTH_SHORT).show();
-                                            //user.get
-                                            startActivity(new Intent(LoginActivity.this, SignupQuestionsActivity.class));
+                                            checkSetupQsAndNavigate();
                                             finish();
                                         }
                                         else{
@@ -133,6 +141,48 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
+    private void checkSetupQsAndNavigate() {
+        FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-    //private String getFinalAnswer()
+        if (user != null) {
+            String uid = user.getUid();
+
+            DatabaseReference finalQRef = FirebaseDatabase.getInstance()
+                    .getReference("users").child(uid)
+                    .child("annual_answers").child("consumption").child("recycling_frequency");
+
+            finalQRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
+                    if (snapshot.exists()) {
+                        String recyclingFrequency = snapshot.getValue(String.class);
+                        if (recyclingFrequency != null &&
+                                (recyclingFrequency.equalsIgnoreCase("never") ||
+                                        recyclingFrequency.equalsIgnoreCase("occasionally") ||
+                                        recyclingFrequency.equalsIgnoreCase("frequently") ||
+                                        recyclingFrequency.equalsIgnoreCase("always"))) {
+                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            Log.d("Setup", "Navigating to EcoGaugeActivity");
+                            finish();
+                        } else {
+                            startActivity(new Intent(LoginActivity.this, SignupQuestionsActivity.class));
+                            Log.d("Setup", "Navigating to SignupQuestionsActivity");
+                            finish();
+                        }
+                    } else {
+                        startActivity(new Intent(LoginActivity.this, SignupQuestionsActivity.class));
+                        Log.d("Setup", "Navigating to SignupQuestionsActivity");
+                        finish();
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    Toast.makeText(LoginActivity.this, "Error accessing data: ",
+                            Toast.LENGTH_SHORT).show();
+                    Log.e("Setup", "Database error: " + error.getMessage());
+                }
+            });
+        }
+    }
 }
