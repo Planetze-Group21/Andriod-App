@@ -161,7 +161,7 @@ public class LoginActivity extends AppCompatActivity {
                                         recyclingFrequency.equalsIgnoreCase("occasionally") ||
                                         recyclingFrequency.equalsIgnoreCase("frequently") ||
                                         recyclingFrequency.equalsIgnoreCase("always"))) {
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                            startActivity(new Intent(LoginActivity.this, PostSignupQuestionsActivity.class));
                             Log.d("Setup", "Navigating to EcoGaugeActivity");
                             finish();
                         } else {

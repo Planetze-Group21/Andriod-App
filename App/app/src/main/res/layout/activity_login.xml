@@ -7,9 +7,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/planetze_bg_real"
+    android:gravity="center_horizontal"
+    android:background="@drawable/planetze_bg_no_logo"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="300sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="60sp"
+        android:layout_marginBottom="30sp"
+        android:contentDescription="Logo"
+        android:scaleType="fitStart"
+        android:src="@drawable/planetze_logo_cropped" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -100,7 +110,6 @@
 
 
         </LinearLayout>
-
 
 
     </androidx.cardview.widget.CardView>
