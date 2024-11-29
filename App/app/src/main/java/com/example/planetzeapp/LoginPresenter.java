@@ -58,8 +58,18 @@ public class LoginPresenter {
 
             @Override
             public void onEmailNotVerified(FirebaseUser user) {
-                view.promptEmailVerification();
+                if (user != null && !user.isEmailVerified()) {
+                    user.sendEmailVerification()
+                            .addOnCompleteListener(task -> {
+                                if (task.isSuccessful()) {
+                                    view.promptEmailVerification();
+                                } else {
+                                    view.showError("Failed to send verification email. Please try again.");
+                                }
+                            });
+                }
             }
+
 
             @Override
             public void onFailure(Exception e) {
