@@ -16,7 +16,7 @@
         android:layout_width="300sp"
         android:layout_height="80sp"
         android:layout_marginTop="60sp"
-        android:layout_marginBottom="40sp"
+        android:layout_marginBottom="30sp"
         android:contentDescription="Logo"
         android:scaleType="fitStart"
         android:src="@drawable/planetze_logo_cropped" />
