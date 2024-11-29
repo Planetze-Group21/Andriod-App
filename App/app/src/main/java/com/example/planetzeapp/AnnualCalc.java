@@ -56,7 +56,7 @@ public class AnnualCalc extends Fragment {
             Annual_transporation_emissions(() -> {
                Annual_consumption_emissions(() -> {
                   Total_emissions(() -> {
-                     navigateToQFragment();
+                     navigateToOverlayActivity();
                   });
                });
             });
@@ -424,20 +424,21 @@ public class AnnualCalc extends Fragment {
       });
 
    }
-   private void navigateToQFragment() {
-      if (isAdded()) { // Checks if the fragment is attached to an activity
-         AnnualDisplayFragment t = new AnnualDisplayFragment();
+   private void navigateToOverlayActivity() {
+      if (isAdded()) {
+         Intent intent = new Intent(requireContext(), OverlayActivity.class);
 
-         // Use parent fragment manager for fragment transaction
-         FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
-         transaction.replace(R.id.fragment_container, t);
-         transaction.addToBackStack(null);
-         transaction.commit();
+         // Optionally, add extra data if needed
+         intent.putExtra("key", "value");
+
+         // Start the OverlayActivity
+         startActivity(intent);
       } else {
          // Handle the case where the fragment is not attached to the activity
          Log.e("AnnualCalc", "Fragment is not attached.");
       }
    }
+
 
 
 

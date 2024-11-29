@@ -19,6 +19,7 @@
             android:textStyle="bold"
             android:textSize="25dp"
             android:translationX="5dp"
+            android:translationY="20dp"
             android:layout_alignParentTop="true"
             android:layout_marginTop="20dp"
             android:layout_centerHorizontal="true" />
@@ -59,7 +60,7 @@
         <TextView
             android:id="@+id/breakdown_display"
             android:layout_width="373dp"
-            android:layout_height="200dp"
+            android:layout_height="100dp"
             android:text="@string/display_an_breakdown"
             android:textColor="@color/navy"
             android:textSize="15dp"

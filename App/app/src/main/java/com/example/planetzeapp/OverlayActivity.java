@@ -38,8 +38,16 @@ public class OverlayActivity extends AppCompatActivity implements FooterFragment
 
     @Override
     public void onFooterButtonClicked(int buttonId) {
-        // Handle button clicks from FooterFragment
-        Fragment nextFragment = new FooterFragment();
+        Fragment nextFragment;
+        if (buttonId == R.id.imageButton4) { // Eco Gauge
+            nextFragment = new AnnualDisplayFragment();
+        } else if (buttonId == R.id.imageButton5) { // Eco Tracker
+            nextFragment = new Introduction();
+        } else {
+            nextFragment = new AnnualDisplayFragment(); // Fallback fragment
+        }
+
         loadFragment(nextFragment);
     }
+
 }

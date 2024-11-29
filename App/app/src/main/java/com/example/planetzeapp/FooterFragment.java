@@ -30,14 +30,28 @@ public class FooterFragment extends Fragment {
         }
     }
 
-    @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                             @Nullable Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_footer, container, false);
-        setupImageButtons(view);
+
+        ImageButton Button1 = view.findViewById(R.id.imageButton4);
+        ImageButton Button2 = view.findViewById(R.id.imageButton5);
+
+        Button1.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFooterButtonClicked(R.id.imageButton4);
+            }
+        });
+
+        Button2.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFooterButtonClicked(R.id.imageButton5);
+            }
+        });
+
         return view;
     }
+
 
     private void setupImageButtons(View view) {
         int[] buttonIds = new int[]{R.id.imageButton4, R.id.imageButton5};

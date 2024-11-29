@@ -139,22 +139,24 @@ public class AnnualDisplayFragment extends Fragment {
                 };
 
                 String[] categories = { "Consumption", "Transportation", "Housing", "Food" };
+                double total;
 
                 // Sort the categories by emissions
                 for (int i = 0; i < emissionsKg.length - 1; i++) {
                     for (int j = 0; j < emissionsKg.length - i - 1; j++) {
                         if (emissionsKg[j] < emissionsKg[j + 1]) {
                             double tempEmission = emissionsKg[j];
+
                             emissionsKg[j] = emissionsKg[j + 1];
                             emissionsKg[j + 1] = tempEmission;
 
                             String tempCategory = categories[j];
                             categories[j] = categories[j + 1];
                             categories[j + 1] = tempCategory;
+
                         }
                     }
                 }
-
                 // Build the result string
                 StringBuilder result = new StringBuilder();
                 for (int i = 0; i < categories.length; i++) {

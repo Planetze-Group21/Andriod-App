@@ -21,6 +21,8 @@
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+        <activity android:name=".OverlayActivity" />
+
         <activity
             android:name=".SignUpActivity"
             android:exported="true">
