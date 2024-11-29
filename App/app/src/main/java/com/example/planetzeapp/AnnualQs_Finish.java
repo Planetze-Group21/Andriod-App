@@ -73,11 +73,12 @@ public class AnnualQs_Finish extends QFragment {
 
     }
     private void navigateToQFragment() {
-        Temp t = new Temp();
+        AnnualCalc t = new AnnualCalc();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, t);
         transaction.addToBackStack(null);
         transaction.commit();
+
     }
 
     public void annual_info() {
@@ -239,7 +240,7 @@ public class AnnualQs_Finish extends QFragment {
         if (questions.get(13).getOptions()[0].equals(questions.get(13).getUserAnswer())) {
             houseData.put("home_type", "detached");
         } else if (questions.get(13).getOptions()[1].equals(questions.get(13).getUserAnswer())) {
-            houseData.put("home_type", "semi-detached ");
+            houseData.put("home_type", "semi-detached");
         } else if (questions.get(13).getOptions()[2].equals(questions.get(13).getUserAnswer())) {
             houseData.put("home_type", "townhouse");
         } else if (questions.get(13).getOptions()[3].equals(questions.get(13).getUserAnswer())) {

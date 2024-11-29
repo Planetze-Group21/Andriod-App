@@ -135,6 +135,22 @@ public class QFragment extends SetupQFragment {
             transaction.addToBackStack(null);
             transaction.commit();
         }
+        else{
+            AnnualDisplayFragment nextFragment = new AnnualDisplayFragment();// change to eco tracker fragment when its there
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, nextFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+            showFooterFragment();
+        }
+
+    }
+    private void showFooterFragment() {
+        // Make the footer fragment container visible
+        View footerContainer = getActivity().findViewById(R.id.footer_fragment_container);
+        if (footerContainer != null) {
+            footerContainer.setVisibility(View.VISIBLE);  // Show the footer fragment container
+        }
     }
 
 

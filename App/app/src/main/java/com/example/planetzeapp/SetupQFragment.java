@@ -192,7 +192,7 @@ public class SetupQFragment extends Fragment {
         //23
         questions.add(new MultipleChoiceQuestion(
                 "How often do you recycle?",
-                new String[]{"Never", "Occasionally", "Always"},
+                new String[]{"Never", "Occasionally", "Always","Frequently"},
                 false,
                 -1
         ));
