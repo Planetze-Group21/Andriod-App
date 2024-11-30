@@ -4,24 +4,27 @@ package com.example.planetzeapp;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
+
 import androidx.fragment.app.FragmentTransaction;
 
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
-import android.widget.TextView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -29,35 +32,58 @@ import java.util.Map;
 public class AnnualQs_Finish extends QFragment {
     String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
     FirebaseDatabase database = FirebaseDatabase.getInstance();
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.annual_finish, container, false);
         Button startButton = view.findViewById(R.id.viewResultsButton);
         startButton.setEnabled(false);
-        EditText countryInput = view.findViewById(R.id.countryInput);
-        countryInput.addTextChangedListener(new TextWatcher() {
+        Spinner countrySpinner = view.findViewById(R.id.countrySpinner);
+        List<String> countryList = new ArrayList<>();
+        countryList.add("Select your country");
+        DatabaseReference countrydb = database.getReference("avg_annual_emissions");
+        countrydb.addValueEventListener(new ValueEventListener() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                countryList.clear();
+                countryList.add("Select your country");
+                for (DataSnapshot countrySnapshot : dataSnapshot.getChildren()) {
+                    String country = countrySnapshot.child("country").getValue(String.class);
+                    if (country != null) {
+                        countryList.add(country);
+                    }
+                }
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(getContext(),
+                        android.R.layout.simple_spinner_item, countryList);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                countrySpinner.setAdapter(adapter);
             }
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                startButton.setEnabled(!s.toString().trim().isEmpty());
+            public void onCancelled(DatabaseError databaseError) {
+                Log.e("FirebaseError", "Failed to load countries.", databaseError.toException());
+            }
+        });
+        countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                if (position != 0) {
+                    startButton.setEnabled(true);
+                } else {
+                    startButton.setEnabled(false);
+                }
             }
             @Override
-            public void afterTextChanged(Editable s) {
+            public void onNothingSelected(AdapterView<?> parent) {
+                startButton.setEnabled(false);
             }
         });
 
         startButton.setOnClickListener(v -> {
-            String country = countryInput.getText().toString().trim();
-            if (country.isEmpty()) {
-                // Optionally show a message to the user if the country is not entered
-                Toast.makeText(getContext(), "Please enter a country.", Toast.LENGTH_SHORT).show();
+            String country = countrySpinner.getSelectedItem().toString();
+            if ("Select your country".equals(country)) {
+                Toast.makeText(getContext(), "Please select a valid country.", Toast.LENGTH_SHORT).show();
                 return;
             }
-            FirebaseDatabase database = FirebaseDatabase.getInstance();
             DatabaseReference ref = database.getReference("users").child(uid);
             ref.child("country").setValue(country)
                     .addOnCompleteListener(task -> {
@@ -68,10 +94,14 @@ public class AnnualQs_Finish extends QFragment {
                         }
                     });
             annual_info();
-            navigateToQFragment();        });
+            navigateToQFragment();
+        });
         return view;
 
     }
+
+
+
     private void navigateToQFragment() {
         AnnualCalc t = new AnnualCalc();
         FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -80,7 +110,6 @@ public class AnnualQs_Finish extends QFragment {
         transaction.commit();
 
     }
-
     public void annual_info() {
         if (uid == null) {
             Log.e("FirebaseSave", "User is not signed in.");
