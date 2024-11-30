@@ -1,14 +1,14 @@
 package com.example.planetzeapp;
 
-import android.util.Patterns;
-
 public class LoginPresenter {
     private final LoginView view;
     private final LoginModel model;
+    private final EmailValidator emailValidator;
 
-    public LoginPresenter(LoginView view, LoginModel model) {
+    public LoginPresenter(LoginView view, LoginModel model, EmailValidator emailValidator) {
         this.view = view;
         this.model = model;
+        this.emailValidator = emailValidator;
     }
 
     public void handleLogin(String email, String password) {
@@ -17,7 +17,7 @@ public class LoginPresenter {
             return;
         }
 
-        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+        if (!emailValidator.isValid(email)) {
             view.showError("Invalid email address.");
             return;
         }
