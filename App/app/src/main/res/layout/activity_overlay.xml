@@ -4,14 +4,24 @@
     android:orientation="vertical"
     android:background="@drawable/plantze_bg_no_logo">
 
-    <!-- Main Fragment Container -->
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:layout_height="867dp"
+        android:layout_weight="1" >
 
-    <!-- Footer Fragment Container -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:padding="16dp"
+            android:text="Loading your results..."
+            android:textAlignment="center"
+            android:textColor="@color/steel"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
     <FrameLayout
         android:id="@+id/footer_container"
         android:layout_width="match_parent"
