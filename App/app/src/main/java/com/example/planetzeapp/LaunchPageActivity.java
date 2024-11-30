@@ -39,7 +39,7 @@ public class LaunchPageActivity extends AppCompatActivity {
         signupButton.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(LaunchPageActivity.this, LoginActivity.class));
+                startActivity(new Intent(LaunchPageActivity.this, SignUpActivity.class));
             }
         });
     }

@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });
 
 
-        presenter = new LoginPresenter(this);
+        presenter = new LoginPresenter(this, new LoginModel());
 
 
         loginEmail = findViewById(R.id.login_email);
@@ -43,7 +43,6 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         loginButton = findViewById(R.id.login_button);
         signupRedirectText = findViewById(R.id.signupRedirectText);
         forgotPasswordText = findViewById(R.id.forgotPasswordText);
-
 
         loginButton.setOnClickListener(v -> presenter.handleLogin(
                 loginEmail.getText().toString(),

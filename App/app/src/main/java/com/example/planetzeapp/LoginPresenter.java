@@ -12,9 +12,9 @@ public class LoginPresenter {
     private final LoginModel model;
 
 
-    public LoginPresenter(LoginView view) {
+    public LoginPresenter(LoginView view, LoginModel model) {
         this.view = view;
-        this.model = new LoginModel();
+        this.model = model;
     }
 
 
