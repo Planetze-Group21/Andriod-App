@@ -36,6 +36,7 @@ public class FooterFragment extends Fragment {
 
         ImageButton Button1 = view.findViewById(R.id.imageButton4);
         ImageButton Button2 = view.findViewById(R.id.imageButton5);
+        ImageButton Button3 = view.findViewById(R.id.imageButton1);
 
         Button1.setOnClickListener(v -> {
             if (listener != null) {
@@ -46,6 +47,11 @@ public class FooterFragment extends Fragment {
         Button2.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onFooterButtonClicked(R.id.imageButton5);
+            }
+        });
+        Button3.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onFooterButtonClicked(R.id.imageButton1);
             }
         });
 

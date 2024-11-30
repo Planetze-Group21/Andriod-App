@@ -48,7 +48,6 @@ public class AnnualDisplayFragment extends Fragment {
                              @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         AnnualCalc c = new AnnualCalc();
-        // Inflate the layout for the fragment
         View view = inflater.inflate(R.layout.fragment_annual_display, container, false);
         db = FirebaseDatabase.getInstance();
 
@@ -83,11 +82,10 @@ public class AnnualDisplayFragment extends Fragment {
             return;
         }
 
-        // Fetch the views by their IDs
         TextView b = view.findViewById(R.id.breakdown_display);
+        TextView c = view.findViewById(R.id.comparison_display);
         TextView t = view.findViewById(R.id.total_display);  // Use the passed 'view' instead of getView()
 
-        // Log the state of the views to make sure they're found
         if (b == null) {
             Log.e("AnnualDisplayFragment", "breakdown_display TextView is null");
         }
@@ -99,6 +97,7 @@ public class AnnualDisplayFragment extends Fragment {
         if (b != null && t != null && annual_ans_Ref != null) {
             breakdown(b);
             fetchTotalEmissions(t);
+            compareUserToCountryEmissions(c);
         } else {
             Log.e("AnnualDisplayFragment", "UI elements or data reference is null.");
         }
@@ -177,18 +176,69 @@ public class AnnualDisplayFragment extends Fragment {
     }
 
 
-    private void compareUserToCountryEmissions() {
+    private void compareUserToCountryEmissions(TextView comparisonTextView) {
+        DatabaseReference userRef = FirebaseDatabase.getInstance().getReference("users").child(userId);
+        DatabaseReference avgEmissionsRef = FirebaseDatabase.getInstance().getReference("avg_annual_emissions");
 
+        userRef.get().addOnCompleteListener(userTask -> {
+            if (userTask.isSuccessful()) {
+                DataSnapshot userSnapshot = userTask.getResult();
+                String userCountry = userSnapshot.child("country").getValue(String.class); // Get user's country
+                Double userAnnualEmissionsKg = userSnapshot.child("annual_answers/annual_co2e").getValue(Double.class);
+
+                if (userCountry == null || userAnnualEmissionsKg == null) {
+                    Log.e("CompareEmissions", "User country or annual emissions is missing.");
+                    return;
+                }
+
+                Log.d("CompareEmissions", "User's Country: " + userCountry);
+
+                // Check for unexpected suffix or errors in country name
+                if (userCountry.contains("38")) {
+                    Log.e("CompareEmissions", "Country name seems to be malformed: " + userCountry);
+                    return;
+                }
+
+                // Convert user's emissions to tons
+                double userAnnualEmissionsTons = userAnnualEmissionsKg / 1000.0;
+
+                // Define a list of countries (this could be dynamically fetched from the database or elsewhere)
+
+                // Fetch the country's average emissions based on the index
+                avgEmissionsRef.child(userCountry).child("emissions_per_capita").get().addOnCompleteListener(avgTask -> {
+                    if (avgTask.isSuccessful()) {
+                        Double countryAvgEmissionsTons = avgTask.getResult().getValue(Double.class);
+
+                        if (countryAvgEmissionsTons == null) {
+                            Log.e("CompareEmissions", "No average emissions data found for country: " + userCountry);
+                            return;
+                        }
+                        String comparisonResult;
+
+                        if (userAnnualEmissionsTons > countryAvgEmissionsTons) {
+                            int percentageAbove = (int) (100- (userAnnualEmissionsTons / countryAvgEmissionsTons));
+                            comparisonResult = "Your carbon footprint is " + percentageAbove + "% above the national average for ";
+                        } else if (userAnnualEmissionsTons < countryAvgEmissionsTons) {
+                            int percentageBelow = (int) (100- (countryAvgEmissionsTons / userAnnualEmissionsTons ) );
+                            comparisonResult = "Your carbon footprint is " + percentageBelow + "% below the national average for ";
+                        } else {
+                            comparisonResult = "Your emissions match the national average for ";
+                        }
+
+                        String result = String.format("%s%s", comparisonResult, userCountry);
+                        comparisonTextView.setText(result);
+
+                    } else {
+                        Log.e("CompareEmissions", "Error fetching average emissions for country: " + avgTask.getException().getMessage());
+                    }
+                });
+
+            } else {
+                Log.e("CompareEmissions", "Error fetching user data: " + userTask.getException().getMessage());
+            }
+        });
     }
 
-//
-//    private void showFooterFragment() {
-//        // Make the footer fragment container visible
-//        View footerContainer = getActivity().findViewById(R.id.footer_fragment_container);
-//        if (footerContainer != null) {
-//            footerContainer.setVisibility(View.VISIBLE);  // Show the footer fragment container
-//        }
-//    }
 
 
 }

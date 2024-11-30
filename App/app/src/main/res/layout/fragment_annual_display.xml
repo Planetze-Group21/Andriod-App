@@ -1,94 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".AnnualDisplayFragment"
-    android:background="@drawable/plantze_bg_no_logo">
+    android:background="@drawable/plantze_bg_no_logo"
+    tools:context=".AnnualDisplayFragment">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:translationY="50dp"
+        android:padding="16dp">
 
         <TextView
             android:id="@+id/title_annual"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Overview of Annual Carbon Footprint"
             android:textColor="@color/navy"
             android:textStyle="bold"
-            android:textSize="25dp"
-            android:translationX="5dp"
-            android:translationY="20dp"
+            android:textSize="28sp"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/subtext_total"
-            android:layout_width="368dp"
-            android:layout_height="30dp"
-            android:text="Here is your estimate annual emissions: "
-            android:textColor="@color/navy"
-            android:textSize="15dp"
-            android:layout_below="@id/title_annual"
-            android:layout_marginTop="50dp"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/total_display"
-            android:layout_width="368dp"
-            android:layout_height="50dp"
-            android:text="@string/display_an_total"
-            android:textColor="@color/navy"
-            android:textSize="15dp"
-            android:layout_below="@id/subtext_total"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true" />
-
-        <TextView
-            android:id="@+id/subtext_breakdown"
-            android:layout_width="368dp"
-            android:layout_height="50dp"
-            android:text="Here is the breakdown of your estimate annual emissions: "
-            android:textColor="@color/navy"
-            android:textSize="15dp"
-            android:layout_below="@id/total_display"
             android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginBottom="20dp"
+            android:gravity="center" />
 
-        <TextView
-            android:id="@+id/breakdown_display"
-            android:layout_width="373dp"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/total_card"
+            android:layout_width="match_parent"
             android:layout_height="100dp"
-            android:text="@string/display_an_breakdown"
-            android:textColor="@color/navy"
-            android:textSize="15dp"
-            android:layout_below="@id/subtext_breakdown"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true" />
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/title_annual"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="12dp">
 
-        <TextView
-            android:id="@+id/subtext_comparison"
-            android:layout_width="368dp"
-            android:layout_height="50dp"
-            android:text="Here is the breakdown of your estimate annual emissions: "
-            android:textColor="@color/navy"
-            android:textSize="15dp"
-            android:layout_below="@id/breakdown_display"
-            android:layout_marginTop="30dp"
-            android:layout_centerHorizontal="true" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="24dp">
 
-        <TextView
-            android:id="@+id/comparison_display"
-            android:layout_width="368dp"
-            android:layout_height="50dp"
-            android:text="@string/display_an_comp"
-            android:textColor="@color/navy"
-            android:textSize="15dp"
-            android:layout_below="@id/subtext_comparison"
-            android:layout_marginTop="20dp"
-            android:layout_centerHorizontal="true" />
+                <TextView
+                    android:id="@+id/subtext_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Here is your estimated annual emissions:"
+                    android:textColor="@color/steel"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp" />
 
+                <TextView
+                    android:id="@+id/total_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/display_an_total"
+                    android:textColor="@color/steel"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/breakdown_card"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/total_card"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/subtext_breakdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Here is the breakdown of your estimated annual emissions:"
+                    android:textColor="@color/steel"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/breakdown_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="@string/display_an_breakdown"
+                    android:textColor="@color/steel"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/comparison_card"
+            android:layout_width="match_parent"
+            android:layout_height="175dp"
+            android:layout_below="@id/breakdown_card"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="12dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/subtext_comparison"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Here is the comparison of your estimated annual emissions:"
+                    android:textColor="@color/steel"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/comparison_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/display_an_comp"
+                    android:textColor="@color/steel"
+                    android:textSize="18sp"
+                    android:gravity="center_vertical" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </RelativeLayout>
 </androidx.core.widget.NestedScrollView>

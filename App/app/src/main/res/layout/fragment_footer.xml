@@ -18,7 +18,7 @@
         android:backgroundTint="#D4E0E1"
         android:contentDescription="Eco Gauge Navigator"
         android:src="@drawable/ecogauge"
-        android:translationX="90dp" />
+        android:translationX="45dp" />
 
     <ImageButton
         android:id="@+id/imageButton5"
@@ -27,15 +27,15 @@
         android:backgroundTint="#D4E0E1"
         android:contentDescription="Eco Tracker Navigator"
         android:src="@drawable/ecotracker"
-        android:translationX="200dp" />
+        android:translationX="150dp" />
 
-<!--    <ImageButton-->
-<!--        android:id="@+id/imageButton1"-->
-<!--        android:layout_width="72dp"-->
-<!--        android:layout_height="70dp"-->
-<!--        android:backgroundTint="#D4E0E1"-->
-<!--        android:contentDescription="Annual CO2 Tracker Navigator"-->
-<!--        android:src="@drawable/annualco2"-->
-<!--        android:translationX="300dp" />-->
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="72dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#D4E0E1"
+        android:contentDescription="Annual CO2 Tracker Navigator"
+        android:src="@drawable/annualco2"
+        android:translationX="280dp" />
 
 </FrameLayout>
