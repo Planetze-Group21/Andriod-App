@@ -48,7 +48,7 @@ public class AnnualQs_Finish extends QFragment {
                 countryList.clear();
                 countryList.add("Select your country");
                 for (DataSnapshot countrySnapshot : dataSnapshot.getChildren()) {
-                    String country = countrySnapshot.child("country").getValue(String.class);
+                    String country = countrySnapshot.getKey();
                     if (country != null) {
                         countryList.add(country);
                     }
@@ -63,6 +63,7 @@ public class AnnualQs_Finish extends QFragment {
                 Log.e("FirebaseError", "Failed to load countries.", databaseError.toException());
             }
         });
+
         countrySpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
