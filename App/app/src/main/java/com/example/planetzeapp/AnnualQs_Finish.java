@@ -58,6 +58,7 @@ public class AnnualQs_Finish extends QFragment {
                 adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
                 countrySpinner.setAdapter(adapter);
             }
+
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 Log.e("FirebaseError", "Failed to load countries.", databaseError.toException());
@@ -73,6 +74,7 @@ public class AnnualQs_Finish extends QFragment {
                     startButton.setEnabled(false);
                 }
             }
+
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
                 startButton.setEnabled(false);
@@ -100,8 +102,7 @@ public class AnnualQs_Finish extends QFragment {
         return view;
 
     }
-
-
+    
 
     private void navigateToQFragment() {
         AnnualCalc t = new AnnualCalc();
