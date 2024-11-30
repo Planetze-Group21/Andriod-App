@@ -25,7 +25,8 @@
             android:layout_alignParentTop="true"
             android:layout_marginTop="30dp"
             android:layout_marginBottom="20dp"
-            android:gravity="center" />
+            android:gravity="center"
+            android:fontFamily="@font/poppins_bold"/>
 
         <androidx.cardview.widget.CardView
             android:id="@+id/total_card"

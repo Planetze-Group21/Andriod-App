@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/planetze_bg_real"
+    android:background="@drawable/plantze_bg_no_logo"
     tools:context=".LoginActivity">
 
     <androidx.cardview.widget.CardView
@@ -33,7 +33,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/steel"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_bold"/>
 
 
         </LinearLayout>

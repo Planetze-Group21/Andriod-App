@@ -34,7 +34,8 @@
                 android:textAlignment="center"
                 android:textColor="@color/steel"
                 android:textSize="30sp"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:fontFamily="@font/poppins_medium"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -46,7 +47,8 @@
                 android:textSize="18sp"
                 android:layout_marginTop="1dp"
                 android:backgroundTint="@color/steel"
-                app:cornerRadius="20dp"/>
+                app:cornerRadius="20dp"
+                android:fontFamily="@font/poppins_medium"/>
 
         </LinearLayout>
         <FrameLayout

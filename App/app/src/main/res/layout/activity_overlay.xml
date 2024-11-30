@@ -19,7 +19,9 @@
             android:textAlignment="center"
             android:textColor="@color/steel"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            />
     </FrameLayout>
 
     <FrameLayout
