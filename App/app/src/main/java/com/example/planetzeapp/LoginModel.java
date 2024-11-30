@@ -6,13 +6,12 @@ import com.google.firebase.auth.FirebaseUser;
 
 
 public class LoginModel {
-    private final FirebaseAuth auth;
+    FirebaseAuth auth;
 
 
     public LoginModel() {
         this.auth = FirebaseAuth.getInstance();
     }
-
 
     public void login(String email, String password, LoginCallback callback) {
         auth.signInWithEmailAndPassword(email, password)
@@ -26,7 +25,6 @@ public class LoginModel {
                 })
                 .addOnFailureListener(callback::onFailure);
     }
-
 
     public interface LoginCallback {
         void onSuccess(FirebaseUser user);
