@@ -23,12 +23,6 @@ public class OverlayActivity extends AppCompatActivity implements FooterFragment
                 .replace(R.id.footer_container, footerFragment)
                 .commit();
     }
-
-    /**
-     * Loads a fragment into the main fragment container.
-     *
-     * @param fragment The fragment to load.
-     */
     private void loadFragment(Fragment fragment) {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, fragment);

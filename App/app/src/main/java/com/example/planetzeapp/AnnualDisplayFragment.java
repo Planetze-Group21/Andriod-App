@@ -43,7 +43,6 @@ public class AnnualDisplayFragment extends Fragment {
     AnnualCalc c;
     private String userId;
 
-    @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater,
                              @Nullable ViewGroup container,
