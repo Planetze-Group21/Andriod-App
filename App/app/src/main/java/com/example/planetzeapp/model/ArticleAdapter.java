@@ -7,26 +7,35 @@ import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
 import com.example.planetzeapp.R;
 
+import com.kwabenaberko.newsapilib.models.Article;
+import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHolder> {
 
-    private List<ArticleDetails> articleList;
+    private ArrayList<ArticleDetails> articleList;
     private Context context;
 
-    public ArticleAdapter(Context context, List<ArticleDetails> articleList) {
+    public ArticleAdapter(Context context, ArrayList<ArticleDetails> articleList) {
         this.context = context;
         this.articleList = articleList;
     }
 
+    @NonNull
     @Override
-    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.default_article, parent, false);
         return new ViewHolder(view);
     }
@@ -37,10 +46,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
         holder.url.setText(article.getUrl());
+        Picasso.get().load(article.getImageUrl()).placeholder(R.drawable.plantze_bg_no_logo).into(holder.image);
+        //Glide.with(context).load(article.getUrl()).into(holder.image);
         holder.url.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getUrl()));
             context.startActivity(intent);
         });
+
     }
 
     @Override
@@ -49,13 +61,17 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
-        TextView title, description, url;
+        TextView title, description;
+
+        ImageView image;
+        Button url;
 
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
             url = itemView.findViewById(R.id.url_button);
+            image = itemView.findViewById(R.id.image);
         }
     }
 }

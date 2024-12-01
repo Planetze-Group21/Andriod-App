@@ -1,14 +1,21 @@
 package com.example.planetzeapp.model;
 
+import com.kwabenaberko.newsapilib.NewsApiClient;
+import com.kwabenaberko.newsapilib.models.Article;
+import com.kwabenaberko.newsapilib.models.request.EverythingRequest;
+import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
 public class ArticleDetails {
     private String title;
     private String url;
     private String description;
 
-    public ArticleDetails(String title, String url, String description){
+    private String imageUrl;
+
+    public ArticleDetails(String title, String url, String description, String imageUrl){
         this.title = title;
         this.url = url;
         this.description = description;
+        this.imageUrl = imageUrl;
     }
 
     public String getTitle() {
@@ -33,5 +40,13 @@ public class ArticleDetails {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 }

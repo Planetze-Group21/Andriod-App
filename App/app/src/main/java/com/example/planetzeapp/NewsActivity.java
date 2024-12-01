@@ -1,8 +1,14 @@
 package com.example.planetzeapp;
 
+import static androidx.core.content.ContentProviderCompat.requireContext;
+
 import android.content.Context;
+import android.content.Intent;
+import android.database.Observable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -10,9 +16,15 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import androidx.recyclerview.widget.AsyncListDiffer;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -31,79 +43,65 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 
 public class NewsActivity extends AppCompatActivity {
 
-    NewsApiClient newsApiClient = new NewsApiClient("67383d11a444403bb270e0b92d8db874");
 
     private RecyclerView recyclerView;
     private Context context;
     private RequestQueue requestQueue;
-    private List<ArticleDetails> articleDetailsList = new ArrayList<>();
+    private ArrayList<ArticleDetails> articleDetailsArrayList = new ArrayList<>();
     private StringRequest stringRequest;
+
+    private ArticleAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_news);
-        init();
+        recyclerView = findViewById(R.id.article_ui);
+        context = NewsActivity.this;
+        adapter = new ArticleAdapter(context, articleDetailsArrayList);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(context));
+        //loadDummyData();
+        requestJsonData();
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.article_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
-        newsApiClient.getEverything(
-                new EverythingRequest.Builder()
-                        .q("environment OR \"climate change\" OR \"global warming\"") // OR "climate change" OR "global warming"
-                        .language("en").build(),
-                new NewsApiClient.ArticlesResponseCallback() {
-                    @Override
-                    public void onSuccess(ArticleResponse response) {
-                        if (response.getArticles() == null || response.getArticles().isEmpty()) {
-                            Log.e("API Response", "No articles found.");
-                            return;
-                        }
-                        articleDetailsList.clear();
-                        for (Article article : response.getArticles()) {
-                            Log.d("API Response", "Fetched Article: " + article.getTitle());
-                            articleDetailsList.add(new ArticleDetails(
-                                    article.getTitle(), article.getUrl(),
-                                    article.getDescription()
-                            ));
-                        }
-                        Log.d("API Response", "Total Articles: " + articleDetailsList.size());
-                        ArticleAdapter adapter = new ArticleAdapter(context, articleDetailsList);
-                        recyclerView.setAdapter(adapter);
-                    }
 
-                    @Override
-                    public void onFailure(Throwable throwable) {
-                        System.out.println(throwable.getMessage());
-                    }
-                }
-        );
     }
 
-    public void init(){
+    private void loadDummyData() {
+        articleDetailsArrayList.add(new ArticleDetails("Title 1", "https://example.com", "Description 1", "https://via.placeholder.com/150"));
+        articleDetailsArrayList.add(new ArticleDetails("Title 2", "https://example.com", "Description 2", "https://via.placeholder.com/150"));
+        adapter.notifyDataSetChanged();
+    }
+    private void init(){
         recyclerView = findViewById(R.id.article_ui);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
         context = NewsActivity.this;
     }
-/*
-    public void requestJsonData(){
+    private void requestJsonData() {
         requestQueue = Volley.newRequestQueue(context);
-        stringRequest = new StringRequest("https://newsapi.org/v2/everything?q=tesla&" +
-                "from=2024-10-30&sortBy=publishedAt" +
-                "&apiKey=67383d11a444403bb270e0b92d8db874", new Response.Listener<String>() {
+        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/190a-475c-4e6b-bc4c",
+                new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
+                Log.d("JSONRequest", "Response received: " + response);
                 try {
-                    JSONObject jsonObject = new JSONObject(response.toString());
-                    JSONArray jsonArray = jsonObject.getJSONArray()
+                    JSONObject jsonObject = new JSONObject(response);
+                    JSONArray jsonArray = jsonObject.getJSONArray("articles");
+                    Log.d("JSONRequest", "OnResponse");
+                    fetchTheData(jsonArray);
+
                 } catch (JSONException e) {
+                    Log.e("JSONRequest", "Error parsing JSON: " + e.getMessage());
                     throw new RuntimeException(e);
                 }
             }
@@ -113,11 +111,28 @@ public class NewsActivity extends AppCompatActivity {
                 showToast("API call error");
             }
         });
+        requestQueue.add(stringRequest);
 
+    }
+
+    private void fetchTheData(JSONArray jsonArray) throws JSONException {
+        for(int i = 0;i<jsonArray.length();i++){
+            try {
+                JSONObject article = jsonArray.getJSONObject(i);
+                articleDetailsArrayList.add(new ArticleDetails(article.getString("title"),
+                        article.getString("url"), article.getString("description"),
+                        article.getString("image")));
+            } catch (Exception e) {
+                showToast("Mobile detail error.");
+                throw new RuntimeException(e);
+            }
+        }
+        Log.d("ArticleListSize", "Size: " + articleDetailsArrayList.size());
+        adapter.notifyDataSetChanged();
     }
 
     public void showToast(String msg){
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
-    */
+
 }
