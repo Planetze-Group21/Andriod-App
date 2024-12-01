@@ -1,5 +1,6 @@
 package com.example.planetzeapp;
 
+import android.util.Log;
 import android.os.Bundle;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -17,13 +18,16 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class EcoTrackerActivity extends AppCompatActivity {
 
@@ -46,7 +50,6 @@ public class EcoTrackerActivity extends AppCompatActivity {
     private ImageButton imageButton12;
     private TextView resultText12;
 
-    private DatabaseReference databaseReference;
     private FirebaseAuth auth;
     private String currentUid;
 
@@ -61,16 +64,16 @@ public class EcoTrackerActivity extends AppCompatActivity {
             return insets;
         });
 
-        auth = FirebaseAuth.getInstance();
-        databaseReference = FirebaseDatabase.getInstance().getReference();
-        FirebaseUser currentUser = firebaseAuth.getCurrentUser();
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        if (currentUser != null) {
-            currentUid = currentUser.getUid();
-        } else {
-            Toast.makeText(this, "User not logged in", Toast.LENGTH_SHORT).show();
-            finish();
+        if (currentUid == null) {
+            Log.e("FirebaseSave", "User is not signed in.");
+            return;
         }
+
+        DatabaseReference ref = database.getReference("users").child(currentUid).child("daily answers");
+        Map<>
 
         imageButton2 = findViewById(R.id.imageButton2);
         resultText2 = findViewById(R.id.result_text2);
