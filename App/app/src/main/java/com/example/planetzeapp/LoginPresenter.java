@@ -45,7 +45,7 @@ public class LoginPresenter {
                         if (isSetupComplete) {
                             view.navigateToEcoGauge();
                         } else {
-                            view.navigateToSetupQs();
+                            view.navigateToIntroduction();
                         }
                     }
 

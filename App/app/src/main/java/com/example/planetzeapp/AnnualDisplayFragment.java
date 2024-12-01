@@ -61,7 +61,7 @@ public class AnnualDisplayFragment extends Fragment {
         } else {
             Log.e("AnnualDisplayFragment", "No user is signed in.");
             userRef = null;
-            annual_ans_Ref = null; // Ensure this is null if no user is signed in
+            annual_ans_Ref = null;
         }
 
         //showFooterFragment();
@@ -155,7 +155,6 @@ public class AnnualDisplayFragment extends Fragment {
                         }
                     }
                 }
-                // Build the result string
                 StringBuilder result = new StringBuilder();
                 for (int i = 0; i < categories.length; i++) {
                     double emissionTons = emissionsKg[i] / 1000.0;
@@ -166,7 +165,6 @@ public class AnnualDisplayFragment extends Fragment {
                             .append(String.format("%.2f", emissionTons))
                             .append(" tons of CO2\n");
                 }
-
                 b.setText(result.toString());
 
             } else {
