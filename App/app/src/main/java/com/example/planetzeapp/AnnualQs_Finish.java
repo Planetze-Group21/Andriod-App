@@ -102,7 +102,7 @@ public class AnnualQs_Finish extends QFragment {
         return view;
 
     }
-    
+
 
     private void navigateToQFragment() {
         AnnualCalc t = new AnnualCalc();
