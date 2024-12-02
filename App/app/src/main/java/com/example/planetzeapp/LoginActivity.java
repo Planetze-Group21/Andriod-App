@@ -71,7 +71,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
 
     @Override
-    public void navigateToSetupQs(){
+    public void navigateToIntroduction(){
         startActivity(new Intent(this, SignupQuestionsActivity.class));
         finish();
     }

@@ -11,7 +11,7 @@ public interface LoginView {
     void navigateToSignUp();
 
 
-    void navigateToSetupQs();
+    void navigateToIntroduction();
 
 
     void navigateToResetPassword();

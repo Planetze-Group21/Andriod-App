@@ -44,6 +44,7 @@ public class PostSignupQuestionsActivity extends AppCompatActivity {
                 welcomeMessage.setText("Thank you for becoming a citizen of PlanetZe, " + firstName + "!");
             }
         });
+
     }
 
     private void getUserFirstName(Consumer<String> callback) {
