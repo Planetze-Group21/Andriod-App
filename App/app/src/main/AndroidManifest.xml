@@ -37,6 +37,8 @@
             android:name=".MainActivity"
             android:exported="false" />
         <activity android:name=".PostSignupQuestionsActivity" />
+        <activity android:name=".EcoTrackerActivity" />
+
     </application>
 
 </manifest>

@@ -18,34 +18,31 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.List;
 
 public class HabitTracker extends Fragment {
     int Walk_counter = 0, No_shopping_counter = 0, Vegan_eating_counter = 0;
-    String Energy_tracker;
+ //   String Energy_tracker;
     View view;
-    CheckBox transportationCheck = view.findViewById(R.id.filterTransportation);
-    CheckBox foodCheck = view.findViewById(R.id.filterFood);
-    CheckBox consumptionCheck = view.findViewById(R.id.filterConsumption);
-    CheckBox energyCheck = view.findViewById(R.id.filterEnergy);
-    View transportationHabitbox = view.findViewById(R.id.transportationSection);
-    View foodHabitbox = view.findViewById(R.id.foodSection);
-    View energyHabitbox = view.findViewById(R.id.energySection);
-    View consumptionHabitbox = view.findViewById(R.id.consumptionSection);
-    TextView transportationHabit = view.findViewById(R.id.habbittrans);
-    TextView energyHabit = view.findViewById(R.id.habbitenergy);
-    TextView consHabit = view.findViewById(R.id.habbitcons);
-    TextView foodHabit = view.findViewById(R.id.habbitfood);
+    CheckBox transportationCheck;
+    CheckBox foodCheck ;
+    CheckBox consumptionCheck ;
+    CheckBox energyCheck;
+    View transportationHabitbox ;
+    View foodHabitbox ;
+    View energyHabitbox;
+    View consumptionHabitbox;
+    TextView transportationHabit;
+    TextView energyHabit ;
+    TextView consHabit ;
+    TextView foodHabit ;
     private DatabaseReference daily_answer_ref;
 
-    View transTrack= view.findViewById(R.id.tracker1);
-    View consTrack= view.findViewById(R.id.tracker2);
-    View foodTrack= view.findViewById(R.id.tracker3);
-    View energyTrack= view.findViewById(R.id.tracker4);
+    View transTrack;
+    View consTrack;
+    View foodTrack;
+    View energyTrack;
 
 
 
@@ -53,10 +50,28 @@ public class HabitTracker extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.habit_tracker, container, false);
+         view = inflater.inflate(R.layout.habit_tracker, container, false);
 
         List<List<String>> habits = createList();
         daily_answer_ref = FirebaseDatabase.getInstance().getReference().child("daily_answers");
+
+         transportationCheck = view.findViewById(R.id.filterTransportation);
+         foodCheck = view.findViewById(R.id.filterFood);
+         consumptionCheck = view.findViewById(R.id.filterConsumption);
+         energyCheck = view.findViewById(R.id.filterEnergy);
+         transportationHabitbox = view.findViewById(R.id.transportationSection);
+         foodHabitbox = view.findViewById(R.id.foodSection);
+         energyHabitbox = view.findViewById(R.id.energySection);
+         consumptionHabitbox = view.findViewById(R.id.consumptionSection);
+         transportationHabit = view.findViewById(R.id.habbittrans);
+         energyHabit = view.findViewById(R.id.habbitenergy);
+         consHabit = view.findViewById(R.id.habbitcons);
+         foodHabit = view.findViewById(R.id.habbitfood);
+         transTrack= view.findViewById(R.id.tracker1);
+         consTrack= view.findViewById(R.id.tracker2);
+         foodTrack= view.findViewById(R.id.tracker3);
+         energyTrack= view.findViewById(R.id.tracker4);
+
 
 
         transportationHabit.setText(habits.get(0).get(0));
@@ -73,11 +88,14 @@ public class HabitTracker extends Fragment {
         TextView consvalue=view.findViewById(R.id.ConsTrack);
         TextView foodvalue=view.findViewById(R.id.foodTrack);
         TextView energyvalue=view.findViewById(R.id.energyTrack);
-
-        transvalue.setText(walking_tracker());
-        consvalue.setText(shopping_tracker());
-        foodvalue.setText(food_tracker());
-        energyvalue.setText(energy_tracker());
+        updateWalkingTracker();
+        updateShoppingTracker();
+        updateFoodTracker();
+        String hel="hello";
+        transvalue.setText(String.valueOf(Walk_counter));
+        consvalue.setText(String.valueOf(No_shopping_counter));
+        foodvalue.setText(String.valueOf(Vegan_eating_counter));
+        energyvalue.setText(hel);
 
 
         transportationHabitbox.setVisibility(View.VISIBLE);
@@ -154,34 +172,25 @@ public class HabitTracker extends Fragment {
         return habits;
     }
 
-    private int walking_tracker() {
+    private void updateWalkingTracker() {
         daily_answer_ref.addValueEventListener(new ValueEventListener() {
-
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int walkCounter = 0;
                 for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                    Double walkingVal = dateSnapshot.child("Transportation").child("Walking").child("value").getValue(Double.class);
+                    Double drivingVal = dateSnapshot.child("Transportation").child("Driving").child("value").getValue(Double.class);
 
+                    walkingVal = walkingVal == null ? 0.0 : walkingVal;
+                    drivingVal = drivingVal == null ? 0.0 : drivingVal;
 
-                    DataSnapshot drivingsnap = dateSnapshot.child("Transportation").child("Driving");
-                    DataSnapshot walkingsnap = dateSnapshot.child("Transportation").child("Walking");
-
-                    Double driving_val = drivingsnap.child("value").getValue(Double.class);
-                    Double walking_val = walkingsnap.child("value").getValue(Double.class);
-                    if (driving_val == null)
-                        driving_val = 0.0;
-                    if (walking_val == null)
-                        walking_val = 0.0;
-
-                    if (driving_val != 0) {
-                        continue;
-                    } else if (driving_val == 0 && walking_val == 0) {
-                        continue;
-                    } else if (driving_val == 0 && walking_val > 0) {
-                        Walk_counter++;
+                    if (drivingVal == 0 && walkingVal > 0) {
+                        walkCounter++;
                     }
                 }
+                Walk_counter = walkCounter;
+                // Update UI here
                 Log.d("WalkingTracker", "Total Walk Counter: " + Walk_counter);
-
             }
 
             @Override
@@ -189,87 +198,79 @@ public class HabitTracker extends Fragment {
                 Log.e("WalkingTracker", "Failed to read value: " + databaseError.getMessage());
             }
         });
-        return Walk_counter;
     }
 
-    private int shopping_tracker() {
-        daily_answer_ref.addValueEventListener(new ValueEventListener() {
 
+    private void updateShoppingTracker() {
+        daily_answer_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int shoppingCounter = 0;
                 for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                    Double groceriesVal = dateSnapshot.child("Shopping").child("Groceries").child("value").getValue(Double.class);
+                    Double clothesVal = dateSnapshot.child("Shopping").child("Clothes").child("value").getValue(Double.class);
 
+                    groceriesVal = groceriesVal == null ? 0.0 : groceriesVal;
+                    clothesVal = clothesVal == null ? 0.0 : clothesVal;
 
-                    DataSnapshot clothingsnap = dateSnapshot.child("Consumption").child("Clothing");
-
-                    Double clothing_val = clothingsnap.child("value").getValue(Double.class);
-                    if (clothing_val == null)
-                        clothing_val = 0.0;
-
-                    if (clothing_val == 0) {
-                        No_shopping_counter++;
+                    if (groceriesVal > 0 || clothesVal > 0) {
+                        shoppingCounter++;
                     }
                 }
-                Log.d("ConsumptionTracker", "Total No-Shop Counter: " + No_shopping_counter);
+                No_shopping_counter= shoppingCounter;
+                Log.d("ShoppingTracker", "Total Shopping Counter: " + No_shopping_counter);
+       }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                Log.e("ShoppingTracker", "Failed to read value: " + databaseError.getMessage());
+            }
+        });
+    }
+
+
+    private void updateFoodTracker() {
+        daily_answer_ref.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                int foodCounter = 0;
+                for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
+                    DataSnapshot beefsnap = dateSnapshot.child("Food").child("Beef");
+                    DataSnapshot chickensnap = dateSnapshot.child("Food").child("Chicken");
+                    DataSnapshot fishsnap = dateSnapshot.child("Food").child("Fish");
+                    DataSnapshot porksnap = dateSnapshot.child("Food").child("Pork");
+                    DataSnapshot plantbasedsnap = dateSnapshot.child("Food").child("Plant-Based");
+
+                    Double beefVal = beefsnap.child("value").getValue(Double.class);
+                    Double chickenVal = chickensnap.child("value").getValue(Double.class);
+                    Double fishVal = fishsnap.child("value").getValue(Double.class);
+                    Double porkVal = porksnap.child("value").getValue(Double.class);
+                    Double plantBasedVal = plantbasedsnap.child("value").getValue(Double.class);
+
+                    beefVal = beefVal == null ? 0.0 : beefVal;
+                    chickenVal = chickenVal == null ? 0.0 : chickenVal;
+                    fishVal = fishVal == null ? 0.0 : fishVal;
+                    porkVal = porkVal == null ? 0.0 : porkVal;
+                    plantBasedVal = plantBasedVal == null ? 0.0 : plantBasedVal;
+
+                    if (beefVal > 0 || chickenVal > 0 || fishVal > 0 || porkVal > 0 || plantBasedVal > 0) {
+                        foodCounter++;
+                    }
+                }
+                Vegan_eating_counter = foodCounter;
+                Log.d("FoodTracker", "Total Food Counter: " + Vegan_eating_counter);
+                // Update UI with Food_counter value here
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("ConsumptionTracker", "Failed to read value: " + databaseError.getMessage());
+                Log.e("FoodTracker", "Failed to read value: " + databaseError.getMessage());
             }
         });
-        return No_shopping_counter;
     }
 
-    private int food_tracker() {
-        daily_answer_ref.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
 
-                    DataSnapshot plantdietsnap = dateSnapshot.child("Food").child("Plant-Based");
-                    DataSnapshot beefsnap = dateSnapshot.child("Food").child("Plant-Based");
-                    DataSnapshot chickensnap = dateSnapshot.child("Food").child("Plant-Based");
-                    DataSnapshot fishsnap = dateSnapshot.child("Food").child("Plant-Based");
-                    DataSnapshot porksnap = dateSnapshot.child("Food").child("Plant-Based");
-
-
-                    Double plant_value = plantdietsnap.child("value").getValue(Double.class);
-                    Double beefv = beefsnap.child("value").getValue(Double.class);
-                    Double chickenv = chickensnap.child("value").getValue(Double.class);
-                    Double fishv = fishsnap.child("value").getValue(Double.class);
-                    Double porkv = porksnap.child("value").getValue(Double.class);
-
-                    if (plant_value == null)
-                        plant_value = 0.0;
-                    if (beefv == null)
-                        beefv = 0.0;
-                    if (chickenv == null)
-                        chickenv = 0.0;
-                    if (porkv == null)
-                        porkv = 0.0;
-                    if (fishv == null)
-                        fishv = 0.0;
-
-                    if (plant_value > 0 && beefv == 0 && chickenv == 0 && porkv == 0 && fishv == 0) {
-                        Vegan_eating_counter++;
-                    }
-
-                }
-                Log.d("FoodTracker", "Total Vegan Counter: " + Vegan_eating_counter);
-
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("ConsumptionTracker", "Failed to read value: " + databaseError.getMessage());
-            }
-        });
-        return Vegan_eating_counter;
-    }
-
-    private String energy_tracker() {
+/*private String energy_tracker() {
         DatabaseReference monthly_answer_ref = FirebaseDatabase.getInstance().getReference().child("monthly_answers");
 
         Calendar calendar = Calendar.getInstance();
@@ -313,7 +314,7 @@ public class HabitTracker extends Fragment {
             }
         });
         return Energy_tracker ;
-    }
+    }*/
 }
 
 
