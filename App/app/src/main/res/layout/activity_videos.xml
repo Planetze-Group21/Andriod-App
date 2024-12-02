@@ -8,7 +8,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:background="@drawable/plantze_bg_no_logo"
+    android:background="@drawable/planetze_bg_no_logo"
     tools:context=".EcoHubActivity">
 
     <LinearLayout
