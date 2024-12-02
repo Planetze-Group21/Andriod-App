@@ -16,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
@@ -103,6 +104,10 @@ public class EcoTrackerActivity extends AppCompatActivity {
         imageButton10.setOnClickListener(v -> openInputDialog("input_value10", resultText10));
         imageButton11.setOnClickListener(v -> openInputDialog("input_value11", resultText11));
         imageButton12.setOnClickListener(v -> openInputDialog("input_value12", resultText12));
-        }
+
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.fragment_container, new HabitTracker());
+        transaction.commit();
+
     }
-}
+    }

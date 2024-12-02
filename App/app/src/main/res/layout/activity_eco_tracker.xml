@@ -74,7 +74,6 @@
                     android:textColor="@color/teal"
                     android:textSize="20sp" />
 
-                <!-- CO2 emissions today -->
                 <TextView
                     android:id="@+id/emissions_label"
                     android:layout_width="wrap_content"
@@ -574,6 +573,20 @@
 
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
+
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragmentContainerView"
+                android:name="com.example.planetzeapp.HabitTracker"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <FrameLayout
+                android:id="@+id/fragment_container"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="visible" />
+
+
         </LinearLayout>
     </ScrollView>
 
