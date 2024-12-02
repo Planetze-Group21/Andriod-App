@@ -13,6 +13,9 @@
         android:theme="@style/Theme.PlanetzeApp"
         tools:targetApi="31">
         <activity
+            android:name=".EcoGaugeActivity"
+            android:exported="false" />
+        <activity
             android:name=".LaunchPageActivity"
             android:exported="true">
             <intent-filter>
@@ -32,7 +35,7 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

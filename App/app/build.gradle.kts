@@ -41,6 +41,9 @@ dependencies {
     implementation(libs.firebase.auth)
     implementation(libs.firebase.database)
     implementation(libs.androidx.annotation)
+
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
+
     testImplementation(libs.junit)
     testImplementation(libs.mockito.core)
     androidTestImplementation(libs.mockito.android)
