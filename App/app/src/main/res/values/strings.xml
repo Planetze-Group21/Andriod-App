@@ -11,8 +11,6 @@
 
     <string name="question">Question</string>
     <string name="title_activity_eco_hub">EcoHubActivity</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="large_text">
         "Material is the metaphor.\n\n"
 
@@ -103,7 +101,6 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="action_settings">Settings</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="display_an_total" />
     <string name="display_an_breakdown" />
