@@ -41,7 +41,7 @@
                     android:textStyle="bold"
                     android:textColor="@color/teal2"/>
                 <TextView
-                    android:layout_width="130dp"
+                    android:layout_width="175dp"
                     android:layout_height="wrap_content"
                     android:id="@+id/description"
                     android:text="Description"

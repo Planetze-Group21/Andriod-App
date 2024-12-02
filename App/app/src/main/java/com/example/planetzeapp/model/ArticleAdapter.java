@@ -46,7 +46,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         ArticleDetails article = articleList.get(position);
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
-        Picasso.get().load(article.getImageUrl()).placeholder(R.drawable.planetze_bg_no_logo).into(holder.image);
+        //Picasso.get().load(article.getImageUrl()).placeholder(R.drawable.planetze_bg_no_logo).into(holder.image);
+        //Picasso.get().load("https://i.guim.co.uk/img/media/7fb9065d1493fbdb8136eeaf134bc0c25dbcc5b8/0_346_6720_4032/" +
+        //        "master/6720.jpg?width=1900&dpr=2&s=none&crop=none").into(holder.image);
+        Glide.with(context)
+                .load(article.getImageUrl())
+                .placeholder(R.drawable.planetze_bg_no_logo)
+                .into(holder.image);
         //Glide.with(context).load(article.getUrl()).into(holder.image);
         holder.url.setOnClickListener(v -> {
             Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(article.getUrl()));
