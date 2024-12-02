@@ -1,5 +1,6 @@
 package com.example.planetzeapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -31,7 +32,7 @@ public class QFragment extends SetupQFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("QFragment", "onCreate: Initializing QFragment");
-        setupQuestions();  // Set up the questions outside onCreateView
+        setupQuestions();
     }
 
     private void setupQuestions() {
@@ -111,6 +112,9 @@ public class QFragment extends SetupQFragment {
         else if (questionIndex == 7) {
             navigateToNextQuestion(12);
         }
+        else if (questionIndex == 23) {
+            navigateToEcoTracker();
+        }
         else {
             navigateToNextQuestion();
         }
@@ -129,4 +133,10 @@ public class QFragment extends SetupQFragment {
             transaction.commit();
         }
     }
+    private void navigateToEcoTracker() {
+        Intent intent = new Intent(getActivity(), EcoTrackerActivity.class);
+        startActivity(intent);
+    }
+
+
 }

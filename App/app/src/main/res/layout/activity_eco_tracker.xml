@@ -575,16 +575,10 @@
             </com.google.android.material.card.MaterialCardView>
 
             <androidx.fragment.app.FragmentContainerView
-                android:id="@+id/fragmentContainerView"
+                android:id="@+id/fragment_container"
                 android:name="com.example.planetzeapp.HabitTracker"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <FrameLayout
-                android:id="@+id/fragment_container"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:visibility="visible" />
+                android:layout_height="match_parent" />
 
 
         </LinearLayout>
