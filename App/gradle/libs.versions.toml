@@ -12,6 +12,7 @@ firebaseAuth = "23.1.0"
 firebaseDatabase = "21.0.0"
 androidx-annotation = "1.9.1"
 mockito = "5.5.0"
+materialCalendarView = "1.4.3"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
