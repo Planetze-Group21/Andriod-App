@@ -9,6 +9,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -88,7 +89,9 @@ public class NewsActivity extends AppCompatActivity {
     }
     private void requestJsonData() {
         requestQueue = Volley.newRequestQueue(context);
-        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/1bfe-6556-4307-9e9b",
+        ProgressBar progressBar = findViewById(R.id.progress_bar);
+        progressBar.setVisibility(View.VISIBLE);
+        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/1b34-b446-4e5a-bdde",
                 new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -97,6 +100,7 @@ public class NewsActivity extends AppCompatActivity {
                     JSONObject jsonObject = new JSONObject(response);
                     JSONArray jsonArray = jsonObject.getJSONArray("articles");
                     Log.d("JSONRequest", "OnResponse");
+                    progressBar.setVisibility(View.GONE);
                     fetchTheData(jsonArray);
 
                 } catch (JSONException e) {
@@ -107,6 +111,7 @@ public class NewsActivity extends AppCompatActivity {
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
+                progressBar.setVisibility(View.GONE);
                 showToast("API call error");
             }
         });
@@ -122,7 +127,7 @@ public class NewsActivity extends AppCompatActivity {
                         article.getString("url"), article.getString("description"),
                         article.getString("image")));
             } catch (Exception e) {
-                showToast("Mobile detail error.");
+                showToast("Article detail error.");
                 throw new RuntimeException(e);
             }
         }
