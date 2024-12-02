@@ -35,7 +35,7 @@ public class LoginPresenter {
 
             @Override
             public void onSetupIncomplete() {
-                view.navigateToSetupQs();
+                view.navigateToIntroduction();
             }
 
             @Override
