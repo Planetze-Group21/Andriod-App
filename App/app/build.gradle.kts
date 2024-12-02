@@ -30,6 +30,9 @@ android {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
     }
+    buildFeatures {
+        viewBinding = true
+    }
 }
 
 dependencies {
@@ -46,6 +49,12 @@ dependencies {
     androidTestImplementation(libs.mockito.android)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
+    implementation("com.github.kwabenberko:news-api-java:1.0.2")
+    implementation("com.android.volley:volley:1.2.1")
+    implementation("com.squareup.picasso:picasso:2.8")
+    implementation("com.github.bumptech.glide:glide:4.16.0")
+
+
 
 
 }

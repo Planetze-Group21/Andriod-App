@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="180dp">
+                <ImageView
+                    android:id="@+id/image"
+                    android:layout_width="160dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="20dp"
+                    android:layout_marginStart="20dp"
+                    android:contentDescription="image from api"
+                    android:src="@drawable/plantze_bg_no_logo"
+                    android:scaleType="centerCrop">
+                </ImageView>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/title"
+                    android:text="Title"
+                    android:layout_toEndOf="@+id/image"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_marginStart="20dp"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/teal2"/>
+                <TextView
+                    android:layout_width="130dp"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/description"
+                    android:text="Description"
+                    android:layout_toEndOf="@+id/image"
+                    android:layout_below="@+id/title"
+                    android:layout_marginStart="20dp"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="20dp"
+                    android:textStyle="bold"
+                    android:textColor="@color/steel"/>
+
+            </RelativeLayout>
+
+        </androidx.cardview.widget.CardView>
+
+</FrameLayout>
