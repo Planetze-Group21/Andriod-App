@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -75,7 +76,6 @@ public class NewsActivity extends AppCompatActivity {
             return insets;
         });
 
-
     }
 
     private void loadDummyData() {
@@ -89,7 +89,7 @@ public class NewsActivity extends AppCompatActivity {
     }
     private void requestJsonData() {
         requestQueue = Volley.newRequestQueue(context);
-        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/190a-475c-4e6b-bc4c",
+        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/1bfe-6556-4307-9e9b",
                 new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {

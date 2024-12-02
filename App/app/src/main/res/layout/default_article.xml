@@ -5,11 +5,15 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
         <androidx.cardview.widget.CardView
-            android:layout_width="wrap_content"
+            android:id="@+id/card_view_button"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="10dp">
+            app:cardElevation="10dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:clickable="true"
+            android:focusable="true">
             <RelativeLayout
                 android:layout_width="wrap_content"
                 android:layout_height="180dp">
@@ -48,20 +52,7 @@
                     android:layout_marginBottom="20dp"
                     android:textStyle="bold"
                     android:textColor="@color/steel"/>
-                <Button
-                    android:layout_width="150dp"
-                    android:layout_height="60dp"
-                    android:text="Read Now"
-                    android:textColor="@color/white"
-                    android:id="@+id/url_button"
-                    android:layout_toEndOf="@+id/image"
-                    android:layout_below="@+id/description"
-                    android:layout_marginStart="20dp"
-                    android:layout_marginEnd="20dp"
-                    android:textSize="18sp"
-                    android:layout_marginTop="25dp"
-                    android:backgroundTint="@color/steel"
-                    app:cornerRadius="20dp"/>
+
             </RelativeLayout>
 
         </androidx.cardview.widget.CardView>

@@ -1,5 +1,7 @@
 package com.example.planetzeapp.model;
 
+import androidx.cardview.widget.CardView;
+
 import com.kwabenaberko.newsapilib.NewsApiClient;
 import com.kwabenaberko.newsapilib.models.Article;
 import com.kwabenaberko.newsapilib.models.request.EverythingRequest;
@@ -7,6 +9,8 @@ import com.kwabenaberko.newsapilib.models.response.ArticleResponse;
 public class ArticleDetails {
     private String title;
     private String url;
+
+    private CardView cardView;
     private String description;
 
     private String imageUrl;
@@ -16,6 +20,7 @@ public class ArticleDetails {
         this.url = url;
         this.description = description;
         this.imageUrl = imageUrl;
+
     }
 
     public String getTitle() {
@@ -49,4 +54,5 @@ public class ArticleDetails {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
 }

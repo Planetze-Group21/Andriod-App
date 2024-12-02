@@ -12,6 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
@@ -45,7 +46,6 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         ArticleDetails article = articleList.get(position);
         holder.title.setText(article.getTitle());
         holder.description.setText(article.getDescription());
-        holder.url.setText(article.getUrl());
         Picasso.get().load(article.getImageUrl()).placeholder(R.drawable.plantze_bg_no_logo).into(holder.image);
         //Glide.with(context).load(article.getUrl()).into(holder.image);
         holder.url.setOnClickListener(v -> {
@@ -64,13 +64,13 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.ViewHold
         TextView title, description;
 
         ImageView image;
-        Button url;
+        CardView url;
 
         public ViewHolder(View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title);
             description = itemView.findViewById(R.id.description);
-            url = itemView.findViewById(R.id.url_button);
+            url = itemView.findViewById(R.id.card_view_button);
             image = itemView.findViewById(R.id.image);
         }
     }
