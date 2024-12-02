@@ -35,7 +35,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
         });
 
 
-        presenter = new LoginPresenter(this, new LoginModel());
+        presenter = new LoginPresenter(this, new LoginModel(), new AndroidEmailValidator());
 
 
         loginEmail = findViewById(R.id.login_email);
