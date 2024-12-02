@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -227,37 +228,44 @@ public class AnnualCalc extends Fragment {
          }
       });
    }
-
-   private void fetchAndAccumulateEmissions(String emissionsType, String frequency, double[] sum, double[] remainingTasks,String category) {
+   private void fetchAndAccumulateEmissions(String emissionsType, String frequency, double[] sum, double[] remainingTasks, String category) {
       AtomicReference<Boolean> comp = new AtomicReference<>(false);
-      if (frequency.toLowerCase() != null) {
+
+      if (frequency != null) {
          Log.d("AnnualCalc", "fetchAndAccumulateEmissions called for " + emissionsType);
 
          DatabaseReference calc = databaseRef.child(emissionsType).child(frequency);
          calc.get().addOnCompleteListener(calcTask -> {
             if (calcTask.isSuccessful()) {
                Double emissions = calcTask.getResult().getValue(Double.class);
+               Log.d("AnnualCalc", "Emissions for " + emissionsType + " (" + frequency.toLowerCase() + "): " + emissions);
+
                if (emissions != null) {
-                  if(emissionsType.equals("clothing_emissions")) {
-                     sum[1] += emissions;
+                  if (emissionsType.equals("clothing_emissions")) {
+                     Log.d("AnnualCalc", "sum 0: " + sum[0] + " sum 2: " + sum[2]);
                      sum[0] += emissions;
+                     sum[1] += emissions;
+                     Log.d("AnnualCalc", "sum 0: " + sum[0] + " sum 2: " + sum[2]);
                   }
-                  else if(emissionsType.equals("clothing_eco_friendly_adjustment"))sum[0] -=(sum[1]*emissions);
-                  else if(emissionsType.equals("clothing_recylcing_adjustment"))sum[0] -=(sum[1]*emissions);
-                  else if(emissionsType.equals("device_emissions")) {
+                  else if (emissionsType.equals("clothing_eco_friendly_adjustment")) {
+                     sum[0] += (sum[1] * emissions); // Adjusting emissions
+                  }
+                  else if (emissionsType.equals("clothing_recylcing_adjustment")) {
+                     sum[0] += (sum[1] * emissions); // Adjusting emissions
+                  }
+                  else if (emissionsType.equals("device_emissions")) {
                      sum[2] += emissions;
                      sum[0] += emissions;
-                     Log.d("AnnualCalc", "sum 0: " + sum[0] + "sum 2: " + sum[2]);
-
+                     Log.d("AnnualCalc", "sum 0: " + sum[0] + " sum 2: " + sum[2]);
                   }
-                  else if(emissionsType.equals("device_recylcing_adjustment")) {
-                     sum[0] -=(sum[2]*emissions);
+                  else if (emissionsType.equals("device_recylcing_adjustment")) {
+                     sum[0] -= (sum[2] * emissions); // Adjusting emissions
                      comp.set(true);
-                     Log.d("AnnualCalc", "sum 0: " + sum[0] + "sum 2: " + sum[2]);
-
+                     Log.d("AnnualCalc", "sum 0: " + sum[0] + " sum 2: " + sum[2]);
                   }
-                  else sum[0] += emissions;
-                  Log.d("AnnualCalc", "Emissions for " + emissionsType + " (" + frequency.toLowerCase() + "): " + emissions);
+                  else {
+                     sum[0] += emissions;
+                  }
                } else {
                   Log.w("AnnualCalc", "Emissions value is null for " + emissionsType + " with frequency " + frequency.toLowerCase());
                }
@@ -268,13 +276,16 @@ public class AnnualCalc extends Fragment {
             remainingTasks[0]--;
 
             if (remainingTasks[0] == 0) {
-               if((category.equals("consumption") && sum[0]>300 && comp.get() ==true) ||!category.equals("consumption") ){
-                  annual_ans_Ref.child(category).child(category +"_co2e").setValue(sum[0])
+               Log.d("AnnualCalc", "Remaining tasks: " + remainingTasks[0]);
+               Log.d("AnnualCalc", "comp: " + comp.get());
+
+               if (!category.equals("consumption") || (sum[0] > 0 && comp.get())) {
+                  annual_ans_Ref.child(category).child(category + "_co2e").setValue(sum[0])
                           .addOnCompleteListener(storeTask -> {
                              if (storeTask.isSuccessful()) {
-                                Log.d("AnnualCalc",  category+ "CO2e value stored successfully: " + sum[0]);
+                                Log.d("AnnualCalc", category + " CO2e value stored successfully: " + sum[0]);
                              } else {
-                                Log.e("AnnualCalc", "Error storing food CO2e value: " + storeTask.getException().getMessage());
+                                Log.e("AnnualCalc", "Error storing " + category + " CO2e value: " + storeTask.getException().getMessage());
                              }
                           });
                }
@@ -319,7 +330,7 @@ public class AnnualCalc extends Fragment {
                fetchAndAccumulateEmissions("long_flight_footprint", long_haul_flights, sum, remainingTasks, "transportation");
                fetchAndAccumulateEmissions("car_type_factors", car, sum, remainingTasks, "transportation");
                fetchAndAccumulateEmissions("car_distance", distance, sum, remainingTasks, "transportation");
-               if(public_transit_use.equals("never"))fetchAndAccumulateEmissions("public_transit_footprint", public_transit_use +"|"+hour_on_public_transit, sum, remainingTasks, "transportation");
+               if(!public_transit_use.equals("never"))fetchAndAccumulateEmissions("public_transit_footprint", public_transit_use +"|"+hour_on_public_transit, sum, remainingTasks, "transportation");
                else  remainingTasks[0]--;
                fetchAndAccumulateEmissions("short_flight_footprint", short_haul_flights, sum, remainingTasks, "transportation");
 
@@ -353,8 +364,8 @@ public class AnnualCalc extends Fragment {
             // Fetch the frequencies from Firebase
             String clothing_f = dataSnapshot.child("consumption/clothing_frequency").getValue(String.class);
             String eco_friendly_f = dataSnapshot.child("consumption/eco_friendly_frequency").getValue(String.class);
-            String recycling_f = dataSnapshot.child("consumption/recycling_frequency").getValue(String.class);
             String device_f = dataSnapshot.child("consumption/device_frequency").getValue(String.class);
+            String recycling_f = dataSnapshot.child("consumption/recycling_frequency").getValue(String.class);
 
             // Log the values to check if they're correctly fetched
             Log.d("AnnualCalc", "Fetched clothing frequency: " + clothing_f);
@@ -374,7 +385,6 @@ public class AnnualCalc extends Fragment {
                fetchAndAccumulateEmissions("clothing_recylcing_adjustment", recycling_f, sum, remainingTasks,"consumption");
                fetchAndAccumulateEmissions("device_emissions", device_f, sum, remainingTasks,"consumption");
                fetchAndAccumulateEmissions("device_recylcing_adjustment", recycling_f, sum, remainingTasks,"consumption");
-               // Log.e("AnnualCalc total", "sum 0"+ sum[0]);
                if (onComplete != null) {
                   onComplete.run(); // Continue even on error
                }
@@ -415,7 +425,7 @@ public class AnnualCalc extends Fragment {
             Log.d("AnnualCalc", "Food: " + (food != null ? food : "null"));
 
             // Only proceed if transportation emissions are updated (not 0)
-            if (transport != null && transport > 0) {
+            if (transport != null ) {
                // Add valid emission values to total emissions
                if (consumption != null) totalEmissions[0] += consumption;
                if (transport != null) totalEmissions[0] += transport;
@@ -425,7 +435,7 @@ public class AnnualCalc extends Fragment {
 
                // Log the total emissions
                Log.d("AnnualCalc", "Total emissions calculated: " + totalEmissions[0]);
-               if(consumption < 290) Total_emissions(onComplete);
+               if(consumption <= 0) Total_emissions(onComplete);
                else{
                   annual_ans_Ref.child("annual_co2e").setValue(totalEmissions[0])
                           .addOnCompleteListener(storeTask -> {
@@ -436,16 +446,14 @@ public class AnnualCalc extends Fragment {
                              }
                           });
                   if (onComplete != null) {
-                     onComplete.run(); // Continue even on error
+                     onComplete.run();
                      total = totalEmissions[0];
                   }}
             } else {
-               // Log message when transportation emissions are not valid
                if (onComplete != null) {
-                  onComplete.run(); // Continue even on error
+                  onComplete.run();
                   total = 0;
                }
-               Log.w("AnnualCalc", "Transportation CO2e is not updated or is zero. Skipping total emissions calculation.");
             }
          } else {
             Log.e("AnnualCalc", "Error fetching total emissions: " + task.getException().getMessage());
@@ -459,10 +467,8 @@ public class AnnualCalc extends Fragment {
 
          startActivity(intent);
       } else {
-         // Handle the case where the fragment is not attached to the activity
          Log.e("AnnualCalc", "Fragment is not attached.");
       }
    }
-
 
 }

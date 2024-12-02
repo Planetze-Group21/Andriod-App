@@ -2,27 +2,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@drawable/planetze_bg_real">
+    android:background="@drawable/planetze_bg_no_logo">
 
     <FrameLayout
         android:id="@+id/fragment_container"
         android:layout_width="match_parent"
-        android:layout_height="867dp"
-        android:layout_weight="1" >
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:padding="16dp"
-            android:text="Loading your results..."
-            android:textAlignment="center"
-            android:textColor="@color/steel"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:fontFamily="@font/poppins_bold"
-            />
-    </FrameLayout>
+        android:layout_height="0dp"
+        android:layout_weight="1" />
 
     <FrameLayout
         android:id="@+id/footer_container"

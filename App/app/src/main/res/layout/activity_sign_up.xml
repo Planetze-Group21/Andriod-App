@@ -39,12 +39,12 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Sign Up"
                 android:textAlignment="center"
                 android:textColor="@color/steel"
                 android:textSize="36sp"
-                android:textStyle="bold"
-                android:fontFamily="@font/poppins_bold"/>
+                android:textStyle="bold" />
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -59,12 +59,12 @@
                     android:autofillHints="name"
                     android:background="@drawable/custom_edittext"
                     android:drawablePadding="8dp"
+                    android:fontFamily="@font/nunito_medium"
                     android:hint="Last name          "
                     android:inputType="text"
                     android:padding="12dp"
                     android:textColor="@color/steel"
-                    android:textColorHint="@color/mist"
-                    android:fontFamily="@font/nunito_medium"/>
+                    android:textColorHint="@color/mist" />
 
                 <EditText
                     android:id="@+id/first_name"
@@ -75,12 +75,12 @@
                     android:autofillHints="name"
                     android:background="@drawable/custom_edittext"
                     android:drawablePadding="8dp"
+                    android:fontFamily="@font/nunito_medium"
                     android:hint="First name     "
                     android:inputType="text"
                     android:padding="12dp"
                     android:textColor="@color/steel"
-                    android:textColorHint="@color/mist"
-                    android:fontFamily="@font/nunito_medium"/>
+                    android:textColorHint="@color/mist" />
 
             </RelativeLayout>
 
@@ -93,12 +93,12 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_3p_24"
                 android:drawablePadding="8dp"
+                android:fontFamily="@font/nunito_medium"
                 android:hint="Email"
                 android:inputType="textEmailAddress"
                 android:padding="12dp"
                 android:textColor="@color/steel"
-                android:textColorHint="@color/mist"
-                android:fontFamily="@font/nunito_medium"/>
+                android:textColorHint="@color/mist" />
 
             <EditText
                 android:id="@+id/signup_password"
@@ -109,12 +109,12 @@
                 android:background="@drawable/custom_edittext"
                 android:drawableLeft="@drawable/baseline_create_24"
                 android:drawablePadding="8dp"
+                android:fontFamily="@font/nunito_medium"
                 android:hint="Password"
                 android:inputType="textVisiblePassword"
                 android:padding="12dp"
                 android:textColor="@color/steel"
-                android:textColorHint="@color/mist"
-                android:fontFamily="@font/nunito_medium"/>
+                android:textColorHint="@color/mist" />
 
 
             <EditText
@@ -130,8 +130,7 @@
                 android:inputType="textVisiblePassword"
                 android:padding="12dp"
                 android:textColor="@color/steel"
-                android:textColorHint="@color/mist"
-                />
+                android:textColorHint="@color/mist" />
 
             <Button
                 android:id="@+id/signup_button"
@@ -139,11 +138,11 @@
                 android:layout_height="60dp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/steel"
+                android:fontFamily="@font/poppins_bold"
                 android:text="Sign up"
                 android:textColor="@color/white"
                 android:textSize="18sp"
-                app:cornerRadius="20dp"
-                android:fontFamily="@font/poppins_bold"/>
+                app:cornerRadius="20dp" />
 
             <TextView
                 android:id="@+id/loginRedirectText"
@@ -151,11 +150,11 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:layout_marginTop="10dp"
+                android:fontFamily="@font/poppins_medium"
                 android:padding="8dp"
                 android:text="Have an account already? Log in."
                 android:textColor="@color/steel"
-                android:textSize="16sp"
-                android:fontFamily="@font/poppins_medium"/>
+                android:textSize="16sp" />
 
         </LinearLayout>
 

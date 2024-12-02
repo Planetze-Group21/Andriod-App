@@ -1,44 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout
+xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@drawable/planetze_bg_no_logo"
+tools:context=".PostSignupQuestionsActivity">
+
+<ScrollView
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="0dp"
+    android:layout_above="@id/footer_container"
+    android:layout_alignParentTop="true"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-    android:background="@drawable/planetze_bg_no_logo"
-    tools:context=".LoginActivity">
+    android:gravity="center">
 
-    <ImageView
-        android:id="@+id/logo"
-        android:layout_width="300sp"
-        android:layout_height="80sp"
-        android:layout_marginTop="60sp"
-        android:contentDescription="Logo"
-        android:scaleType="fitStart"
-        android:src="@drawable/planetze_logo_cropped" />
-
-    <Space
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="0.5" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:background="@drawable/planetze_bg_no_logo"
+        tools:context=".LoginActivity">
 
-    <TextView
-        android:id="@+id/welcome_message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome to PlanetZe!"
-        android:textAlignment="center"
-        android:textColor="@color/navy"
-        android:textSize="30sp"
-        android:textStyle="bold" />
+        <ImageView
+            android:id="@+id/logo"
+            android:layout_width="300sp"
+            android:layout_height="80sp"
+            android:layout_marginTop="60sp"
+            android:contentDescription="Logo"
+            android:scaleType="fitStart"
+            android:src="@drawable/planetze_logo_cropped" />
+
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="10dp"-->
+<!--            android:layout_weight="0.5" />-->
+
+        <TextView
+            android:id="@+id/welcome_message"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Welcome to PlanetZe!"
+            android:translationY="200dp"
+            android:textAlignment="center"
+            android:textColor="@color/navy"
+            android:textSize="30sp"
+            android:textStyle="bold" />
 
 
-    <Space
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+<!--        <Space-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="0dp"-->
+<!--            android:layout_weight="1" />-->
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
 
+<FrameLayout
+    android:id="@+id/footer_container"
+    android:layout_width="match_parent"
+    android:layout_height="70dp"
+    android:layout_alignParentBottom="true"
+    />
+</RelativeLayout>

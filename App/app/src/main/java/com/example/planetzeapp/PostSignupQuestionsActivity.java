@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -44,6 +45,13 @@ public class PostSignupQuestionsActivity extends AppCompatActivity {
                 welcomeMessage.setText("Thank you for becoming a citizen of PlanetZe, " + firstName + "!");
             }
         });
+
+        if (savedInstanceState == null) {
+            FooterFragment footerFragment = new FooterFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.footer_container, footerFragment); // You can use add() or replace()
+            transaction.commit();
+        }
 
     }
 

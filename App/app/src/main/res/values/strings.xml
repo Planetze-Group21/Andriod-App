@@ -105,4 +105,5 @@
     <string name="display_an_total" />
     <string name="display_an_breakdown" />
     <string name="display_an_comp" />
+    <string name="title_activity_eco_tracker_acvtivty">EcoTrackerAcvtivty</string>
 </resources>

@@ -1,22 +1,21 @@
 package com.example.planetzeapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-public class OverlayActivity extends AppCompatActivity implements FooterFragment.FooterFragmentListener {
+public class OverlayActivity extends AppCompatActivity{
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_overlay);
 
-        // Load the initial content fragment
         loadFragment(new AnnualDisplayFragment());
 
-        // Add the static footer fragment
         FooterFragment footerFragment = new FooterFragment();
         getSupportFragmentManager()
                 .beginTransaction()
@@ -30,18 +29,19 @@ public class OverlayActivity extends AppCompatActivity implements FooterFragment
         transaction.commit();
     }
 
-    @Override
-    public void onFooterButtonClicked(int buttonId) {
-        Fragment nextFragment;
-        if (buttonId == R.id.imageButton4) { // Eco Gauge
-            nextFragment = new AnnualDisplayFragment();
-        } else if (buttonId == R.id.imageButton5) { // Eco Tracker
-            nextFragment = new Introduction();
-        } else {
-            nextFragment = new AnnualDisplayFragment(); // Fallback fragment
-        }
 
-        loadFragment(nextFragment);
+    public void onFooterButtonClicked(int buttonId) {
+        Intent intent;
+        if (buttonId == R.id.imageButton4) { // Eco Gauge
+            intent = new Intent(this, PostSignupQuestionsActivity.class);
+        } else if (buttonId == R.id.imageButton5) {
+            intent = new Intent(this, PostSignupQuestionsActivity.class);
+        } else if (buttonId == R.id.imageButton1) {
+            intent = new Intent(this, PostSignupQuestionsActivity.class);
+        } else {
+            return;
+        }
+        startActivity(intent);
     }
 
 }

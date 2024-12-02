@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" >
+    xmlns:tools="http://schemas.android.com/tools">
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -12,23 +13,30 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetzeApp"
-        tools:targetApi="31" >
+        tools:targetApi="31">
+        <activity android:name=".EcoGaugeActivity"
+            android:exported="false"
+            android:theme="@style/Theme.PlanetzeApp"/>
+        <activity
+            android:name=".EcoTrackerActivty"
+            android:exported="false"
+            android:label="@string/title_activity_eco_tracker_acvtivty"
+            android:theme="@style/Theme.PlanetzeApp" />
         <activity
             android:name=".NewsActivity"
             android:exported="false" />
         <activity
             android:name=".VideosActivity"
             android:exported="false" />
-
         <activity
             android:name=".LaunchPageActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
             android:name=".SignupQuestionsActivity"
             android:exported="false" />
@@ -40,7 +48,7 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".EcoHubActivity"
             android:exported="true" />
