@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@drawable/planetze_bg_no_logo">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="200dp"
+    android:layout_height="60dp"
+    android:contentDescription="Logo"
+    android:src="@drawable/planetze_logo_cropped"
+    android:layout_gravity="center_horizontal"
+    android:layout_marginBottom="30dp"
+    android:scaleType="fitCenter" />
+
+    <!-- Card for the Thank You Message -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/thankYouTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thank You!"
+                android:textSize="28sp"
+                android:textStyle="bold"
+                android:textColor="@color/navy"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <TextView
+                android:id="@+id/thankYouMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Thank you for filling out the carbon footprint survey! Your responses help us understand your environmental impact."
+                android:textSize="16sp"
+                android:textColor="@color/charcoal"
+                android:lineSpacingExtra="5dp"
+                android:gravity="center"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/poppins_medium"/>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Card for Country Dropdown and Note -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:cardCornerRadius="16dp"
+        app:cardElevation="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <TextView
+                android:id="@+id/countryPrompt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Please select your country below to get your emission comparable to others in the same country:"
+                android:textSize="16sp"
+                android:textColor="@color/charcoal"
+                android:gravity="center"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/poppins_bold"/>
+
+            <Spinner
+                android:id="@+id/countrySpinner"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/navy"
+                android:layout_gravity="center"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_medium"/>
+
+            <TextView
+                android:id="@+id/thankYouNote"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="💡 Note: After selecting your country, press 'View Results' to see your calculated carbon footprint."
+                android:textColor="@color/teal"
+                android:textSize="14sp"
+                android:gravity="center"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/poppins_medium"
+                />
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <!-- Button for Viewing Results -->
+    <Button
+        android:id="@+id/viewResultsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="@color/navy"
+        android:padding="12dp"
+        android:text="View Results"
+        android:textColor="#ffffff"
+        android:textStyle="bold"
+        android:elevation="8dp"
+        android:layout_gravity="center"
+        android:fontFamily="@font/poppins_bold"
+        />
+</LinearLayout>

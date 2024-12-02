@@ -11,8 +11,15 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class QFragment extends SetupQFragment {
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
+public class QFragment extends SetupQFragment {
     private int questionIndex;
 
     public QFragment() {
@@ -24,7 +31,8 @@ public class QFragment extends SetupQFragment {
     }
 
     public static QFragment newInstance(int index) {
-        return new QFragment(index);
+        QFragment fragment = new QFragment(index);
+        return fragment;
     }
 
     @Override
@@ -63,7 +71,6 @@ public class QFragment extends SetupQFragment {
     private void setupQuestionAndAnswers(View view, MultipleChoiceQuestion question) {
         TextView questionTextView = view.findViewById(R.id.questionTextView);
         questionTextView.setText(question.getQuestion());
-
         Button[] buttons = new Button[] {
                 view.findViewById(R.id.buttonAnswer1),
                 view.findViewById(R.id.buttonAnswer2),
@@ -72,23 +79,17 @@ public class QFragment extends SetupQFragment {
                 view.findViewById(R.id.buttonAnswer5),
                 view.findViewById(R.id.buttonAnswer6)
         };
-
-        // Set buttons visibility and text based on the options available for the question
         for (Button button : buttons) {
             if (button == null) {
                 Log.e("QFragment", "A button is missing in the layout.");
             }
         }
-
-        // Loop through question options and set button texts and listeners
         for (int i = 0; i < question.getOptions().length; i++) {
             buttons[i].setVisibility(View.VISIBLE);
             buttons[i].setText(question.getOptions()[i]);
             final int optionIndex = i;
             buttons[i].setOnClickListener(v -> handleAnswerClick(question.getOptions()[optionIndex]));
         }
-
-        // Hide buttons that are not needed
         for (int i = question.getOptions().length; i < buttons.length; i++) {
             buttons[i].setVisibility(View.GONE);
         }
@@ -97,11 +98,9 @@ public class QFragment extends SetupQFragment {
     private void handleAnswerClick(String answer) {
         // Log the answer clicked for debugging
         Log.d("QFragment", "Answer clicked: " + answer);
-
-        // Set the user's answer for the current question
+        questions.get(questionIndex).Q_answered();
         questions.get(questionIndex).setUserAnswer(answer);
-
-        // Navigate to the appropriate next question based on the current question index
+        Log.d("QFragment", "User answer for question " + questionIndex + ": " + questions.get(questionIndex).getUserAnswer());
         if (questionIndex == 0 && "No".equals(answer)) {
             navigateToNextQuestion(3);
         }
@@ -111,8 +110,16 @@ public class QFragment extends SetupQFragment {
         else if (questionIndex == 7) {
             navigateToNextQuestion(12);
         }
-        else {
-            navigateToNextQuestion();
+        else if( questionIndex == 23)
+            {
+                AnnualQs_Finish qFragment = new AnnualQs_Finish();
+                FragmentTransaction transaction = getActivity().getSupportFragmentManager().beginTransaction();
+                transaction.replace(R.id.fragment_container, qFragment);
+                transaction.addToBackStack(null);
+                transaction.commit();
+            }
+        else
+        {navigateToNextQuestion();
         }
     }
 
@@ -128,5 +135,24 @@ public class QFragment extends SetupQFragment {
             transaction.addToBackStack(null);
             transaction.commit();
         }
+        else{
+            AnnualDisplayFragment nextFragment = new AnnualDisplayFragment();// change to eco tracker fragment when its there
+            FragmentTransaction transaction = getParentFragmentManager().beginTransaction();
+            transaction.replace(R.id.fragment_container, nextFragment);
+            transaction.addToBackStack(null);
+            transaction.commit();
+            showFooterFragment();
+        }
+
     }
+    private void showFooterFragment() {
+        // Make the footer fragment container visible
+        View footerContainer = getActivity().findViewById(R.id.footer_fragment_container);
+        if (footerContainer != null) {
+            footerContainer.setVisibility(View.VISIBLE);  // Show the footer fragment container
+        }
+    }
+
+
+
 }

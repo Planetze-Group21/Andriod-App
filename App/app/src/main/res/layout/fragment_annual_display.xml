@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/planetze_bg_no_logo"
+    tools:context=".AnnualDisplayFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:translationY="50dp">
+
+        <TextView
+            android:id="@+id/title_annual"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="🌍 Overview of Annual Carbon Footprint 🌿"
+            android:textColor="@color/navy"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/poppins_bold"
+            android:gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="20dp" />
+
+        <!-- Total Emissions Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/total_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:layout_below="@id/title_annual"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            android:background="@color/mist">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/subtext_total"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📊 Here is your estimated annual emissions 📊"
+                    android:textColor="@color/steel"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:id="@+id/total_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_an_total"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Breakdown Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/breakdown_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/total_card"
+            android:layout_marginBottom="20dp"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            android:background="@color/mist">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/subtext_breakdown"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="📂 Here is the breakdown of your estimated annual emissions 📂"
+                    android:textColor="@color/steel"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:id="@+id/breakdown_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_an_breakdown"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <!-- Comparison Card -->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/comparison_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/breakdown_card"
+            app:cardCornerRadius="20dp"
+            app:cardElevation="0dp"
+            android:background="@color/mist">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <TextView
+                    android:id="@+id/subtext_comparison"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="🔍 Here is the comparison of your estimated annual emissions 🔍"
+                    android:textColor="@color/steel"
+                    android:textSize="16sp"
+                    android:layout_marginBottom="10dp"
+                    android:fontFamily="@font/poppins_medium" />
+
+                <TextView
+                    android:id="@+id/comparison_display"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/display_an_comp"
+                    android:textColor="@color/navy"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/poppins_medium"
+                    android:gravity="center" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+    </RelativeLayout>
+</androidx.core.widget.NestedScrollView>

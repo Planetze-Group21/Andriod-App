@@ -1,0 +1,2672 @@
+{
+  "users": {
+    "f47ac10b-58cc-4372-a567-0e02b2c3d479": {
+      "name": {
+        "first_name": "John",
+        "last_name": "Doe"
+      },
+      "country": "Canada",
+      "annual_answers": {
+        "transportation": {
+          "uses_car": false,
+          "car_type": "none",
+          "distance": "0",
+          "public_transit_use": "occasionally",
+          "hours_on_public_transit": "2-3",
+          "num_short_flights": "0",
+          "num_long_flights": "1",
+          "transportation_co2e": 1634
+        },
+        "food": {
+          "diet_type": "vegan",
+          "beef_frequency": "never",
+          "pork_frequency": "never",
+          "chicken_frequency": "never",
+          "fish_frequency": "never",
+          "food_waste_frequency": "rarely",
+          "food_co2e": 523.4
+        },
+        "housing": {
+          "structure_type": "detached",
+          "size": "1000-2000",
+          "household_members": "4-5",
+          "heating_source": "natural_gas",
+          "bill": "100-150",
+          "water_source": "natural_gas",
+          "housing_co2e": 0
+        },
+        "consumption": {
+          "clothing_frequency": "rarely",
+          "eco_friendly_frequency": "occasionally",
+          "device_frequency": "4+",
+          "recycling_frequency": "always",
+          "consumption_co2e": 841
+        },
+        "annual_c02e": 2998.4
+      },
+      "monthly_answers": {
+        "2024-10": {
+          "electricty_bill": 100,
+          "water_bill": 200,
+          "gas_bill": 300,
+          "utilities_co2e": 600
+        },
+        "2024-11": {
+          "electricty_bill": 0,
+          "water_bill": 0,
+          "gas_bill": 0,
+          "utilities_co2e": 0
+        }
+      },
+      "daily_answers": {
+        "2024-10-27": {
+          "transportation": {
+            "driving_distance": 0,
+            "public_transit_type": "bus",
+            "hours_on_public_transit": 1,
+            "hours_bike_walk": 2,
+            "num_short_flights": 0,
+            "num_long_flights": 0,
+            "transportation_co2e": 0.67
+          },
+          "food": {
+            "meal1": {
+              "type_of_meal": "plant-based",
+              "servings": 2,
+              "meal_C02E": 4.16
+            },
+            "meal2": {
+              "type_of_meal": "fish",
+              "servings": 1,
+              "meal_CO2E": 2.64
+            }
+          },
+          "consumption": {
+            "clothing": {
+              "num_clothes": 10,
+              "clothing_co2e": 50
+            },
+            "devices": {
+              "device1": {
+                "type_of_device": "plant-based",
+                "quantity": 2,
+                "device_C02E": 0
+              },
+              "device2": {
+                "type_of_device": "fish",
+                "quantity": 1,
+                "device_CO2E": 0
+              }
+            },
+            "other": {
+              "other1": {
+                "category": "sofa",
+                "quantity": 2,
+                "other_C02E": 6
+              },
+              "other2": {
+                "category": "fridge",
+                "quantity": 1,
+                "other_CO2E": 10
+              }
+            }
+          },
+          "daily_CO2E": 73.47
+        },
+        "2024-11-16": {
+          "transportation": {
+            "driving_distance": 0,
+            "public_transit_type": "bus",
+            "hours_on_public_transit": 1,
+            "hours_bike_walk": 2,
+            "num_short_flights": 0,
+            "num_long_flights": 0,
+            "transportation_co2e": 0.67
+          },
+          "food": {
+            "meal1": {
+              "type_of_meal": "plant-based",
+              "servings": 2,
+              "meal_C02E": 4.16
+            },
+            "meal2": {
+              "type_of_meal": "fish",
+              "servings": 1,
+              "meal_CO2E": 2.64
+            }
+          },
+          "consumption": {
+            "clothing": {
+              "num_clothes": 10,
+              "clothing_co2e": 50
+            },
+            "devices": {
+              "device1": {
+                "type_of_device": "plant-based",
+                "quantity": 2,
+                "device_C02E": 0
+              },
+              "device2": {
+                "type_of_device": "fish",
+                "quantity": 1,
+                "device_CO2E": 0
+              }
+            },
+            "other": {
+              "other1": {
+                "category": "sofa",
+                "quantity": 2,
+                "other_C02E": 6
+              },
+              "other2": {
+                "category": "fridge",
+                "quantity": 1,
+                "other_CO2E": 10
+              }
+            }
+          },
+          "daily_CO2E": 73.47
+        }
+      }
+    }
+  },
+  "car_type_factors": {
+    "none": 0,
+    "gasoline": 0.24,
+    "diesel": 0.27,
+    "hybrid": 0.16,
+    "electric": 0.05,
+    "idk": 0.2
+  },
+  "car_distance": {
+    "0": 0,
+    "5,000": 5000,
+    "5,000–10,000": 10000,
+    "10,000–15,000": 15000,
+    "15,000-20,000": 20000,
+    "20,000–25,000": 25000,
+    "25,000+": 35000
+  },
+  "public_transit_footprint": {
+    "never|0": 0,
+    "occasionally|1": 246,
+    "occasionally|2-3": 819,
+    "occasionally|4-5": 1638,
+    "occasionally|6-10": 3071,
+    "occasionally|10+": 4095,
+    "frequently|1": 573,
+    "frequently|2-3": 1911,
+    "frequently|4-5": 3822,
+    "frequently|6-10": 7166,
+    "frequently|10+": 9555,
+    "always|1": 1050,
+    "always|2-3": 2363,
+    "always|4-5": 4103,
+    "always|6-10": 9611,
+    "always|10+": 1375
+  },
+  "short_flight_footprint": {
+    "0": 0,
+    "1-2": 225,
+    "3-5": 600,
+    "6-10": 1200,
+    "10+": 1800
+  },
+  "long_flight_footprint": {
+    "0": 0,
+    "1-2": 825,
+    "3-5": 2200,
+    "6-10": 4400,
+    "10+": 6600
+  },
+  "diet_type_emissions": {
+    "vegan": 500,
+    "vegetarian": 1000,
+    "pescatarian": 1500,
+    "meat_based": 0
+  },
+  "beef_emissions": {
+    "daily": 2500,
+    "frequently": 1900,
+    "occasionally": 1300,
+    "never": 0
+  },
+  "pork_emissions": {
+    "daily": 1450,
+    "frequently": 860,
+    "occasionally": 450,
+    "never": 0
+  },
+  "chicken_emissions": {
+    "daily": 950,
+    "frequently": 600,
+    "occasionally": 200,
+    "never": 0
+  },
+  "fish_emissions": {
+    "daily": 800,
+    "frequently": 500,
+    "occasionally": 150,
+    "never": 0
+  },
+  "food_waste_emissions": {
+    "never": 0,
+    "rarely": 23.4,
+    "occasionally": 70.2,
+    "frequently": 140.4
+  },
+  "clothing_emissions": {
+    "monthly": 360,
+    "quarterly": 120,
+    "annually": 100,
+    "rarely": 5
+  },
+  "clothing_eco_friendly_adjustment": {
+    "no": 1,
+    "regularly": 0.5,
+    "occasionally": 0.3
+  },
+  "clothing_recylcing_adjustment": {
+    "never": 1,
+    "occasionally": 0.15,
+    "frequently": 0.3,
+    "regularly": 0.5
+  },
+  "device_emissions": {
+    "1": 300,
+    "2": 600,
+    "3": 900,
+    "none": 0,
+    "4+": 1200
+  },
+  "device_recylcing_adjustment": {
+    "never": 1,
+    "occasionally": 0.1,
+    "frequently": 0.2,
+    "regularly": 0.3
+  },
+  "serving_emission": {
+    "plant_based": 2.08,
+    "fish": 2.64,
+    "chicken": 2.22,
+    "pork": 4.03,
+    "beef": 6.95
+  },
+  "avg_annual_emissions": [
+    {
+      "country": "Afghanistan",
+      "emissions_per_capita": 0.29536375
+    },
+    {
+      "country": "Africa",
+      "emissions_per_capita": 0.99422127
+    },
+    {
+      "country": "Albania",
+      "emissions_per_capita": 1.7432004
+    },
+    {
+      "country": "Algeria",
+      "emissions_per_capita": 3.9272263
+    },
+    {
+      "country": "Andorra",
+      "emissions_per_capita": 4.6171236
+    },
+    {
+      "country": "Angola",
+      "emissions_per_capita": 0.45155162
+    },
+    {
+      "country": "Anguilla",
+      "emissions_per_capita": 8.752724
+    },
+    {
+      "country": "Antigua and Barbuda",
+      "emissions_per_capita": 6.4218745
+    },
+    {
+      "country": "Argentina",
+      "emissions_per_capita": 4.2378173
+    },
+    {
+      "country": "Armenia",
+      "emissions_per_capita": 2.3045583
+    },
+    {
+      "country": "Aruba",
+      "emissions_per_capita": 8.133404
+    },
+    {
+      "country": "Asia",
+      "emissions_per_capita": 4.611434
+    },
+    {
+      "country": "Asia (excl. China and India)",
+      "emissions_per_capita": 4.017375
+    },
+    {
+      "country": "Australia",
+      "emissions_per_capita": 14.985412
+    },
+    {
+      "country": "Austria",
+      "emissions_per_capita": 6.8781943
+    },
+    {
+      "country": "Azerbaijan",
+      "emissions_per_capita": 3.6746833
+    },
+    {
+      "country": "Bahamas",
+      "emissions_per_capita": 5.1708703
+    },
+    {
+      "country": "Bahrain",
+      "emissions_per_capita": 25.672274
+    },
+    {
+      "country": "Bangladesh",
+      "emissions_per_capita": 0.5964455
+    },
+    {
+      "country": "Barbados",
+      "emissions_per_capita": 4.3772573
+    },
+    {
+      "country": "Belarus",
+      "emissions_per_capita": 6.1669006
+    },
+    {
+      "country": "Belgium",
+      "emissions_per_capita": 7.6875386
+    },
+    {
+      "country": "Belize",
+      "emissions_per_capita": 1.7894346
+    },
+    {
+      "country": "Benin",
+      "emissions_per_capita": 0.631487
+    },
+    {
+      "country": "Bermuda",
+      "emissions_per_capita": 6.9370627
+    },
+    {
+      "country": "Bhutan",
+      "emissions_per_capita": 1.3489918
+    },
+    {
+      "country": "Bolivia",
+      "emissions_per_capita": 1.7583066
+    },
+    {
+      "country": "Bonaire Sint Eustatius and Saba",
+      "emissions_per_capita": 4.083284
+    },
+    {
+      "country": "Bosnia and Herzegovina",
+      "emissions_per_capita": 6.1034565
+    },
+    {
+      "country": "Botswana",
+      "emissions_per_capita": 2.838951
+    },
+    {
+      "country": "Brazil",
+      "emissions_per_capita": 2.2454574
+    },
+    {
+      "country": "British Virgin Islands",
+      "emissions_per_capita": 5.0039577
+    },
+    {
+      "country": "Brunei",
+      "emissions_per_capita": 23.950201
+    },
+    {
+      "country": "Bulgaria",
+      "emissions_per_capita": 6.8044534
+    },
+    {
+      "country": "Burkina Faso",
+      "emissions_per_capita": 0.26295447
+    },
+    {
+      "country": "Burundi",
+      "emissions_per_capita": 0.06194545
+    },
+    {
+      "country": "Cambodia",
+      "emissions_per_capita": 1.1900775
+    },
+    {
+      "country": "Cameroon",
+      "emissions_per_capita": 0.34292704
+    },
+    {
+      "country": "Canada",
+      "emissions_per_capita": 14.249212
+    },
+    {
+      "country": "Cape Verde",
+      "emissions_per_capita": 0.9588915
+    },
+    {
+      "country": "Central African Republic",
+      "emissions_per_capita": 0.040548485
+    },
+    {
+      "country": "Chad",
+      "emissions_per_capita": 0.13367727
+    },
+    {
+      "country": "Chile",
+      "emissions_per_capita": 4.3041654
+    },
+    {
+      "country": "China",
+      "emissions_per_capita": 7.992761
+    },
+    {
+      "country": "Colombia",
+      "emissions_per_capita": 1.9223082
+    },
+    {
+      "country": "Comoros",
+      "emissions_per_capita": 0.49327007
+    },
+    {
+      "country": "Congo",
+      "emissions_per_capita": 1.2447897
+    },
+    {
+      "country": "Cook Islands",
+      "emissions_per_capita": 3.9950094
+    },
+    {
+      "country": "Costa Rica",
+      "emissions_per_capita": 1.5226681
+    },
+    {
+      "country": "Cote d'Ivoire",
+      "emissions_per_capita": 0.41668788
+    },
+    {
+      "country": "Croatia",
+      "emissions_per_capita": 4.348515
+    },
+    {
+      "country": "Cuba",
+      "emissions_per_capita": 1.8659163
+    },
+    {
+      "country": "Curacao",
+      "emissions_per_capita": 9.189007
+    },
+    {
+      "country": "Cyprus",
+      "emissions_per_capita": 5.616782
+    },
+    {
+      "country": "Czechia",
+      "emissions_per_capita": 9.3357525
+    },
+    {
+      "country": "Democratic Republic of Congo",
+      "emissions_per_capita": 0.036375992
+    },
+    {
+      "country": "Denmark",
+      "emissions_per_capita": 4.940161
+    },
+    {
+      "country": "Djibouti",
+      "emissions_per_capita": 0.40418932
+    },
+    {
+      "country": "Dominica",
+      "emissions_per_capita": 2.1058853
+    },
+    {
+      "country": "Dominican Republic",
+      "emissions_per_capita": 2.1051137
+    },
+    {
+      "country": "East Timor",
+      "emissions_per_capita": 0.49869007
+    },
+    {
+      "country": "Ecuador",
+      "emissions_per_capita": 2.3117273
+    },
+    {
+      "country": "Egypt",
+      "emissions_per_capita": 2.333106
+    },
+    {
+      "country": "El Salvador",
+      "emissions_per_capita": 1.2174718
+    },
+    {
+      "country": "Equatorial Guinea",
+      "emissions_per_capita": 3.0307202
+    },
+    {
+      "country": "Eritrea",
+      "emissions_per_capita": 0.18914719
+    },
+    {
+      "country": "Estonia",
+      "emissions_per_capita": 7.77628
+    },
+    {
+      "country": "Eswatini",
+      "emissions_per_capita": 1.0527312
+    },
+    {
+      "country": "Ethiopia",
+      "emissions_per_capita": 0.15458965
+    },
+    {
+      "country": "Europe",
+      "emissions_per_capita": 6.8578663
+    },
+    {
+      "country": "Europe (excl. EU-27)",
+      "emissions_per_capita": 7.886797
+    },
+    {
+      "country": "Europe (excl. EU-28)",
+      "emissions_per_capita": 8.817789
+    },
+    {
+      "country": "European Union (27)",
+      "emissions_per_capita": 6.1743994
+    },
+    {
+      "country": "European Union (28)",
+      "emissions_per_capita": 5.983708
+    },
+    {
+      "country": "Faroe Islands",
+      "emissions_per_capita": 14.084624
+    },
+    {
+      "country": "Fiji",
+      "emissions_per_capita": 1.1550449
+    },
+    {
+      "country": "Finland",
+      "emissions_per_capita": 6.5267396
+    },
+    {
+      "country": "France",
+      "emissions_per_capita": 4.603891
+    },
+    {
+      "country": "French Polynesia",
+      "emissions_per_capita": 2.8509297
+    },
+    {
+      "country": "Gabon",
+      "emissions_per_capita": 2.3882635
+    },
+    {
+      "country": "Gambia",
+      "emissions_per_capita": 0.2847278
+    },
+    {
+      "country": "Georgia",
+      "emissions_per_capita": 2.962545
+    },
+    {
+      "country": "Germany",
+      "emissions_per_capita": 7.9837584
+    },
+    {
+      "country": "Ghana",
+      "emissions_per_capita": 0.6215505
+    },
+    {
+      "country": "Greece",
+      "emissions_per_capita": 5.7451057
+    },
+    {
+      "country": "Greenland",
+      "emissions_per_capita": 10.473997
+    },
+    {
+      "country": "Grenada",
+      "emissions_per_capita": 2.7133646
+    },
+    {
+      "country": "Guatemala",
+      "emissions_per_capita": 1.0756185
+    },
+    {
+      "country": "Guinea",
+      "emissions_per_capita": 0.35742033
+    },
+    {
+      "country": "Guinea-Bissau",
+      "emissions_per_capita": 0.15518051
+    },
+    {
+      "country": "Guyana",
+      "emissions_per_capita": 4.3736935
+    },
+    {
+      "country": "Haiti",
+      "emissions_per_capita": 0.21119381
+    },
+    {
+      "country": "High-income countries",
+      "emissions_per_capita": 10.132565
+    },
+    {
+      "country": "Honduras",
+      "emissions_per_capita": 1.0696708
+    },
+    {
+      "country": "Hong Kong",
+      "emissions_per_capita": 4.081913
+    },
+    {
+      "country": "Hungary",
+      "emissions_per_capita": 4.449911
+    },
+    {
+      "country": "Iceland",
+      "emissions_per_capita": 9.499798
+    },
+    {
+      "country": "India",
+      "emissions_per_capita": 1.9966822
+    },
+    {
+      "country": "Indonesia",
+      "emissions_per_capita": 2.6456614
+    },
+    {
+      "country": "Iran",
+      "emissions_per_capita": 7.7993317
+    },
+    {
+      "country": "Iraq",
+      "emissions_per_capita": 4.024638
+    },
+    {
+      "country": "Ireland",
+      "emissions_per_capita": 7.7211185
+    },
+    {
+      "country": "Israel",
+      "emissions_per_capita": 6.208912
+    },
+    {
+      "country": "Italy",
+      "emissions_per_capita": 5.726825
+    },
+    {
+      "country": "Jamaica",
+      "emissions_per_capita": 2.2945588
+    },
+    {
+      "country": "Japan",
+      "emissions_per_capita": 8.501681
+    },
+    {
+      "country": "Jordan",
+      "emissions_per_capita": 2.0301995
+    },
+    {
+      "country": "Kazakhstan",
+      "emissions_per_capita": 13.979704
+    },
+    {
+      "country": "Kenya",
+      "emissions_per_capita": 0.45998666
+    },
+    {
+      "country": "Kiribati",
+      "emissions_per_capita": 0.5184742
+    },
+    {
+      "country": "Kosovo",
+      "emissions_per_capita": 4.830646
+    },
+    {
+      "country": "Kuwait",
+      "emissions_per_capita": 25.578102
+    },
+    {
+      "country": "Kyrgyzstan",
+      "emissions_per_capita": 1.4251612
+    },
+    {
+      "country": "Laos",
+      "emissions_per_capita": 3.0803475
+    },
+    {
+      "country": "Latvia",
+      "emissions_per_capita": 3.561689
+    },
+    {
+      "country": "Lebanon",
+      "emissions_per_capita": 4.3543963
+    },
+    {
+      "country": "Lesotho",
+      "emissions_per_capita": 1.3594668
+    },
+    {
+      "country": "Liberia",
+      "emissions_per_capita": 0.1653753
+    },
+    {
+      "country": "Libya",
+      "emissions_per_capita": 9.242238
+    },
+    {
+      "country": "Liechtenstein",
+      "emissions_per_capita": 3.8097827
+    },
+    {
+      "country": "Lithuania",
+      "emissions_per_capita": 4.606163
+    },
+    {
+      "country": "Low-income countries",
+      "emissions_per_capita": 0.28005043
+    },
+    {
+      "country": "Lower-middle-income countries",
+      "emissions_per_capita": 1.777996
+    },
+    {
+      "country": "Luxembourg",
+      "emissions_per_capita": 11.618432
+    },
+    {
+      "country": "Macao",
+      "emissions_per_capita": 1.5127679
+    },
+    {
+      "country": "Madagascar",
+      "emissions_per_capita": 0.14871116
+    },
+    {
+      "country": "Malawi",
+      "emissions_per_capita": 0.10262384
+    },
+    {
+      "country": "Malaysia",
+      "emissions_per_capita": 8.576508
+    },
+    {
+      "country": "Maldives",
+      "emissions_per_capita": 3.2475724
+    },
+    {
+      "country": "Mali",
+      "emissions_per_capita": 0.31153768
+    },
+    {
+      "country": "Malta",
+      "emissions_per_capita": 3.1035979
+    },
+    {
+      "country": "Marshall Islands",
+      "emissions_per_capita": 3.6353714
+    },
+    {
+      "country": "Mauritania",
+      "emissions_per_capita": 0.957337
+    },
+    {
+      "country": "Mauritius",
+      "emissions_per_capita": 3.2697906
+    },
+    {
+      "country": "Mexico",
+      "emissions_per_capita": 4.0153365
+    },
+    {
+      "country": "Micronesia (country)",
+      "emissions_per_capita": 1.3243006
+    },
+    {
+      "country": "Moldova",
+      "emissions_per_capita": 1.6565942
+    },
+    {
+      "country": "Mongolia",
+      "emissions_per_capita": 11.150772
+    },
+    {
+      "country": "Montenegro",
+      "emissions_per_capita": 3.6558185
+    },
+    {
+      "country": "Montserrat",
+      "emissions_per_capita": 4.8447766
+    },
+    {
+      "country": "Morocco",
+      "emissions_per_capita": 1.8263615
+    },
+    {
+      "country": "Mozambique",
+      "emissions_per_capita": 0.24274588
+    },
+    {
+      "country": "Myanmar",
+      "emissions_per_capita": 0.6445672
+    },
+    {
+      "country": "Namibia",
+      "emissions_per_capita": 1.5399038
+    },
+    {
+      "country": "Nauru",
+      "emissions_per_capita": 4.1700416
+    },
+    {
+      "country": "Nepal",
+      "emissions_per_capita": 0.5074035
+    },
+    {
+      "country": "Netherlands",
+      "emissions_per_capita": 7.1372175
+    },
+    {
+      "country": "New Caledonia",
+      "emissions_per_capita": 17.641167
+    },
+    {
+      "country": "New Zealand",
+      "emissions_per_capita": 6.212154
+    },
+    {
+      "country": "Nicaragua",
+      "emissions_per_capita": 0.79879653
+    },
+    {
+      "country": "Niger",
+      "emissions_per_capita": 0.116688
+    },
+    {
+      "country": "Nigeria",
+      "emissions_per_capita": 0.5891771
+    },
+    {
+      "country": "Niue",
+      "emissions_per_capita": 3.8729508
+    },
+    {
+      "country": "North America",
+      "emissions_per_capita": 10.5346775
+    },
+    {
+      "country": "North America (excl. USA)",
+      "emissions_per_capita": 4.741475
+    },
+    {
+      "country": "North Korea",
+      "emissions_per_capita": 1.9513915
+    },
+    {
+      "country": "North Macedonia",
+      "emissions_per_capita": 3.6245701
+    },
+    {
+      "country": "Norway",
+      "emissions_per_capita": 7.5093055
+    },
+    {
+      "country": "Oceania",
+      "emissions_per_capita": 9.85179
+    },
+    {
+      "country": "Oman",
+      "emissions_per_capita": 15.730261
+    },
+    {
+      "country": "Pakistan",
+      "emissions_per_capita": 0.84893465
+    },
+    {
+      "country": "Palau",
+      "emissions_per_capita": 12.123921
+    },
+    {
+      "country": "Palestine",
+      "emissions_per_capita": 0.6660658
+    },
+    {
+      "country": "Panama",
+      "emissions_per_capita": 2.699258
+    },
+    {
+      "country": "Papua New Guinea",
+      "emissions_per_capita": 0.77131313
+    },
+    {
+      "country": "Paraguay",
+      "emissions_per_capita": 1.3299496
+    },
+    {
+      "country": "Peru",
+      "emissions_per_capita": 1.7891879
+    },
+    {
+      "country": "Philippines",
+      "emissions_per_capita": 1.3014648
+    },
+    {
+      "country": "Poland",
+      "emissions_per_capita": 8.106886
+    },
+    {
+      "country": "Portugal",
+      "emissions_per_capita": 4.050785
+    },
+    {
+      "country": "Qatar",
+      "emissions_per_capita": 37.601273
+    },
+    {
+      "country": "Romania",
+      "emissions_per_capita": 3.739777
+    },
+    {
+      "country": "Russia",
+      "emissions_per_capita": 11.416899
+    },
+    {
+      "country": "Rwanda",
+      "emissions_per_capita": 0.112346195
+    },
+    {
+      "country": "Saint Helena",
+      "emissions_per_capita": 3.2986484
+    },
+    {
+      "country": "Saint Kitts and Nevis",
+      "emissions_per_capita": 4.708081
+    },
+    {
+      "country": "Saint Lucia",
+      "emissions_per_capita": 2.6149206
+    },
+    {
+      "country": "Saint Pierre and Miquelon",
+      "emissions_per_capita": 10.293288
+    },
+    {
+      "country": "Saint Vincent and the Grenadines",
+      "emissions_per_capita": 2.2964725
+    },
+    {
+      "country": "Samoa",
+      "emissions_per_capita": 1.1218625
+    },
+    {
+      "country": "Sao Tome and Principe",
+      "emissions_per_capita": 0.5816142
+    },
+    {
+      "country": "Saudi Arabia",
+      "emissions_per_capita": 18.197495
+    },
+    {
+      "country": "Senegal",
+      "emissions_per_capita": 0.6738352
+    },
+    {
+      "country": "Serbia",
+      "emissions_per_capita": 6.024712
+    },
+    {
+      "country": "Seychelles",
+      "emissions_per_capita": 6.1495123
+    },
+    {
+      "country": "Sierra Leone",
+      "emissions_per_capita": 0.13124847
+    },
+    {
+      "country": "Singapore",
+      "emissions_per_capita": 8.911513
+    },
+    {
+      "country": "Sint Maarten (Dutch part)",
+      "emissions_per_capita": 14.352394
+    },
+    {
+      "country": "Slovakia",
+      "emissions_per_capita": 6.051555
+    },
+    {
+      "country": "Slovenia",
+      "emissions_per_capita": 5.9979916
+    },
+    {
+      "country": "Solomon Islands",
+      "emissions_per_capita": 0.41232163
+    },
+    {
+      "country": "Somalia",
+      "emissions_per_capita": 0.03676208
+    },
+    {
+      "country": "South Africa",
+      "emissions_per_capita": 6.7461643
+    },
+    {
+      "country": "South America",
+      "emissions_per_capita": 2.4865332
+    },
+    {
+      "country": "South Korea",
+      "emissions_per_capita": 11.598764
+    },
+    {
+      "country": "South Sudan",
+      "emissions_per_capita": 0.1680176
+    },
+    {
+      "country": "Spain",
+      "emissions_per_capita": 5.1644425
+    },
+    {
+      "country": "Sri Lanka",
+      "emissions_per_capita": 0.7936504
+    },
+    {
+      "country": "Sudan",
+      "emissions_per_capita": 0.4696261
+    },
+    {
+      "country": "Suriname",
+      "emissions_per_capita": 5.8029985
+    },
+    {
+      "country": "Sweden",
+      "emissions_per_capita": 3.6069093
+    },
+    {
+      "country": "Switzerland",
+      "emissions_per_capita": 4.0478554
+    },
+    {
+      "country": "Syria",
+      "emissions_per_capita": 1.2490375
+    },
+    {
+      "country": "Taiwan",
+      "emissions_per_capita": 11.630868
+    },
+    {
+      "country": "Tajikistan",
+      "emissions_per_capita": 1.0064901
+    },
+    {
+      "country": "Tanzania",
+      "emissions_per_capita": 0.23771806
+    },
+    {
+      "country": "Thailand",
+      "emissions_per_capita": 3.7762568
+    },
+    {
+      "country": "Togo",
+      "emissions_per_capita": 0.2910665
+    },
+    {
+      "country": "Tonga",
+      "emissions_per_capita": 1.7686282
+    },
+    {
+      "country": "Trinidad and Tobago",
+      "emissions_per_capita": 22.423758
+    },
+    {
+      "country": "Tunisia",
+      "emissions_per_capita": 2.879285
+    },
+    {
+      "country": "Turkey",
+      "emissions_per_capita": 5.1052055
+    },
+    {
+      "country": "Turkmenistan",
+      "emissions_per_capita": 11.03418
+    },
+    {
+      "country": "Turks and Caicos Islands",
+      "emissions_per_capita": 7.636793
+    },
+    {
+      "country": "Tuvalu",
+      "emissions_per_capita": 1.0004411
+    },
+    {
+      "country": "Uganda",
+      "emissions_per_capita": 0.12744623
+    },
+    {
+      "country": "Ukraine",
+      "emissions_per_capita": 3.5578535
+    },
+    {
+      "country": "United Arab Emirates",
+      "emissions_per_capita": 25.833244
+    },
+    {
+      "country": "United Kingdom",
+      "emissions_per_capita": 4.7201805
+    },
+    {
+      "country": "United States",
+      "emissions_per_capita": 14.949616
+    },
+    {
+      "country": "Upper-middle-income countries",
+      "emissions_per_capita": 6.2268133
+    },
+    {
+      "country": "Uruguay",
+      "emissions_per_capita": 2.3060381
+    },
+    {
+      "country": "Uzbekistan",
+      "emissions_per_capita": 3.4830604
+    },
+    {
+      "country": "Vanuatu",
+      "emissions_per_capita": 0.6363055
+    },
+    {
+      "country": "Venezuela",
+      "emissions_per_capita": 2.7168686
+    },
+    {
+      "country": "Vietnam",
+      "emissions_per_capita": 3.4995174
+    },
+    {
+      "country": "Wallis and Futuna",
+      "emissions_per_capita": 2.2819076
+    },
+    {
+      "country": "World",
+      "emissions_per_capita": 4.658219
+    },
+    {
+      "country": "Yemen",
+      "emissions_per_capita": 0.33701748
+    },
+    {
+      "country": "Zambia",
+      "emissions_per_capita": 0.44570068
+    },
+    {
+      "country": "Zimbabwe",
+      "emissions_per_capita": 0.542628
+    }
+  ],
+  "housing_emissions": {
+    "detached|0-1000|1|natural_gas|0-50": 2400,
+    "detached|0-1000|1|electricity|0-50": 200,
+    "detached|0-1000|1|oil|0-50": 2100,
+    "detached|0-1000|1|propane|0-50": 2870,
+    "detached|0-1000|1|wood|0-50": 2170,
+    "detached|0-1000|2|natural_gas|0-50": 2600,
+    "detached|0-1000|2|electricity|0-50": 250,
+    "detached|0-1000|2|oil|0-50": 2650,
+    "detached|0-1000|2|propane|0-50": 3470,
+    "detached|0-1000|2|wood|0-50": 2370,
+    "detached|0-1000|3-4|natural_gas|0-50": 2700,
+    "detached|0-1000|3-4|electricity|0-50": 380,
+    "detached|0-1000|3-4|oil|0-50": 3200,
+    "detached|0-1000|3-4|propane|0-50": 4370,
+    "detached|0-1000|3-4|wood|0-50": 2670,
+    "detached|0-1000|5+|natural_gas|0-50": 3000,
+    "detached|0-1000|5+|electricity|0-50": 450,
+    "detached|0-1000|5+|oil|0-50": 3700,
+    "detached|0-1000|5+|propane|0-50": 5270,
+    "detached|0-1000|5+|wood|0-50": 2970,
+    "detached|0-1000|1|natural_gas|50-100": 2440,
+    "detached|0-1000|1|electricity|50-100": 400,
+    "detached|0-1000|1|oil|50-100": 5200,
+    "detached|0-1000|1|propane|50-100": 4400,
+    "detached|0-1000|1|wood|50-100": 2340,
+    "detached|0-1000|2|natural_gas|50-100": 2640,
+    "detached|0-1000|2|electricity|50-100": 500,
+    "detached|0-1000|2|oil|50-100": 5400,
+    "detached|0-1000|2|propane|50-100": 4600,
+    "detached|0-1000|2|wood|50-100": 2540,
+    "detached|0-1000|3-4|natural_gas|50-100": 2940,
+    "detached|0-1000|3-4|electricity|50-100": 550,
+    "detached|0-1000|3-4|oil|50-100": 5700,
+    "detached|0-1000|3-4|propane|50-100": 4900,
+    "detached|0-1000|3-4|wood|50-100": 2840,
+    "detached|0-1000|5+|natural_gas|50-100": 3240,
+    "detached|0-1000|5+|electricity|50-100": 600,
+    "detached|0-1000|5+|oil|50-100": 6000,
+    "detached|0-1000|5+|propane|50-100": 5200,
+    "detached|0-1000|5+|wood|50-100": 3140,
+    "detached|0-1000|1|natural_gas|100-150": 2610,
+    "detached|0-1000|1|electricity|100-150": 1200,
+    "detached|0-1000|1|oil|100-150": 6100,
+    "detached|0-1000|1|propane|100-150": 5400,
+    "detached|0-1000|1|wood|100-150": 2510,
+    "detached|0-1000|2|natural_gas|100-150": 2810,
+    "detached|0-1000|2|electricity|100-150": 1450,
+    "detached|0-1000|2|oil|100-150": 6250,
+    "detached|0-1000|2|propane|100-150": 5600,
+    "detached|0-1000|2|wood|100-150": 2710,
+    "detached|0-1000|3-4|natural_gas|100-150": 3110,
+    "detached|0-1000|3-4|electricity|100-150": 1600,
+    "detached|0-1000|3-4|oil|100-150": 6700,
+    "detached|0-1000|3-4|propane|100-150": 5900,
+    "detached|0-1000|3-4|wood|100-150": 3010,
+    "detached|0-1000|5+|natural_gas|100-150": 3410,
+    "detached|0-1000|5+|electricity|100-150": 1800,
+    "detached|0-1000|5+|oil|100-150": 6950,
+    "detached|0-1000|5+|propane|100-150": 6200,
+    "detached|0-1000|5+|wood|100-150": 3310,
+    "detached|0-1000|1|natural_gas|150-200": 2780,
+    "detached|0-1000|1|electricity|150-200": 1700,
+    "detached|0-1000|1|oil|150-200": 7200,
+    "detached|0-1000|1|propane|150-200": 6400,
+    "detached|0-1000|1|wood|150-200": 2680,
+    "detached|0-1000|2|natural_gas|150-200": 2980,
+    "detached|0-1000|2|electricity|150-200": 1900,
+    "detached|0-1000|2|oil|150-200": 7400,
+    "detached|0-1000|2|propane|150-200": 6600,
+    "detached|0-1000|2|wood|150-200": 2880,
+    "detached|0-1000|3-4|natural_gas|150-200": 3280,
+    "detached|0-1000|3-4|electricity|150-200": 2050,
+    "detached|0-1000|3-4|oil|150-200": 7700,
+    "detached|0-1000|3-4|propane|150-200": 6900,
+    "detached|0-1000|3-4|wood|150-200": 3180,
+    "detached|0-1000|5+|natural_gas|150-200": 3580,
+    "detached|0-1000|5+|electricity|150-200": 2200,
+    "detached|0-1000|5+|oil|150-200": 8000,
+    "detached|0-1000|5+|propane|150-200": 7200,
+    "detached|0-1000|5+|wood|150-200": 3480,
+    "detached|0-1000|1|natural_gas|200+": 3100,
+    "detached|0-1000|1|electricity|200+": 2300,
+    "detached|0-1000|1|oil|200+": 8200,
+    "detached|0-1000|1|propane|200+": 7400,
+    "detached|0-1000|1|wood|200+": 3000,
+    "detached|0-1000|2|natural_gas|200+": 3100,
+    "detached|0-1000|2|electricity|200+": 2500,
+    "detached|0-1000|2|oil|200+": 8400,
+    "detached|0-1000|2|propane|200+": 7600,
+    "detached|0-1000|2|wood|200+": 3200,
+    "detached|0-1000|3-4|natural_gas|200+": 3600,
+    "detached|0-1000|3-4|electricity|200+": 2700,
+    "detached|0-1000|3-4|oil|200+": 8700,
+    "detached|0-1000|3-4|propane|200+": 7900,
+    "detached|0-1000|3-4|wood|200+": 3500,
+    "detached|0-1000|5+|natural_gas|200+": 3900,
+    "detached|0-1000|5+|electricity|200+": 3000,
+    "detached|0-1000|5+|oil|200+": 9000,
+    "detached|0-1000|5+|propane|200+": 8200,
+    "detached|0-1000|5+|wood|200+": 3800,
+    "detached|1000-2000|1|natural_gas|0-50": 2800,
+    "detached|1000-2000|1|electricity|0-50": 300,
+    "detached|1000-2000|1|oil|0-50": 3800,
+    "detached|1000-2000|1|propane|0-50": 3770,
+    "detached|1000-2000|1|wood|0-50": 3670,
+    "detached|1000-2000|2|natural_gas|0-50": 3000,
+    "detached|1000-2000|2|electricity|0-50": 380,
+    "detached|1000-2000|2|oil|0-50": 4000,
+    "detached|1000-2000|2|propane|0-50": 4470,
+    "detached|1000-2000|2|wood|0-50": 4170,
+    "detached|1000-2000|3-4|natural_gas|0-50": 3380,
+    "detached|1000-2000|3-4|electricity|0-50": 500,
+    "detached|1000-2000|3-4|oil|0-50": 4700,
+    "detached|1000-2000|3-4|propane|0-50": 5670,
+    "detached|1000-2000|3-4|wood|0-50": 4870,
+    "detached|1000-2000|5+|natural_gas|0-50": 3860,
+    "detached|1000-2000|5+|electricity|0-50": 600,
+    "detached|1000-2000|5+|oil|0-50": 5350,
+    "detached|1000-2000|5+|propane|0-50": 6570,
+    "detached|1000-2000|5+|wood|0-50": 5670,
+    "detached|1000-2000|1|natural_gas|50-100": 5900,
+    "detached|1000-2000|1|electricity|50-100": 600,
+    "detached|1000-2000|1|oil|50-100": 5300,
+    "detached|1000-2000|1|propane|50-100": 3940,
+    "detached|1000-2000|1|wood|50-100": 3840,
+    "detached|1000-2000|2|natural_gas|50-100": 6100,
+    "detached|1000-2000|2|electricity|50-100": 800,
+    "detached|1000-2000|2|oil|50-100": 5440,
+    "detached|1000-2000|2|propane|50-100": 4640,
+    "detached|1000-2000|2|wood|50-100": 4340,
+    "detached|1000-2000|3-4|natural_gas|50-100": 6400,
+    "detached|1000-2000|3-4|electricity|50-100": 1050,
+    "detached|1000-2000|3-4|oil|50-100": 5800,
+    "detached|1000-2000|3-4|propane|50-100": 5740,
+    "detached|1000-2000|3-4|wood|50-100": 5040,
+    "detached|1000-2000|5+|natural_gas|50-100": 6700,
+    "detached|1000-2000|5+|electricity|50-100": 1200,
+    "detached|1000-2000|5+|oil|50-100": 6100,
+    "detached|1000-2000|5+|propane|50-100": 6740,
+    "detached|1000-2000|5+|wood|50-100": 5840,
+    "detached|1000-2000|1|natural_gas|100-150": 6500,
+    "detached|1000-2000|1|electricity|100-150": 1200,
+    "detached|1000-2000|1|oil|100-150": 6200,
+    "detached|1000-2000|1|propane|100-150": 7100,
+    "detached|1000-2000|1|wood|100-150": 4010,
+    "detached|1000-2000|2|natural_gas|100-150": 6700,
+    "detached|1000-2000|2|electricity|100-150": 1450,
+    "detached|1000-2000|2|oil|100-150": 6400,
+    "detached|1000-2000|2|propane|100-150": 7230,
+    "detached|1000-2000|2|wood|100-150": 4510,
+    "detached|1000-2000|3-4|natural_gas|100-150": 7000,
+    "detached|1000-2000|3-4|electricity|100-150": 1600,
+    "detached|1000-2000|3-4|oil|100-1500": 6700,
+    "detached|1000-2000|3-4|propane|100-150": 7400,
+    "detached|1000-2000|3-4|wood|100-150": 5210,
+    "detached|1000-2000|5+|natural_gas|100-150": 7300,
+    "detached|1000-2000|5+|electricity|100-150": 1800,
+    "detached|1000-2000|5+|oil|100-150": 7000,
+    "detached|1000-2000|5+|propane|100-150": 7550,
+    "detached|1000-2000|5+|wood|100-150": 6010,
+    "detached|1000-2000|1|natural_gas|150-200": 7100,
+    "detached|1000-2000|1|electricity|150-200": 1800,
+    "detached|1000-2000|1|oil|150-200": 7200,
+    "detached|1000-2000|1|propane|150-200": 4280,
+    "detached|1000-2000|1|wood|150-200": 4180,
+    "detached|1000-2000|2|natural_gas|150-200": 7300,
+    "detached|1000-2000|2|electricity|150-200": 2000,
+    "detached|1000-2000|2|oil|150-200": 7400,
+    "detached|1000-2000|2|propane|150-200": 4980,
+    "detached|1000-2000|2|wood|150-200": 4680,
+    "detached|1000-2000|3-4|natural_gas|150-200": 7600,
+    "detached|1000-2000|3-4|electricity|150-200": 2250,
+    "detached|1000-2000|3-4|oil|150-200": 7700,
+    "detached|1000-2000|3-4|propane|150-200": 5985,
+    "detached|1000-2000|3-4|wood|150-200": 5380,
+    "detached|1000-2000|5+|natural_gas|150-200": 7800,
+    "detached|1000-2000|5+|electricity|150-200": 2400,
+    "detached|1000-2000|5+|oil|150-200": 8000,
+    "detached|1000-2000|5+|propane|150-200": 7080,
+    "detached|1000-2000|5+|wood|150-200": 6180,
+    "detached|1000-2000|1|natural_gas|200+": 8300,
+    "detached|1000-2000|1|electricity|200+": 2400,
+    "detached|1000-2000|1|oil|200+": 8200,
+    "detached|1000-2000|1|propane|200+": 4600,
+    "detached|1000-2000|1|wood|200+": 4500,
+    "detached|1000-2000|2|natural_gas|200+": 8500,
+    "detached|1000-2000|2|electricity|200+": 2600,
+    "detached|1000-2000|2|oil|200+": 8400,
+    "detached|1000-2000|2|propane|200+": 5300,
+    "detached|1000-2000|2|wood|200+": 5000,
+    "detached|1000-2000|3-4|natural_gas|200+": 8800,
+    "detached|1000-2000|3-4|electricity|200+": 2800,
+    "detached|1000-2000|3-4|oil|200+": 8700,
+    "detached|1000-2000|3-4|propane|200+": 6350,
+    "detached|1000-2000|3-4|wood|200+": 5750,
+    "detached|1000-2000|5+|natural_gas|200+": 9000,
+    "detached|1000-2000|5+|electricity|200+": 3100,
+    "detached|1000-2000|5+|oil|200+": 9000,
+    "detached|1000-2000|5+|propane|200+": 7400,
+    "detached|1000-2000|5+|wood|200+": 6500,
+    "detached|2000+|1|natural_gas|0-50": 2800,
+    "detached|2000+|1|electricity|0-50": 320,
+    "detached|2000+|1|oil|0-50": 5400,
+    "detached|2000+|1|propane|0-50": 5570,
+    "detached|2000+|1|wood|0-50": 4170,
+    "detached|2000+|2|natural_gas|0-50": 2880,
+    "detached|2000+|2|electricity|0-50": 450,
+    "detached|2000+|2|oil|0-50": 6200,
+    "detached|2000+|2|propane|0-50": 6170,
+    "detached|2000+|2|wood|0-50": 4670,
+    "detached|2000+|3-4|natural_gas|0-50": 3000,
+    "detached|2000+|3-4|electricity|0-50": 520,
+    "detached|2000+|3-4|oil|0-50": 7000,
+    "detached|2000+|3-4|propane|0-50": 6970,
+    "detached|2000+|3-4|wood|0-50": 5270,
+    "detached|2000+|5+|natural_gas|0-50": 3230,
+    "detached|2000+|5+|electricity|0-50": 675,
+    "detached|2000+|5+|oil|0-50": 8900,
+    "detached|2000+|5+|propane|0-50": 7970,
+    "detached|2000+|5+|wood|0-50": 6170,
+    "detached|2000+|1|natural_gas|50-100": 3000,
+    "detached|2000+|1|electricity|50-100": 600,
+    "detached|2000+|1|oil|50-100": 10500,
+    "detached|2000+|1|propane|50-100": 5740,
+    "detached|2000+|1|wood|50-100": 4340,
+    "detached|2000+|2|natural_gas|50-100": 3200,
+    "detached|2000+|2|electricity|50-100": 900,
+    "detached|2000+|2|oil|50-100": 11000,
+    "detached|2000+|2|propane|50-100": 6340,
+    "detached|2000+|2|wood|50-100": 4840,
+    "detached|2000+|3-4|natural_gas|50-100": 3500,
+    "detached|2000+|3-4|electricity|50-100": 1500,
+    "detached|2000+|3-4|oil|50-100": 12500,
+    "detached|2000+|3-4|propane|50-100": 7240,
+    "detached|2000+|3-4|wood|50-100": 5640,
+    "detached|2000+|5+|natural_gas|50-100": 3800,
+    "detached|2000+|5+|electricity|50-100": 1800,
+    "detached|2000+|5+|oil|50-100": 14000,
+    "detached|2000+|5+|propane|50-100": 8140,
+    "detached|2000+|5+|wood|50-100": 6340,
+    "detached|2000+|1|natural_gas|100-150": 3200,
+    "detached|2000+|1|electricity|100-150": 1800,
+    "detached|2000+|1|oil|100-150": 14000,
+    "detached|2000+|1|propane|100-150": 5800,
+    "detached|2000+|1|wood|100-150": 4510,
+    "detached|2000+|2|natural_gas|100-150": 3400,
+    "detached|2000+|2|electricity|100-150": 2100,
+    "detached|2000+|2|oil|100-150": 15500,
+    "detached|2000+|2|propane|100-150": 6410,
+    "detached|2000+|2|wood|100-150": 5010,
+    "detached|2000+|3-4|natural_gas|100-150": 3700,
+    "detached|2000+|3-4|electricity|100-150": 2300,
+    "detached|2000+|3-4|oil|100-150": 16250,
+    "detached|2000+|3-4|propane|100-150": 7300,
+    "detached|2000+|3-4|wood|100-150": 5710,
+    "detached|2000+|5+|natural_gas|100-150": 4000,
+    "detached|2000+|5+|electricity|100-150": 2700,
+    "detached|2000+|5+|oil|100-150": 17500,
+    "detached|2000+|5+|propane|100-150": 8230,
+    "detached|2000+|5+|wood|100-150": 6510,
+    "detached|2000+|1|natural_gas|150-200": 3400,
+    "detached|2000+|1|electricity|150-200": 2700,
+    "detached|2000+|1|oil|150-200": 17500,
+    "detached|2000+|1|propane|150-200": 5852,
+    "detached|2000+|1|wood|150-200": 4680,
+    "detached|2000+|2|natural_gas|150-200": 3600,
+    "detached|2000+|2|electricity|150-200": 3100,
+    "detached|2000+|2|oil|150-200": 18100,
+    "detached|2000+|2|propane|150-200": 6560,
+    "detached|2000+|2|wood|150-200": 5180,
+    "detached|2000+|3-4|natural_gas|150-200": 4100,
+    "detached|2000+|3-4|electricity|150-200": 3400,
+    "detached|2000+|3-4|oil|150-200": 20000,
+    "detached|2000+|3-4|propane|150-200": 7600,
+    "detached|2000+|3-4|wood|150-200": 5980,
+    "detached|2000+|5+|natural_gas|150-200": 4400,
+    "detached|2000+|5+|electricity|150-200": 3600,
+    "detached|2000+|5+|oil|150-200": 25000,
+    "detached|2000+|5+|propane|150-200": 8300,
+    "detached|2000+|5+|wood|150-200": 6680,
+    "detached|2000+|1|natural_gas|200+": 3600,
+    "detached|2000+|1|electricity|200+": 3600,
+    "detached|2000+|1|oil|200+": 21000,
+    "detached|2000+|1|propane|200+": 6100,
+    "detached|2000+|1|wood|200+": 5000,
+    "detached|2000+|2|natural_gas|200+": 3800,
+    "detached|2000+|2|electricity|200+": 3800,
+    "detached|2000+|2|oil|200+": 22000,
+    "detached|2000+|2|propane|200+": 6840,
+    "detached|2000+|2|wood|200+": 5500,
+    "detached|2000+|3-4|natural_gas|200+": 4100,
+    "detached|2000+|3-4|electricity|200+": 4000,
+    "detached|2000+|3-4|oil|200+": 23500,
+    "detached|2000+|3-4|propane|200+": 7890,
+    "detached|2000+|3-4|wood|200+": 6250,
+    "detached|2000+|5+|natural_gas|200+": 4400,
+    "detached|2000+|5+|electricity|200+": 4200,
+    "detached|2000+|5+|propane|200+": 8710,
+    "detached|2000+|5+|wood|200+": 7000,
+    "semi-detached|0-1000|1|natural_gas|0-50": 2160,
+    "semi-detached|0-1000|1|electricity|0-50": 300,
+    "semi-detached|0-1000|1|oil|0-50": 2500,
+    "semi-detached|0-1000|1|propane|0-50": 2200,
+    "semi-detached|0-1000|1|wood|0-50": 2100,
+    "semi-detached|0-1000|2|natural_gas|0-50": 2349,
+    "semi-detached|0-1000|2|electricity|0-50": 410,
+    "semi-detached|0-1000|2|oil|0-50": 2592,
+    "semi-detached|0-1000|2|propane|0-50": 2300,
+    "semi-detached|0-1000|2|wood|0-50": 2450,
+    "semi-detached|0-1000|3-4|natural_gas|0-50": 2732,
+    "semi-detached|0-1000|3-4|electricity|0-50": 500,
+    "semi-detached|0-1000|3-4|oil|0-50": 2680,
+    "semi-detached|0-1000|3-4|propane|0-50": 2450,
+    "semi-detached|0-1000|3-4|wood|0-50": 2700,
+    "semi-detached|0-1000|5+|natural_gas|0-50": 3199,
+    "semi-detached|0-1000|5+|electricity|0-50": 580,
+    "semi-detached|0-1000|5+|oil|0-50": 2750,
+    "semi-detached|0-1000|5+|propane|0-50": 2600,
+    "semi-detached|0-1000|5+|wood|0-50": 3000,
+    "semi-detached|0-1000|1|natural_gas|50-100": 2400,
+    "semi-detached|0-1000|1|electricity|50-100": 410,
+    "semi-detached|0-1000|1|oil|50-100": 2800,
+    "semi-detached|0-1000|1|propane|50-100": 2600,
+    "semi-detached|0-1000|1|wood|50-100": 3000,
+    "semi-detached|0-1000|2|natural_gas|50-100": 2600,
+    "semi-detached|0-1000|2|electricity|50-100": 500,
+    "semi-detached|0-1000|2|oil|50-100": 3000,
+    "semi-detached|0-1000|2|propane|50-100": 2800,
+    "semi-detached|0-1000|2|wood|50-100": 3200,
+    "semi-detached|0-1000|3-4|natural_gas|50-100": 2900,
+    "semi-detached|0-1000|3-4|electricity|50-100": 560,
+    "semi-detached|0-1000|3-4|oil|50-100": 3300,
+    "semi-detached|0-1000|3-4|propane|50-100": 3100,
+    "semi-detached|0-1000|3-4|wood|50-100": 3500,
+    "semi-detached|0-1000|5+|natural_gas|50-100": 3200,
+    "semi-detached|0-1000|5+|electricity|50-100": 600,
+    "semi-detached|0-1000|5+|oil|50-100": 3600,
+    "semi-detached|0-1000|5+|propane|50-100": 3400,
+    "semi-detached|0-1000|5+|wood|50-100": 3800,
+    "semi-detached|0-1000|1|natural_gas|100-150": 2600,
+    "semi-detached|0-1000|1|electricity|100-150": 1210,
+    "semi-detached|0-1000|1|oil|100-150": 3000,
+    "semi-detached|0-1000|1|propane|100-150": 2800,
+    "semi-detached|0-1000|1|wood|100-150": 3200,
+    "semi-detached|0-1000|2|natural_gas|100-150": 280,
+    "semi-detached|0-1000|2|electricity|100-150": 1450,
+    "semi-detached|0-1000|2|oil|100-150": 3200,
+    "semi-detached|0-1000|2|propane|100-150": 3000,
+    "semi-detached|0-1000|2|wood|100-150": 3400,
+    "semi-detached|0-1000|3-4|natural_gas|100-150": 3100,
+    "semi-detached|0-1000|3-4|electricity|100-150": 1620,
+    "semi-detached|0-1000|3-4|oil|100-150": 3500,
+    "semi-detached|0-1000|3-4|propane|100-150": 3300,
+    "semi-detached|0-1000|3-4|wood|100-150": 3700,
+    "semi-detached|0-1000|5+|natural_gas|100-150": 3400,
+    "semi-detached|0-1000|5+|electricity|100-150": 1820,
+    "semi-detached|0-1000|5+|oil|100-150": 3800,
+    "semi-detached|0-1000|5+|propane|100-150": 3600,
+    "semi-detached|0-1000|5+|wood|100-150": 4000,
+    "semi-detached|0-1000|1|natural_gas|150-200": 2800,
+    "semi-detached|0-1000|1|electricity|150-200": 1700,
+    "semi-detached|0-1000|1|oil|150-200": 3200,
+    "semi-detached|0-1000|1|propane|150-200": 3000,
+    "semi-detached|0-1000|1|wood|150-200": 3400,
+    "semi-detached|0-1000|2|natural_gas|150-200": 3000,
+    "semi-detached|0-1000|2|electricity|150-200": 1900,
+    "semi-detached|0-1000|2|oil|150-200": 3400,
+    "semi-detached|0-1000|2|propane|150-200": 3200,
+    "semi-detached|0-1000|2|wood|150-200": 3600,
+    "semi-detached|0-1000|3-4|natural_gas|150-200": 3300,
+    "semi-detached|0-1000|3-4|electricity|150-200": 2000,
+    "semi-detached|0-1000|3-4|oil|150-200": 3700,
+    "semi-detached|0-1000|3-4|propane|150-200": 3500,
+    "semi-detached|0-1000|3-4|wood|150-200": 3900,
+    "semi-detached|0-1000|5+|natural_gas|150-200": 3600,
+    "semi-detached|0-1000|5+|electricity|150-200": 2200,
+    "semi-detached|0-1000|5+|oil|150-200": 8000,
+    "semi-detached|0-1000|5+|propane|150-200": 3800,
+    "semi-detached|0-1000|5+|wood|150-200": 4200,
+    "semi-detached|0-1000|1|natural_gas|200+": 3000,
+    "semi-detached|0-1000|1|electricity|200+": 2200,
+    "semi-detached|0-1000|1|oil|200+": 3400,
+    "semi-detached|0-1000|1|propane|200+": 3200,
+    "semi-detached|0-1000|1|wood|200+": 3600,
+    "semi-detached|0-1000|2|natural_gas|200+": 3200,
+    "semi-detached|0-1000|2|electricity|200+": 3600,
+    "semi-detached|0-1000|2|oil|200+": 3400,
+    "semi-detached|0-1000|2|propane|200+": 3800,
+    "semi-detached|0-1000|2|wood|200+": 3200,
+    "semi-detached|0-1000|3-4|natural_gas|200+": 3500,
+    "semi-detached|0-1000|3-4|electricity|200+": 2600,
+    "semi-detached|0-1000|3-4|oil|200+": 3900,
+    "semi-detached|0-1000|3-4|propane|200+": 3700,
+    "semi-detached|0-1000|3-4|wood|200+": 4100,
+    "semi-detached|0-1000|5+|natural_gas|200+": 3800,
+    "semi-detached|0-1000|5+|electricity|200+": 3000,
+    "semi-detached|0-1000|5+|oil|200+": 4200,
+    "semi-detached|0-1000|5+|propane|200+": 4000,
+    "semi-detached|0-1000|5+|wood|200+": 4400,
+    "semi-detached|1000-2000|1|natural_gas|0-50": 2443,
+    "semi-detached|1000-2000|1|electricity|0-50": 300,
+    "semi-detached|1000-2000|1|oil|0-50": 3400,
+    "semi-detached|1000-2000|1|propane|0-50": 4000,
+    "semi-detached|1000-2000|1|wood|0-50": 1500,
+    "semi-detached|1000-2000|2|natural_gas|0-50": 2727,
+    "semi-detached|1000-2000|2|electricity|0-50": 410,
+    "semi-detached|1000-2000|2|oil|0-50": 3499,
+    "semi-detached|1000-2000|2|propane|0-50": 4300,
+    "semi-detached|1000-2000|2|wood|0-50": 1800,
+    "semi-detached|1000-2000|3-4|natural_gas|0-50": 3151,
+    "semi-detached|1000-2000|3-4|electricity|0-50": 550,
+    "semi-detached|1000-2000|3-4|oil|0-50": 3599,
+    "semi-detached|1000-2000|3-4|propane|0-50": 4700,
+    "semi-detached|1000-2000|3-4|wood|0-50": 2100,
+    "semi-detached|1000-2000|5+|natural_gas|0-50": 3578,
+    "semi-detached|1000-2000|5+|electricity|0-50": 605,
+    "semi-detached|1000-2000|5+|oil|0-50": 3700,
+    "semi-detached|1000-2000|5+|propane|0-50": 4900,
+    "semi-detached|1000-2000|5+|wood|0-50": 2500,
+    "semi-detached|1000-2000|1|natural_gas|50-100": 4000,
+    "semi-detached|1000-2000|1|electricity|50-100": 600,
+    "semi-detached|1000-2000|1|oil|50-100": 4000,
+    "semi-detached|1000-2000|1|propane|50-100": 5000,
+    "semi-detached|1000-2000|1|wood|50-100": 2500,
+    "semi-detached|1000-2000|2|natural_gas|50-100": 5200,
+    "semi-detached|1000-2000|2|electricity|50-100": 800,
+    "semi-detached|1000-2000|2|oil|50-100": 4600,
+    "semi-detached|1000-2000|2|propane|50-100": 6200,
+    "semi-detached|1000-2000|2|wood|50-100": 2700,
+    "semi-detached|1000-2000|3-4|natural_gas|50-100": 6800,
+    "semi-detached|1000-2000|3-4|electricity|50-100": 1050,
+    "semi-detached|1000-2000|3-4|oil|50-100": 5100,
+    "semi-detached|1000-2000|3-4|propane|50-100": 7300,
+    "semi-detached|1000-2000|3-4|wood|50-100": 3500,
+    "semi-detached|1000-2000|5+|natural_gas|50-100": 7500,
+    "semi-detached|1000-2000|5+|electricity|50-100": 1200,
+    "semi-detached|1000-2000|5+|oil|50-100": 6000,
+    "semi-detached|1000-2000|5+|propane|50-100": 8000,
+    "semi-detached|1000-2000|5+|wood|50-100": 4000,
+    "semi-detached|1000-2000|1|natural_gas|100-150": 4500,
+    "semi-detached|1000-2000|1|electricity|100-150": 1200,
+    "semi-detached|1000-2000|1|oil|100-150": 6100,
+    "semi-detached|1000-2000|1|propane|100-150": 7000,
+    "semi-detached|1000-2000|1|wood|100-150": 4100,
+    "semi-detached|1000-2000|2|natural_gas|100-150": 6000,
+    "semi-detached|1000-2000|2|electricity|100-150": 1550,
+    "semi-detached|1000-2000|2|oil|100-150": 6900,
+    "semi-detached|1000-2000|2|propane|100-150": 8000,
+    "semi-detached|1000-2000|2|wood|100-150": 4300,
+    "semi-detached|1000-2000|3-4|natural_gas|100-150": 7800,
+    "semi-detached|1000-2000|3-4|electricity|100-150": 1700,
+    "semi-detached|1000-2000|3-4|oil|100-1500": 7300,
+    "semi-detached|1000-2000|3-4|propane|100-150": 9100,
+    "semi-detached|1000-2000|3-4|wood|100-150": 4850,
+    "semi-detached|1000-2000|5+|natural_gas|100-150": 8500,
+    "semi-detached|1000-2000|5+|electricity|100-150": 1800,
+    "semi-detached|1000-2000|5+|oil|100-150": 8500,
+    "semi-detached|1000-2000|5+|propane|100-150": 10000,
+    "semi-detached|1000-2000|5+|wood|100-150": 5500,
+    "semi-detached|1000-2000|1|natural_gas|150-200": 5000,
+    "semi-detached|1000-2000|1|electricity|150-200": 1800,
+    "semi-detached|1000-2000|1|oil|150-200": 8000,
+    "semi-detached|1000-2000|1|propane|150-200": 9000,
+    "semi-detached|1000-2000|1|wood|150-200": 5500,
+    "semi-detached|1000-2000|2|natural_gas|150-200": 6500,
+    "semi-detached|1000-2000|2|electricity|150-200": 2000,
+    "semi-detached|1000-2000|2|oil|150-200": 8800,
+    "semi-detached|1000-2000|2|propane|150-200": 10200,
+    "semi-detached|1000-2000|2|wood|150-200": 6000,
+    "semi-detached|1000-2000|3-4|natural_gas|150-200": 8800,
+    "semi-detached|1000-2000|3-4|electricity|150-200": 2250,
+    "semi-detached|1000-2000|3-4|oil|150-200": 9200,
+    "semi-detached|1000-2000|3-4|propane|150-200": 11000,
+    "semi-detached|1000-2000|3-4|wood|150-200": 6800,
+    "semi-detached|1000-2000|5+|natural_gas|150-200": 10000,
+    "semi-detached|1000-2000|5+|electricity|150-200": 2400,
+    "semi-detached|1000-2000|5+|oil|150-200": 10500,
+    "semi-detached|1000-2000|5+|propane|150-200": 12000,
+    "semi-detached|1000-2000|5+|wood|150-200": 7100,
+    "semi-detached|1000-2000|1|natural_gas|200+": 6000,
+    "semi-detached|1000-2000|1|electricity|200+": 2400,
+    "semi-detached|1000-2000|1|oil|200+": 10550,
+    "semi-detached|1000-2000|1|propane|200+": 12000,
+    "semi-detached|1000-2000|1|wood|200+": 7220,
+    "semi-detached|1000-2000|2|natural_gas|200+": 7800,
+    "semi-detached|1000-2000|2|electricity|200+": 2500,
+    "semi-detached|1000-2000|2|oil|200+": 10900,
+    "semi-detached|1000-2000|2|propane|200+": 13200,
+    "semi-detached|1000-2000|2|wood|200+": 8000,
+    "semi-detached|1000-2000|3-4|natural_gas|200+": 9800,
+    "semi-detached|1000-2000|3-4|electricity|200+": 2800,
+    "semi-detached|1000-2000|3-4|oil|200+": 11200,
+    "semi-detached|1000-2000|3-4|propane|200+": 14100,
+    "semi-detached|1000-2000|3-4|wood|200+": 8600,
+    "semi-detached|1000-2000|5+|natural_gas|200+": 11000,
+    "semi-detached|1000-2000|5+|electricity|200+": 3200,
+    "semi-detached|1000-2000|5+|oil|200+": 12000,
+    "semi-detached|1000-2000|5+|propane|200+": 15000,
+    "semi-detached|1000-2000|5+|wood|200+": 9100,
+    "semi-detached|2000+|1|natural_gas|0-50": 2821,
+    "semi-detached|2000+|1|electricity|0-50": 300,
+    "semi-detached|2000+|1|oil|0-50": 3820,
+    "semi-detached|2000+|1|propane|0-50": 4370,
+    "semi-detached|2000+|1|wood|0-50": 3970,
+    "semi-detached|2000+|2|natural_gas|0-50": 3010,
+    "semi-detached|2000+|2|electricity|0-50": 560,
+    "semi-detached|2000+|2|oil|0-50": 4000,
+    "semi-detached|2000+|2|propane|0-50": 4870,
+    "semi-detached|2000+|2|wood|0-50": 4470,
+    "semi-detached|2000+|3-4|natural_gas|0-50": 3261,
+    "semi-detached|2000+|3-4|electricity|0-50": 890,
+    "semi-detached|2000+|3-4|oil|0-50": 4307,
+    "semi-detached|2000+|3-4|propane|0-50": 5670,
+    "semi-detached|2000+|3-4|wood|0-50": 5270,
+    "semi-detached|2000+|5+|natural_gas|0-50": 3578,
+    "semi-detached|2000+|5+|electricity|0-50": 1000,
+    "semi-detached|2000+|5+|oil|0-50": 4400,
+    "semi-detached|2000+|5+|propane|0-50": 6370,
+    "semi-detached|2000+|5+|wood|0-50": 5970,
+    "semi-detached|2000+|1|natural_gas|50-100": 7500,
+    "semi-detached|2000+|1|electricity|50-100": 1200,
+    "semi-detached|2000+|1|oil|50-100": 5500,
+    "semi-detached|2000+|1|propane|50-100": 4540,
+    "semi-detached|2000+|1|wood|50-100": 4140,
+    "semi-detached|2000+|2|natural_gas|50-100": 8800,
+    "semi-detached|2000+|2|electricity|50-100": 1400,
+    "semi-detached|2000+|2|oil|50-100": 6000,
+    "semi-detached|2000+|2|propane|50-100": 5040,
+    "semi-detached|2000+|2|wood|50-100": 4640,
+    "semi-detached|2000+|3-4|natural_gas|50-100": 10800,
+    "semi-detached|2000+|3-4|electricity|50-100": 1650,
+    "semi-detached|2000+|3-4|oil|50-100": 7200,
+    "semi-detached|2000+|3-4|propane|50-100": 5840,
+    "semi-detached|2000+|3-4|wood|50-100": 5340,
+    "semi-detached|2000+|5+|natural_gas|50-100": 12500,
+    "semi-detached|2000+|5+|electricity|50-100": 1800,
+    "semi-detached|2000+|5+|oil|50-100": 8500,
+    "semi-detached|2000+|5+|propane|50-100": 6540,
+    "semi-detached|2000+|5+|wood|50-100": 6140,
+    "semi-detached|2000+|1|natural_gas|100-150": 10000,
+    "semi-detached|2000+|1|electricity|100-150": 1800,
+    "semi-detached|2000+|1|oil|100-150": 8500,
+    "semi-detached|2000+|1|propane|100-150": 4710,
+    "semi-detached|2000+|1|wood|100-150": 4310,
+    "semi-detached|2000+|2|natural_gas|100-150": 12000,
+    "semi-detached|2000+|2|electricity|100-150": 2000,
+    "semi-detached|2000+|2|oil|100-150": 9200,
+    "semi-detached|2000+|2|propane|100-150": 5210,
+    "semi-detached|2000+|2|wood|100-150": 4810,
+    "semi-detached|2000+|3-4|natural_gas|100-150": 14000,
+    "semi-detached|2000+|3-4|electricity|100-150": 2300,
+    "semi-detached|2000+|3-4|oil|100-150": 10200,
+    "semi-detached|2000+|3-4|propane|100-150": 6010,
+    "semi-detached|2000+|3-4|wood|100-150": 5610,
+    "semi-detached|2000+|5+|natural_gas|100-150": 15000,
+    "semi-detached|2000+|5+|electricity|100-150": 2400,
+    "semi-detached|2000+|5+|oil|100-150": 11000,
+    "semi-detached|2000+|5+|propane|100-150": 6710,
+    "semi-detached|2000+|5+|wood|100-150": 6310,
+    "semi-detached|2000+|1|natural_gas|150-200": 12500,
+    "semi-detached|2000+|1|electricity|150-200": 2400,
+    "semi-detached|2000+|1|oil|150-200": 11000,
+    "semi-detached|2000+|1|propane|150-200": 4880,
+    "semi-detached|2000+|1|wood|150-200": 4480,
+    "semi-detached|2000+|2|natural_gas|150-200": 14200,
+    "semi-detached|2000+|2|electricity|150-200": 2600,
+    "semi-detached|2000+|2|oil|150-200": 12000,
+    "semi-detached|2000+|2|propane|150-200": 5380,
+    "semi-detached|2000+|2|wood|150-200": 4980,
+    "semi-detached|2000+|3-4|natural_gas|150-200": 16000,
+    "semi-detached|2000+|3-4|electricity|150-200": 2820,
+    "semi-detached|2000+|3-4|oil|150-200": 13500,
+    "semi-detached|2000+|3-4|propane|150-200": 6180,
+    "semi-detached|2000+|3-4|wood|150-200": 5780,
+    "semi-detached|2000+|5+|natural_gas|150-200": 17500,
+    "semi-detached|2000+|5+|electricity|150-200": 3000,
+    "semi-detached|2000+|5+|oil|150-200": 14000,
+    "semi-detached|2000+|5+|propane|150-200": 6880,
+    "semi-detached|2000+|5+|wood|150-200": 6480,
+    "semi-detached|2000+|1|natural_gas|200+": 15000,
+    "semi-detached|2000+|1|electricity|200+": 3000,
+    "semi-detached|2000+|1|oil|200+": 14000,
+    "semi-detached|2000+|1|propane|200+": 5200,
+    "semi-detached|2000+|1|wood|200+": 4800,
+    "semi-detached|2000+|2|natural_gas|200+": 16800,
+    "semi-detached|2000+|2|electricity|200+": 3500,
+    "semi-detached|2000+|2|oil|200+": 14800,
+    "semi-detached|2000+|2|propane|200+": 5700,
+    "semi-detached|2000+|2|wood|200+": 5300,
+    "semi-detached|2000+|3-4|natural_gas|200+": 18200,
+    "semi-detached|2000+|3-4|electricity|200+": 4000,
+    "semi-detached|2000+|3-4|oil|200+": 15500,
+    "semi-detached|2000+|3-4|propane|200+": 6500,
+    "semi-detached|2000+|3-4|wood|200+": 6150,
+    "semi-detached|2000+|5+|natural_gas|200+": 19000,
+    "semi-detached|2000+|5+|electricity|200+": 4500,
+    "semi-detached|2000+|5+|oil|200+": 16000,
+    "semi-detached|2000+|5+|propane|200+": 7200,
+    "semi-detached|2000+|5+|wood|200+": 6800,
+    "townhouse|0-1000|1|natural_gas|0-50": 1971,
+    "townhouse|0-1000|1|electricity|0-50": 300,
+    "townhouse|0-1000|1|oil|0-50": 2400,
+    "townhouse|0-1000|1|propane|0-50": 1500,
+    "townhouse|0-1000|1|wood|0-50": 2000,
+    "townhouse|0-1000|2|natural_gas|0-50": 2160,
+    "townhouse|0-1000|2|electricity|0-50": 410,
+    "townhouse|0-1000|2|oil|0-50": 2523,
+    "townhouse|0-1000|2|propane|0-50": 1850,
+    "townhouse|0-1000|2|wood|0-50": 2250,
+    "townhouse|0-1000|3-4|natural_gas|0-50": 2500,
+    "townhouse|0-1000|3-4|electricity|0-50": 500,
+    "townhouse|0-1000|3-4|oil|0-50": 2600,
+    "townhouse|0-1000|3-4|propane| ": 2100,
+    "townhouse|0-1000|3-4|wood|0-50": 2500,
+    "townhouse|0-1000|5+|natural_gas|0-50": 2800,
+    "townhouse|0-1000|5+|electricity|0-50": 550,
+    "townhouse|0-1000|5+|oil|0-50": 2720,
+    "townhouse|0-1000|5+|propane|0-50": 2500,
+    "townhouse|0-1000|5+|wood|0-50": 2600,
+    "townhouse|0-1000|1|natural_gas|50-100": 2800,
+    "townhouse|0-1000|1|electricity|50-100": 500,
+    "townhouse|0-1000|1|oil|50-100": 2800,
+    "townhouse|0-1000|1|propane|50-100": 2500,
+    "townhouse|0-1000|1|wood|50-100": 2800,
+    "townhouse|0-1000|2|natural_gas|50-100": 2910,
+    "townhouse|0-1000|2|electricity|50-100": 550,
+    "townhouse|0-1000|2|oil|50-100": 3100,
+    "townhouse|0-1000|2|propane|50-100": 2800,
+    "townhouse|0-1000|2|wood|50-100": 3000,
+    "townhouse|0-1000|3-4|natural_gas|50-100": 3000,
+    "townhouse|0-1000|3-4|electricity|50-100": 580,
+    "townhouse|0-1000|3-4|oil|50-100": 3250,
+    "townhouse|0-1000|3-4|propane|50-100": 3400,
+    "townhouse|0-1000|3-4|wood|50-100": 3300,
+    "townhouse|0-1000|5+|natural_gas|50-100": 3200,
+    "townhouse|0-1000|5+|electricity|50-100": 600,
+    "townhouse|0-1000|5+|oil|50-100": 3500,
+    "townhouse|0-1000|5+|propane|50-100": 3800,
+    "townhouse|0-1000|5+|wood|50-100": 3400,
+    "townhouse|0-1000|1|natural_gas|100-150": 3000,
+    "townhouse|0-1000|1|electricity|100-150": 1000,
+    "townhouse|0-1000|1|oil|100-150": 3600,
+    "townhouse|0-1000|1|propane|100-150": 3000,
+    "townhouse|0-1000|1|wood|100-150": 3000,
+    "townhouse|0-1000|2|natural_gas|100-150": 3210,
+    "townhouse|0-1000|2|electricity|100-150": 1250,
+    "townhouse|0-1000|2|oil|100-150": 3750,
+    "townhouse|0-1000|2|propane|100-150": 3500,
+    "townhouse|0-1000|2|wood|100-150": 3300,
+    "townhouse|0-1000|3-4|natural_gas|100-150": 3500,
+    "townhouse|0-1000|3-4|electricity|100-150": 1320,
+    "townhouse|0-1000|3-4|oil|100-150": 3900,
+    "townhouse|0-1000|3-4|propane|100-150": 4100,
+    "townhouse|0-1000|3-4|wood|100-150": 3520,
+    "townhouse|0-1000|5+|natural_gas|100-150": 3800,
+    "townhouse|0-1000|5+|electricity|100-150": 1420,
+    "townhouse|0-1000|5+|oil|100-150": 4050,
+    "townhouse|0-1000|5+|propane|100-150": 5000,
+    "townhouse|0-1000|5+|wood|100-150": 3800,
+    "townhouse|0-1000|1|natural_gas|150-200": 4000,
+    "townhouse|0-1000|1|electricity|150-200": 1600,
+    "townhouse|0-1000|1|oil|150-200": 4500,
+    "townhouse|0-1000|1|propane|150-200": 3700,
+    "townhouse|0-1000|1|wood|150-200": 3330,
+    "townhouse|0-1000|2|natural_gas|150-200": 5500,
+    "townhouse|0-1000|2|electricity|150-200": 1750,
+    "townhouse|0-1000|2|oil|150-200": 4600,
+    "townhouse|0-1000|2|propane|150-200": 4500,
+    "townhouse|0-1000|2|wood|150-200": 3500,
+    "townhouse|0-1000|3-4|natural_gas|150-200": 6200,
+    "townhouse|0-1000|3-4|electricity|150-200": 1900,
+    "townhouse|0-1000|3-4|oil|150-200": 4800,
+    "townhouse|0-1000|3-4|propane|150-200": 5200,
+    "townhouse|0-1000|3-4|wood|150-200": 3720,
+    "townhouse|0-1000|5+|natural_gas|150-200": 8000,
+    "townhouse|0-1000|5+|electricity|150-200": 2000,
+    "townhouse|0-1000|5+|oil|150-200": 5100,
+    "townhouse|0-1000|5+|propane|150-200": 5800,
+    "townhouse|0-1000|5+|wood|150-200": 4000,
+    "townhouse|0-1000|1|natural_gas|200+": 8000,
+    "townhouse|0-1000|1|electricity|200+": 2000,
+    "townhouse|0-1000|1|oil|200+": 5000,
+    "townhouse|0-1000|1|propane|200+": 5800,
+    "townhouse|0-1000|1|wood|200+": 3500,
+    "townhouse|0-1000|2|natural_gas|200+": 9500,
+    "townhouse|0-1000|2|electricity|200+": 2100,
+    "townhouse|0-1000|2|oil|200+": 5200,
+    "townhouse|0-1000|2|propane|200+": 6800,
+    "townhouse|0-1000|2|wood|200+": 3700,
+    "townhouse|0-1000|3-4|natural_gas|200+": 10200,
+    "townhouse|0-1000|3-4|electricity|200+": 2300,
+    "townhouse|0-1000|3-4|oil|200+": 5300,
+    "townhouse|0-1000|3-4|propane|200+": 7200,
+    "townhouse|0-1000|3-4|wood|200+": 4000,
+    "townhouse|0-1000|5+|natural_gas|200+": 12000,
+    "townhouse|0-1000|5+|electricity|200+": 3000,
+    "townhouse|0-1000|5+|oil|200+": 5600,
+    "townhouse|0-1000|5+|propane|200+": 7800,
+    "townhouse|0-1000|5+|wood|200+": 4300,
+    "townhouse|1000-2000|1|natural_gas|0-50": 2443,
+    "townhouse|1000-2000|1|electricity|0-50": 300,
+    "townhouse|1000-2000|1|oil|0-50": 2590,
+    "townhouse|1000-2000|1|propane|0-50": 3170,
+    "townhouse|1000-2000|1|wood|0-50": 1400,
+    "townhouse|1000-2000|2|natural_gas|0-50": 2750,
+    "townhouse|1000-2000|2|electricity|0-50": 380,
+    "townhouse|1000-2000|2|oil|0-50": 2620,
+    "townhouse|1000-2000|2|propane|0-50": 3770,
+    "townhouse|1000-2000|2|wood|0-50": 1560,
+    "townhouse|1000-2000|3-4|natural_gas|0-50": 3111,
+    "townhouse|1000-2000|3-4|electricity|0-50": 500,
+    "townhouse|1000-2000|3-4|oil|0-50": 2730,
+    "townhouse|1000-2000|3-4|propane|0-50": 4670,
+    "townhouse|1000-2000|3-4|wood|0-50": 1900,
+    "townhouse|1000-2000|5+|natural_gas|0-50": 3580,
+    "townhouse|1000-2000|5+|electricity|0-50": 590,
+    "townhouse|1000-2000|5+|oil|0-50": 2800,
+    "townhouse|1000-2000|5+|propane|0-50": 5570,
+    "townhouse|1000-2000|5+|wood|0-50": 2200,
+    "townhouse|1000-2000|1|natural_gas|50-100": 4000,
+    "townhouse|1000-2000|1|electricity|50-100": 550,
+    "townhouse|1000-2000|1|oil|50-100": 3800,
+    "townhouse|1000-2000|1|propane|50-100": 5600,
+    "townhouse|1000-2000|1|wood|50-100": 2400,
+    "townhouse|1000-2000|2|natural_gas|50-100": 5000,
+    "townhouse|1000-2000|2|electricity|50-100": 700,
+    "townhouse|1000-2000|2|oil|50-100": 4320,
+    "townhouse|1000-2000|2|propane|50-100": 5940,
+    "townhouse|1000-2000|2|wood|50-100": 2600,
+    "townhouse|1000-2000|3-4|natural_gas|50-100": 6500,
+    "townhouse|1000-2000|3-4|electricity|50-100": 950,
+    "townhouse|1000-2000|3-4|oil|50-100": 4800,
+    "townhouse|1000-2000|3-4|propane|50-100": 6140,
+    "townhouse|1000-2000|3-4|wood|50-100": 3300,
+    "townhouse|1000-2000|5+|natural_gas|50-100": 7300,
+    "townhouse|1000-2000|5+|electricity|50-100": 1100,
+    "townhouse|1000-2000|5+|oil|50-100": 5500,
+    "townhouse|1000-2000|5+|propane|50-100": 6340,
+    "townhouse|1000-2000|5+|wood|50-100": 3800,
+    "townhouse|1000-2000|1|natural_gas|100-150": 4300,
+    "townhouse|1000-2000|1|electricity|100-150": 1200,
+    "townhouse|1000-2000|1|oil|100-150": 5000,
+    "townhouse|1000-2000|1|propane|100-150": 6000,
+    "townhouse|1000-2000|1|wood|100-150": 4000,
+    "townhouse|1000-2000|2|natural_gas|100-150": 5500,
+    "townhouse|1000-2000|2|electricity|100-150": 1350,
+    "townhouse|1000-2000|2|oil|100-150": 5800,
+    "townhouse|1000-2000|2|propane|100-150": 6200,
+    "townhouse|1000-2000|2|wood|100-150": 4310,
+    "townhouse|1000-2000|3-4|natural_gas|100-150": 6800,
+    "townhouse|1000-2000|3-4|electricity|100-150": 1520,
+    "townhouse|1000-2000|3-4|oil|100-1500": 6200,
+    "townhouse|1000-2000|3-4|propane|100-150": 6420,
+    "townhouse|1000-2000|3-4|wood|100-150": 4600,
+    "townhouse|1000-2000|5+|natural_gas|100-150": 8340,
+    "townhouse|1000-2000|5+|electricity|100-150": 1700,
+    "townhouse|1000-2000|5+|oil|100-150": 6100,
+    "townhouse|1000-2000|5+|propane|100-150": 6500,
+    "townhouse|1000-2000|5+|wood|100-150": 5100,
+    "townhouse|1000-2000|1|natural_gas|150-200": 4800,
+    "townhouse|1000-2000|1|electricity|150-200": 1700,
+    "townhouse|1000-2000|1|oil|150-200": 5350,
+    "townhouse|1000-2000|1|propane|150-200": 3680,
+    "townhouse|1000-2000|1|wood|150-200": 3800,
+    "townhouse|1000-2000|2|natural_gas|150-200": 6300,
+    "townhouse|1000-2000|2|electricity|150-200": 1900,
+    "townhouse|1000-2000|2|oil|150-200": 5500,
+    "townhouse|1000-2000|2|propane|150-200": 4280,
+    "townhouse|1000-2000|2|wood|150-200": 3800,
+    "townhouse|1000-2000|3-4|natural_gas|150-200": 8500,
+    "townhouse|1000-2000|3-4|electricity|150-200": 2150,
+    "townhouse|1000-2000|3-4|oil|150-200": 5720,
+    "townhouse|1000-2000|3-4|propane|150-200": 5180,
+    "townhouse|1000-2000|3-4|wood|150-200": 4220,
+    "townhouse|1000-2000|5+|natural_gas|150-200": 9000,
+    "townhouse|1000-2000|5+|electricity|150-200": 2400,
+    "townhouse|1000-2000|5+|oil|150-200": 5900,
+    "townhouse|1000-2000|5+|propane|150-200": 6080,
+    "townhouse|1000-2000|5+|wood|150-200": 4400,
+    "townhouse|1000-2000|1|natural_gas|200+": 9500,
+    "townhouse|1000-2000|1|electricity|200+": 2500,
+    "townhouse|1000-2000|1|oil|200+": 5370,
+    "townhouse|1000-2000|1|propane|200+": 6000,
+    "townhouse|1000-2000|1|wood|200+": 4000,
+    "townhouse|1000-2000|2|natural_gas|200+": 10100,
+    "townhouse|1000-2000|2|electricity|200+": 2780,
+    "townhouse|1000-2000|2|oil|200+": 5500,
+    "townhouse|1000-2000|2|propane|200+": 6600,
+    "townhouse|1000-2000|2|wood|200+": 4640,
+    "townhouse|1000-2000|3-4|natural_gas|200+": 11200,
+    "townhouse|1000-2000|3-4|electricity|200+": 3000,
+    "townhouse|1000-2000|3-4|oil|200+": 5800,
+    "townhouse|1000-2000|3-4|propane|200+": 6800,
+    "townhouse|1000-2000|3-4|wood|200+": 5000,
+    "townhouse|1000-2000|5+|natural_gas|200+": 14000,
+    "townhouse|1000-2000|5+|electricity|200+": 3500,
+    "townhouse|1000-2000|5+|oil|200+": 6200,
+    "townhouse|1000-2000|5+|propane|200+": 7400,
+    "townhouse|1000-2000|5+|wood|200+": 5430,
+    "townhouse|2000+|1|natural_gas|0-50": 2822,
+    "townhouse|2000+|1|electricity|0-50": 300,
+    "townhouse|2000+|1|oil|0-50": 2810,
+    "townhouse|2000+|1|propane|0-50": 3340,
+    "townhouse|2000+|1|wood|0-50": 3800,
+    "townhouse|2000+|2|natural_gas|0-50": 3010,
+    "townhouse|2000+|2|electricity|0-50": 560,
+    "townhouse|2000+|2|oil|0-50": 3000,
+    "townhouse|2000+|2|propane|0-50": 3940,
+    "townhouse|2000+|2|wood|0-50": 4070,
+    "townhouse|2000+|3-4|natural_gas|0-50": 3300,
+    "townhouse|2000+|3-4|electricity|0-50": 890,
+    "townhouse|2000+|3-4|oil|0-50": 3468,
+    "townhouse|2000+|3-4|propane|0-50": 4840,
+    "townhouse|2000+|3-4|wood|0-50": 5000,
+    "townhouse|2000+|5+|natural_gas|0-50": 3600,
+    "townhouse|2000+|5+|electricity|0-50": 1000,
+    "townhouse|2000+|5+|oil|0-50": 3760,
+    "townhouse|2000+|5+|propane|0-50": 5740,
+    "townhouse|2000+|5+|wood|0-50": 5600,
+    "townhouse|2000+|1|natural_gas|50-100": 3600,
+    "townhouse|2000+|1|electricity|50-100": 1200,
+    "townhouse|2000+|1|oil|50-100": 4300,
+    "townhouse|2000+|1|propane|50-100": 5900,
+    "townhouse|2000+|1|wood|50-100": 3500,
+    "townhouse|2000+|2|natural_gas|50-100": 3840,
+    "townhouse|2000+|2|electricity|50-100": 1380,
+    "townhouse|2000+|2|oil|50-100": 4900,
+    "townhouse|2000+|2|propane|50-100": 6330,
+    "townhouse|2000+|2|wood|50-100": 3930,
+    "townhouse|2000+|3-4|natural_gas|50-100": 3900,
+    "townhouse|2000+|3-4|electricity|50-100": 1600,
+    "townhouse|2000+|3-4|oil|50-100": 5320,
+    "townhouse|2000+|3-4|propane|50-100": 6440,
+    "townhouse|2000+|3-4|wood|50-100": 4360,
+    "townhouse|2000+|5+|natural_gas|50-100": 5100,
+    "townhouse|2000+|5+|electricity|50-100": 1750,
+    "townhouse|2000+|5+|oil|50-100": 5800,
+    "townhouse|2000+|5+|propane|50-100": 6900,
+    "townhouse|2000+|5+|wood|50-100": 5000,
+    "townhouse|2000+|1|natural_gas|100-150": 5000,
+    "townhouse|2000+|1|electricity|100-150": 1800,
+    "townhouse|2000+|1|oil|100-150": 5300,
+    "townhouse|2000+|1|propane|100-150": 3510,
+    "townhouse|2000+|1|wood|100-150": 4100,
+    "townhouse|2000+|2|natural_gas|100-150": 6200,
+    "townhouse|2000+|2|electricity|100-150": 2000,
+    "townhouse|2000+|2|oil|100-150": 5690,
+    "townhouse|2000+|2|propane|100-150": 4110,
+    "townhouse|2000+|2|wood|100-150": 4500,
+    "townhouse|2000+|3-4|natural_gas|100-150": 7000,
+    "townhouse|2000+|3-4|electricity|100-150": 2200,
+    "townhouse|2000+|3-4|oil|100-150": 6250,
+    "townhouse|2000+|3-4|propane|100-150": 5010,
+    "townhouse|2000+|3-4|wood|100-150": 4780,
+    "townhouse|2000+|5+|natural_gas|100-150": 8000,
+    "townhouse|2000+|5+|electricity|100-150": 2300,
+    "townhouse|2000+|5+|oil|100-150": 6500,
+    "townhouse|2000+|5+|propane|100-150": 5910,
+    "townhouse|2000+|5+|wood|100-150": 5360,
+    "townhouse|2000+|1|natural_gas|150-200": 8000,
+    "townhouse|2000+|1|electricity|150-200": 2400,
+    "townhouse|2000+|1|oil|150-200": 5440,
+    "townhouse|2000+|1|propane|150-200": 3800,
+    "townhouse|2000+|1|wood|150-200": 4200,
+    "townhouse|2000+|2|natural_gas|150-200": 8300,
+    "townhouse|2000+|2|electricity|150-200": 2500,
+    "townhouse|2000+|2|oil|150-200": 5600,
+    "townhouse|2000+|2|propane|150-200": 4500,
+    "townhouse|2000+|2|wood|150-200": 4640,
+    "townhouse|2000+|3-4|natural_gas|150-200": 9000,
+    "townhouse|2000+|3-4|electricity|150-200": 2650,
+    "townhouse|2000+|3-4|oil|150-200": 5800,
+    "townhouse|2000+|3-4|propane|150-200": 5380,
+    "townhouse|2000+|3-4|wood|150-200": 5000,
+    "townhouse|2000+|5+|natural_gas|150-200": 9500,
+    "townhouse|2000+|5+|electricity|150-200": 2800,
+    "townhouse|2000+|5+|oil|150-200": 6350,
+    "townhouse|2000+|5+|propane|150-200": 6200,
+    "townhouse|2000+|5+|wood|150-200": 5400,
+    "townhouse|2000+|1|natural_gas|200+": 9500,
+    "townhouse|2000+|1|electricity|200+": 2800,
+    "townhouse|2000+|1|oil|200+": 5670,
+    "townhouse|2000+|1|propane|200+": 6200,
+    "townhouse|2000+|1|wood|200+": 4300,
+    "townhouse|2000+|2|natural_gas|200+": 1010,
+    "townhouse|2000+|2|electricity|200+": 3000,
+    "townhouse|2000+|2|oil|200+": 5800,
+    "townhouse|2000+|2|propane|200+": 6900,
+    "townhouse|2000+|2|wood|200+": 4700,
+    "townhouse|2000+|3-4|natural_gas|200+": 10300,
+    "townhouse|2000+|3-4|electricity|200+": 3800,
+    "townhouse|2000+|3-4|oil|200+": 6100,
+    "townhouse|2000+|3-4|propane|200+": 7500,
+    "townhouse|2000+|3-4|wood|200+": 5100,
+    "townhouse|2000+|5+|natural_gas|200+": 11000,
+    "townhouse|2000+|5+|electricity|200+": 4300,
+    "townhouse|2000+|5+|propane|200+": 7850,
+    "townhouse|2000+|5+|wood|200+": 5500,
+    "condo_apartment|0-1000|1|natural_gas|0-50": 1680,
+    "condo_apartment|0-1000|1|electricity|0-50": 200,
+    "condo_apartment|0-1000|1|propane|0-50": 1320,
+    "condo_apartment|0-1000|1|wood|0-50": 1600,
+    "condo_apartment|0-1000|2|natural_gas|0-50": 1870,
+    "condo_apartment|0-1000|2|electricity|0-50": 250,
+    "condo_apartment|0-1000|2|propane|0-50": 1550,
+    "condo_apartment|0-1000|2|wood|0-50": 1850,
+    "condo_apartment|0-1000|3-4|natural_gas|0-50": 2170,
+    "condo_apartment|0-1000|3-4|electricity|0-50": 380,
+    "condo_apartment|0-1000|3-4|propane| ": 1800,
+    "condo_apartment|0-1000|3-4|wood|0-50": 2000,
+    "condo_apartment|0-1000|5+|natural_gas|0-50": 2440,
+    "condo_apartment|0-1000|5+|electricity|0-50": 450,
+    "condo_apartment|0-1000|5+|propane|0-50": 2000,
+    "condo_apartment|0-1000|5+|wood|0-50": 2100,
+    "condo_apartment|0-1000|1|natural_gas|50-100": 2240,
+    "condo_apartment|0-1000|1|electricity|50-100": 500,
+    "condo_apartment|0-1000|1|propane|50-100": 2100,
+    "condo_apartment|0-1000|1|wood|50-100": 1800,
+    "condo_apartment|0-1000|2|natural_gas|50-100": 2430,
+    "condo_apartment|0-1000|2|electricity|50-100": 550,
+    "condo_apartment|0-1000|2|propane|50-100": 2400,
+    "condo_apartment|0-1000|2|wood|50-100": 2000,
+    "condo_apartment|0-1000|3-4|natural_gas|50-100": 2719,
+    "condo_apartment|0-1000|3-4|electricity|50-100": 580,
+    "condo_apartment|0-1000|3-4|propane|50-100": 2800,
+    "condo_apartment|0-1000|3-4|wood|50-100": 2300,
+    "condo_apartment|0-1000|5+|natural_gas|50-100": 2997,
+    "condo_apartment|0-1000|5+|electricity|50-100": 600,
+    "condo_apartment|0-1000|5+|propane|50-100": 3200,
+    "condo_apartment|0-1000|5+|wood|50-100": 2400,
+    "condo_apartment|0-1000|1|natural_gas|100-150": 2800,
+    "condo_apartment|0-1000|1|electricity|100-150": 900,
+    "condo_apartment|0-1000|1|propane|100-150": 3000,
+    "condo_apartment|0-1000|1|wood|100-150": 2800,
+    "condo_apartment|0-1000|2|natural_gas|100-150": 3000,
+    "condo_apartment|0-1000|2|electricity|100-150": 1100,
+    "condo_apartment|0-1000|2|propane|100-150": 3300,
+    "condo_apartment|0-1000|2|wood|100-150": 3000,
+    "condo_apartment|0-1000|3-4|natural_gas|100-150": 3200,
+    "condo_apartment|0-1000|3-4|electricity|100-150": 1200,
+    "condo_apartment|0-1000|3-4|propane|100-150": 3700,
+    "condo_apartment|0-1000|3-4|wood|100-150": 3300,
+    "condo_apartment|0-1000|5+|natural_gas|100-150": 3500,
+    "condo_apartment|0-1000|5+|electricity|100-150": 1300,
+    "condo_apartment|0-1000|5+|propane|100-150": 4300,
+    "condo_apartment|0-1000|5+|wood|100-150": 3500,
+    "condo_apartment|0-1000|1|natural_gas|150-200": 3700,
+    "condo_apartment|0-1000|1|electricity|150-200": 1400,
+    "condo_apartment|0-1000|1|propane|150-200": 3300,
+    "condo_apartment|0-1000|1|wood|150-200": 3000,
+    "condo_apartment|0-1000|2|natural_gas|150-200": 4100,
+    "condo_apartment|0-1000|2|electricity|150-200": 1600,
+    "condo_apartment|0-1000|2|propane|150-200": 3700,
+    "condo_apartment|0-1000|2|wood|150-200": 3100,
+    "condo_apartment|0-1000|3-4|natural_gas|150-200": 4600,
+    "condo_apartment|0-1000|3-4|electricity|150-200": 1700,
+    "condo_apartment|0-1000|3-4|propane|150-200": 4400,
+    "condo_apartment|0-1000|3-4|wood|150-200": 3500,
+    "condo_apartment|0-1000|5+|natural_gas|150-200": 5000,
+    "condo_apartment|0-1000|5+|electricity|150-200": 1900,
+    "condo_apartment|0-1000|5+|propane|150-200": 5200,
+    "condo_apartment|0-1000|5+|wood|150-200": 3900,
+    "condo_apartment|0-1000|1|natural_gas|200+": 5000,
+    "condo_apartment|0-1000|1|electricity|200+": 1900,
+    "condo_apartment|0-1000|1|propane|200+": 5700,
+    "condo_apartment|0-1000|1|wood|200+": 3500,
+    "condo_apartment|0-1000|2|natural_gas|200+": 7200,
+    "condo_apartment|0-1000|2|electricity|200+": 2100,
+    "condo_apartment|0-1000|2|propane|200+": 6000,
+    "condo_apartment|0-1000|2|wood|200+": 3600,
+    "condo_apartment|0-1000|3-4|natural_gas|200+": 8000,
+    "condo_apartment|0-1000|3-4|electricity|200+": 2200,
+    "condo_apartment|0-1000|3-4|propane|200+": 6600,
+    "condo_apartment|0-1000|3-4|wood|200+": 3900,
+    "condo_apartment|0-1000|5+|natural_gas|200+": 10000,
+    "condo_apartment|0-1000|5+|electricity|200+": 2600,
+    "condo_apartment|0-1000|5+|propane|200+": 7000,
+    "condo_apartment|0-1000|5+|wood|200+": 4200,
+    "condo_apartment|1000-2000|1|natural_gas|0-50": 2060,
+    "condo_apartment|1000-2000|1|electricity|0-50": 300,
+    "condo_apartment|1000-2000|1|propane|0-50": 1500,
+    "condo_apartment|1000-2000|1|wood|0-50": 1800,
+    "condo_apartment|1000-2000|2|natural_gas|0-50": 2260,
+    "condo_apartment|1000-2000|2|electricity|0-50": 400,
+    "condo_apartment|1000-2000|2|propane|0-50": 1700,
+    "condo_apartment|1000-2000|2|wood|0-50": 2200,
+    "condo_apartment|1000-2000|3-4|natural_gas|0-50": 2540,
+    "condo_apartment|1000-2000|3-4|electricity|0-50": 500,
+    "condo_apartment|1000-2000|3-4|propane|0-50": 2100,
+    "condo_apartment|1000-2000|3-4|wood|0-50": 2500,
+    "condo_apartment|1000-2000|5+|natural_gas|0-50": 3010,
+    "condo_apartment|1000-2000|5+|electricity|0-50": 620,
+    "condo_apartment|1000-2000|5+|propane|0-50": 2300,
+    "condo_apartment|1000-2000|5+|wood|0-50": 2700,
+    "condo_apartment|1000-2000|1|natural_gas|50-100": 2500,
+    "condo_apartment|1000-2000|1|electricity|50-100": 550,
+    "condo_apartment|1000-2000|1|propane|50-100": 3000,
+    "condo_apartment|1000-2000|1|wood|50-100": 2200,
+    "condo_apartment|1000-2000|2|natural_gas|50-100": 2880,
+    "condo_apartment|1000-2000|2|electricity|50-100": 670,
+    "condo_apartment|1000-2000|2|propane|50-100": 3400,
+    "condo_apartment|1000-2000|2|wood|50-100": 2500,
+    "condo_apartment|1000-2000|3-4|natural_gas|50-100": 3110,
+    "condo_apartment|1000-2000|3-4|electricity|50-100": 780,
+    "condo_apartment|1000-2000|3-4|propane|50-100": 3800,
+    "condo_apartment|1000-2000|3-4|wood|50-100": 2900,
+    "condo_apartment|1000-2000|5+|natural_gas|50-100": 3320,
+    "condo_apartment|1000-2000|5+|electricity|50-100": 900,
+    "condo_apartment|1000-2000|5+|propane|50-100": 4200,
+    "condo_apartment|1000-2000|5+|wood|50-100": 3300,
+    "condo_apartment|1000-2000|1|natural_gas|100-150": 3100,
+    "condo_apartment|1000-2000|1|electricity|100-150": 1250,
+    "condo_apartment|1000-2000|1|propane|100-150": 4100,
+    "condo_apartment|1000-2000|1|wood|100-150": 3200,
+    "condo_apartment|1000-2000|2|natural_gas|100-150": 3300,
+    "condo_apartment|1000-2000|2|electricity|100-150": 1450,
+    "condo_apartment|1000-2000|2|propane|100-150": 4600,
+    "condo_apartment|1000-2000|2|wood|100-150": 3500,
+    "condo_apartment|1000-2000|3-4|natural_gas|100-150": 3500,
+    "condo_apartment|1000-2000|3-4|electricity|100-150": 1750,
+    "condo_apartment|1000-2000|3-4|propane|100-150": 5000,
+    "condo_apartment|1000-2000|3-4|wood|100-150": 3600,
+    "condo_apartment|1000-2000|5+|natural_gas|100-150": 3900,
+    "condo_apartment|1000-2000|5+|electricity|100-150": 2100,
+    "condo_apartment|1000-2000|5+|propane|100-150": 5400,
+    "condo_apartment|1000-2000|5+|wood|100-150": 4000,
+    "condo_apartment|1000-2000|1|natural_gas|150-200": 4000,
+    "condo_apartment|1000-2000|1|electricity|150-200": 1900,
+    "condo_apartment|1000-2000|1|propane|150-200": 4550,
+    "condo_apartment|1000-2000|1|wood|150-200": 3100,
+    "condo_apartment|1000-2000|2|natural_gas|150-200": 4700,
+    "condo_apartment|1000-2000|2|electricity|150-200": 2300,
+    "condo_apartment|1000-2000|2|propane|150-200": 4950,
+    "condo_apartment|1000-2000|2|wood|150-200": 3300,
+    "condo_apartment|1000-2000|3-4|natural_gas|150-200": 5200,
+    "condo_apartment|1000-2000|3-4|electricity|150-200": 2700,
+    "condo_apartment|1000-2000|3-4|propane|150-200": 5350,
+    "condo_apartment|1000-2000|3-4|wood|150-200": 3700,
+    "condo_apartment|1000-2000|5+|natural_gas|150-200": 5900,
+    "condo_apartment|1000-2000|5+|electricity|150-200": 3000,
+    "condo_apartment|1000-2000|5+|propane|150-200": 5650,
+    "condo_apartment|1000-2000|5+|wood|150-200": 4100,
+    "condo_apartment|1000-2000|1|natural_gas|200+": 5350,
+    "condo_apartment|1000-2000|1|electricity|200+": 2300,
+    "condo_apartment|1000-2000|1|propane|200+": 6000,
+    "condo_apartment|1000-2000|1|wood|200+": 3900,
+    "condo_apartment|1000-2000|2|natural_gas|200+": 7550,
+    "condo_apartment|1000-2000|2|electricity|200+": 2500,
+    "condo_apartment|1000-2000|2|propane|200+": 6300,
+    "condo_apartment|1000-2000|2|wood|200+": 4200,
+    "condo_apartment|1000-2000|3-4|natural_gas|200+": 8200,
+    "condo_apartment|1000-2000|3-4|electricity|200+": 2700,
+    "condo_apartment|1000-2000|3-4|propane|200+": 7000,
+    "condo_apartment|1000-2000|3-4|wood|200+": 4500,
+    "condo_apartment|1000-2000|5+|natural_gas|200+": 10500,
+    "condo_apartment|1000-2000|5+|electricity|200+": 3100,
+    "condo_apartment|1000-2000|5+|propane|200+": 7400,
+    "condo_apartment|1000-2000|5+|wood|200+": 4700,
+    "condo_apartment|2000+|1|natural_gas|0-50": 2440,
+    "condo_apartment|2000+|1|electricity|0-50": 350,
+    "condo_apartment|2000+|1|propane|0-50": 1800,
+    "condo_apartment|2000+|1|wood|0-50": 2300,
+    "condo_apartment|2000+|2|natural_gas|0-50": 2727,
+    "condo_apartment|2000+|2|electricity|0-50": 570,
+    "condo_apartment|2000+|2|propane|0-50": 2100,
+    "condo_apartment|2000+|2|wood|0-50": 2600,
+    "condo_apartment|2000+|3-4|natural_gas|0-50": 3010,
+    "condo_apartment|2000+|3-4|electricity|0-50": 900,
+    "condo_apartment|2000+|3-4|propane|0-50": 2450,
+    "condo_apartment|2000+|3-4|wood|0-50": 2900,
+    "condo_apartment|2000+|5+|natural_gas|0-50": 3577,
+    "condo_apartment|2000+|5+|electricity|0-50": 980,
+    "condo_apartment|2000+|5+|propane|0-50": 2600,
+    "condo_apartment|2000+|5+|wood|0-50": 3300,
+    "condo_apartment|2000+|1|natural_gas|50-100": 2700,
+    "condo_apartment|2000+|1|electricity|50-100": 610,
+    "condo_apartment|2000+|1|propane|50-100": 3650,
+    "condo_apartment|2000+|1|wood|50-100": 2600,
+    "condo_apartment|2000+|2|natural_gas|50-100": 3100,
+    "condo_apartment|2000+|2|electricity|50-100": 690,
+    "condo_apartment|2000+|2|propane|50-100": 4050,
+    "condo_apartment|2000+|2|wood|50-100": 2900,
+    "condo_apartment|2000+|3-4|natural_gas|50-100": 3300,
+    "condo_apartment|2000+|3-4|electricity|50-100": 820,
+    "condo_apartment|2000+|3-4|propane|50-100": 4650,
+    "condo_apartment|2000+|3-4|wood|50-100": 3300,
+    "condo_apartment|2000+|5+|natural_gas|50-100": 3600,
+    "condo_apartment|2000+|5+|electricity|50-100": 980,
+    "condo_apartment|2000+|5+|propane|50-100": 5150,
+    "condo_apartment|2000+|5+|wood|50-100": 3600,
+    "condo_apartment|2000+|1|natural_gas|100-150": 3670,
+    "condo_apartment|2000+|1|electricity|100-150": 1500,
+    "condo_apartment|2000+|1|propane|100-150": 4500,
+    "condo_apartment|2000+|1|wood|100-150": 3500,
+    "condo_apartment|2000+|2|natural_gas|100-150": 3870,
+    "condo_apartment|2000+|2|electricity|100-150": 1700,
+    "condo_apartment|2000+|2|propane|100-150": 5000,
+    "condo_apartment|2000+|2|wood|100-150": 3700,
+    "condo_apartment|2000+|3-4|natural_gas|100-150": 4100,
+    "condo_apartment|2000+|3-4|electricity|100-150": 2000,
+    "condo_apartment|2000+|3-4|propane|100-150": 5400,
+    "condo_apartment|2000+|3-4|wood|100-150": 4200,
+    "condo_apartment|2000+|5+|natural_gas|100-150": 4300,
+    "condo_apartment|2000+|5+|electricity|100-150": 2350,
+    "condo_apartment|2000+|5+|propane|100-150": 5700,
+    "condo_apartment|2000+|5+|wood|100-150": 4600,
+    "condo_apartment|2000+|1|natural_gas|150-200": 4250,
+    "condo_apartment|2000+|1|electricity|150-200": 2150,
+    "condo_apartment|2000+|1|propane|150-200": 5000,
+    "condo_apartment|2000+|1|wood|150-200": 3530,
+    "condo_apartment|2000+|2|natural_gas|150-200": 5050,
+    "condo_apartment|2000+|2|electricity|150-200": 2550,
+    "condo_apartment|2000+|2|propane|150-200": 5300,
+    "condo_apartment|2000+|2|wood|150-200": 3730,
+    "condo_apartment|2000+|3-4|natural_gas|150-200": 5400,
+    "condo_apartment|2000+|3-4|electricity|150-200": 2850,
+    "condo_apartment|2000+|3-4|propane|150-200": 5600,
+    "condo_apartment|2000+|3-4|wood|150-200": 4200,
+    "condo_apartment|2000+|5+|natural_gas|150-200": 6200,
+    "condo_apartment|2000+|5+|electricity|150-200": 3150,
+    "condo_apartment|2000+|5+|propane|150-200": 6000,
+    "condo_apartment|2000+|5+|wood|150-200": 4630,
+    "condo_apartment|2000+|1|natural_gas|200+": 6000,
+    "condo_apartment|2000+|1|electricity|200+": 2600,
+    "condo_apartment|2000+|1|propane|200+": 6500,
+    "condo_apartment|2000+|1|wood|200+": 4100,
+    "condo_apartment|2000+|2|natural_gas|200+": 7800,
+    "condo_apartment|2000+|2|electricity|200+": 3100,
+    "condo_apartment|2000+|2|propane|200+": 6800,
+    "condo_apartment|2000+|2|wood|200+": 4400,
+    "condo_apartment|2000+|3-4|natural_gas|200+": 8500,
+    "condo_apartment|2000+|3-4|electricity|200+": 3600,
+    "condo_apartment|2000+|3-4|propane|200+": 7400,
+    "condo_apartment|2000+|3-4|wood|200+": 4900,
+    "condo_apartment|2000+|5+|natural_gas|200+": 11100,
+    "condo_apartment|2000+|5+|electricity|200+": 4000,
+    "condo_apartment|2000+|5+|propane|200+": 7800,
+    "condo_apartment|2000+|5+|wood|200+": 5100,
+    "other|0-1000|1|natural_gas|0-50": 1971,
+    "other|0-1000|1|electricity|0-50": 300,
+    "other|0-1000|1|oil|0-50": 2400,
+    "other|0-1000|1|propane|0-50": 1500,
+    "other|0-1000|1|wood|0-50": 2000,
+    "other|0-1000|2|natural_gas|0-50": 2160,
+    "other|0-1000|2|electricity|0-50": 410,
+    "other|0-1000|2|oil|0-50": 2523,
+    "other|0-1000|2|propane|0-50": 1850,
+    "other|0-1000|2|wood|0-50": 2250,
+    "other|0-1000|3-4|natural_gas|0-50": 2500,
+    "other|0-1000|3-4|electricity|0-50": 500,
+    "other|0-1000|3-4|oil|0-50": 2600,
+    "other|0-1000|3-4|propane| ": 2100,
+    "other|0-1000|3-4|wood|0-50": 2500,
+    "other|0-1000|5+|natural_gas|0-50": 2800,
+    "other|0-1000|5+|electricity|0-50": 550,
+    "other|0-1000|5+|oil|0-50": 2720,
+    "other|0-1000|5+|propane|0-50": 2500,
+    "other|0-1000|5+|wood|0-50": 2600,
+    "other|0-1000|1|natural_gas|50-100": 2800,
+    "other|0-1000|1|electricity|50-100": 500,
+    "other|0-1000|1|oil|50-100": 2800,
+    "other|0-1000|1|propane|50-100": 2500,
+    "other|0-1000|1|wood|50-100": 2800,
+    "other|0-1000|2|natural_gas|50-100": 2910,
+    "other|0-1000|2|electricity|50-100": 550,
+    "other|0-1000|2|oil|50-100": 3100,
+    "other|0-1000|2|propane|50-100": 2800,
+    "other|0-1000|2|wood|50-100": 3000,
+    "other|0-1000|3-4|natural_gas|50-100": 3000,
+    "other|0-1000|3-4|electricity|50-100": 580,
+    "other|0-1000|3-4|oil|50-100": 3250,
+    "other|0-1000|3-4|propane|50-100": 3400,
+    "other|0-1000|3-4|wood|50-100": 3300,
+    "other|0-1000|5+|natural_gas|50-100": 3200,
+    "other|0-1000|5+|electricity|50-100": 600,
+    "other|0-1000|5+|oil|50-100": 3500,
+    "other|0-1000|5+|propane|50-100": 3800,
+    "other|0-1000|5+|wood|50-100": 3400,
+    "other|0-1000|1|natural_gas|100-150": 3000,
+    "other|0-1000|1|electricity|100-150": 1000,
+    "other|0-1000|1|oil|100-150": 3600,
+    "other|0-1000|1|propane|100-150": 3000,
+    "other|0-1000|1|wood|100-150": 3000,
+    "other|0-1000|2|natural_gas|100-150": 3210,
+    "other|0-1000|2|electricity|100-150": 1250,
+    "other|0-1000|2|oil|100-150": 3750,
+    "other|0-1000|2|propane|100-150": 3500,
+    "other|0-1000|2|wood|100-150": 3300,
+    "other|0-1000|3-4|natural_gas|100-150": 3500,
+    "other|0-1000|3-4|electricity|100-150": 1320,
+    "other|0-1000|3-4|oil|100-150": 3900,
+    "other|0-1000|3-4|propane|100-150": 4100,
+    "other|0-1000|3-4|wood|100-150": 3520,
+    "other|0-1000|5+|natural_gas|100-150": 3800,
+    "other|0-1000|5+|electricity|100-150": 1420,
+    "other|0-1000|5+|oil|100-150": 4050,
+    "other|0-1000|5+|propane|100-150": 5000,
+    "other|0-1000|5+|wood|100-150": 3800,
+    "other|0-1000|1|natural_gas|150-200": 4000,
+    "other|0-1000|1|electricity|150-200": 1600,
+    "other|0-1000|1|oil|150-200": 4500,
+    "other|0-1000|1|propane|150-200": 3700,
+    "other|0-1000|1|wood|150-200": 3330,
+    "other|0-1000|2|natural_gas|150-200": 5500,
+    "other|0-1000|2|electricity|150-200": 1750,
+    "other|0-1000|2|oil|150-200": 4600,
+    "other|0-1000|2|propane|150-200": 4500,
+    "other|0-1000|2|wood|150-200": 3500,
+    "other|0-1000|3-4|natural_gas|150-200": 6200,
+    "other|0-1000|3-4|electricity|150-200": 1900,
+    "other|0-1000|3-4|oil|150-200": 4800,
+    "other|0-1000|3-4|propane|150-200": 5200,
+    "other|0-1000|3-4|wood|150-200": 3720,
+    "other|0-1000|5+|natural_gas|150-200": 8000,
+    "other|0-1000|5+|electricity|150-200": 2000,
+    "other|0-1000|5+|oil|150-200": 5100,
+    "other|0-1000|5+|propane|150-200": 5800,
+    "other|0-1000|5+|wood|150-200": 4000,
+    "other|0-1000|1|natural_gas|200+": 8000,
+    "other|0-1000|1|electricity|200+": 2000,
+    "other|0-1000|1|oil|200+": 5000,
+    "other|0-1000|1|propane|200+": 5800,
+    "other|0-1000|1|wood|200+": 3500,
+    "other|0-1000|2|natural_gas|200+": 9500,
+    "other|0-1000|2|electricity|200+": 2100,
+    "other|0-1000|2|oil|200+": 5200,
+    "other|0-1000|2|propane|200+": 6800,
+    "other|0-1000|2|wood|200+": 3700,
+    "other|0-1000|3-4|natural_gas|200+": 10200,
+    "other|0-1000|3-4|electricity|200+": 2300,
+    "other|0-1000|3-4|oil|200+": 5300,
+    "other|0-1000|3-4|propane|200+": 7200,
+    "other|0-1000|3-4|wood|200+": 4000,
+    "other|0-1000|5+|natural_gas|200+": 12000,
+    "other|0-1000|5+|electricity|200+": 3000,
+    "other|0-1000|5+|oil|200+": 5600,
+    "other|0-1000|5+|propane|200+": 7800,
+    "other|0-1000|5+|wood|200+": 4300,
+    "other|1000-2000|1|natural_gas|0-50": 2443,
+    "other|1000-2000|1|electricity|0-50": 300,
+    "other|1000-2000|1|oil|0-50": 2590,
+    "other|1000-2000|1|propane|0-50": 3170,
+    "other|1000-2000|1|wood|0-50": 1400,
+    "other|1000-2000|2|natural_gas|0-50": 2750,
+    "other|1000-2000|2|electricity|0-50": 380,
+    "other|1000-2000|2|oil|0-50": 2620,
+    "other|1000-2000|2|propane|0-50": 3770,
+    "other|1000-2000|2|wood|0-50": 1560,
+    "other|1000-2000|3-4|natural_gas|0-50": 3111,
+    "other|1000-2000|3-4|electricity|0-50": 500,
+    "other|1000-2000|3-4|oil|0-50": 2730,
+    "other|1000-2000|3-4|propane|0-50": 4670,
+    "other|1000-2000|3-4|wood|0-50": 1900,
+    "other|1000-2000|5+|natural_gas|0-50": 3580,
+    "other|1000-2000|5+|electricity|0-50": 590,
+    "other|1000-2000|5+|oil|0-50": 2800,
+    "other|1000-2000|5+|propane|0-50": 5570,
+    "other|1000-2000|5+|wood|0-50": 2200,
+    "other|1000-2000|1|natural_gas|50-100": 4000,
+    "other|1000-2000|1|electricity|50-100": 550,
+    "other|1000-2000|1|oil|50-100": 3800,
+    "other|1000-2000|1|propane|50-100": 5600,
+    "other|1000-2000|1|wood|50-100": 2400,
+    "other|1000-2000|2|natural_gas|50-100": 5000,
+    "other|1000-2000|2|electricity|50-100": 700,
+    "other|1000-2000|2|oil|50-100": 4320,
+    "other|1000-2000|2|propane|50-100": 5940,
+    "other|1000-2000|2|wood|50-100": 2600,
+    "other|1000-2000|3-4|natural_gas|50-100": 6500,
+    "other|1000-2000|3-4|electricity|50-100": 950,
+    "other|1000-2000|3-4|oil|50-100": 4800,
+    "other|1000-2000|3-4|propane|50-100": 6140,
+    "other|1000-2000|3-4|wood|50-100": 3300,
+    "other|1000-2000|5+|natural_gas|50-100": 7300,
+    "other|1000-2000|5+|electricity|50-100": 1100,
+    "other|1000-2000|5+|oil|50-100": 5500,
+    "other|1000-2000|5+|propane|50-100": 6340,
+    "other|1000-2000|5+|wood|50-100": 3800,
+    "other|1000-2000|1|natural_gas|100-150": 4300,
+    "other|1000-2000|1|electricity|100-150": 1200,
+    "other|1000-2000|1|oil|100-150": 5000,
+    "other|1000-2000|1|propane|100-150": 6000,
+    "other|1000-2000|1|wood|100-150": 4000,
+    "other|1000-2000|2|natural_gas|100-150": 5500,
+    "other|1000-2000|2|electricity|100-150": 1350,
+    "other|1000-2000|2|oil|100-150": 5800,
+    "other|1000-2000|2|propane|100-150": 6200,
+    "other|1000-2000|2|wood|100-150": 4310,
+    "other|1000-2000|3-4|natural_gas|100-150": 6800,
+    "other|1000-2000|3-4|electricity|100-150": 1520,
+    "other|1000-2000|3-4|oil|100-1500": 6200,
+    "other|1000-2000|3-4|propane|100-150": 6420,
+    "other|1000-2000|3-4|wood|100-150": 4600,
+    "other|1000-2000|5+|natural_gas|100-150": 8340,
+    "other|1000-2000|5+|electricity|100-150": 1700,
+    "other|1000-2000|5+|oil|100-150": 6100,
+    "other|1000-2000|5+|propane|100-150": 6500,
+    "other|1000-2000|5+|wood|100-150": 5100,
+    "other|1000-2000|1|natural_gas|150-200": 4800,
+    "other|1000-2000|1|electricity|150-200": 1700,
+    "other|1000-2000|1|oil|150-200": 5350,
+    "other|1000-2000|1|propane|150-200": 3680,
+    "other|1000-2000|1|wood|150-200": 3800,
+    "other|1000-2000|2|natural_gas|150-200": 6300,
+    "other|1000-2000|2|electricity|150-200": 1900,
+    "other|1000-2000|2|oil|150-200": 5500,
+    "other|1000-2000|2|propane|150-200": 4280,
+    "other|1000-2000|2|wood|150-200": 3800,
+    "other|1000-2000|3-4|natural_gas|150-200": 8500,
+    "other|1000-2000|3-4|electricity|150-200": 2150,
+    "other|1000-2000|3-4|oil|150-200": 5720,
+    "other|1000-2000|3-4|propane|150-200": 5180,
+    "other|1000-2000|3-4|wood|150-200": 4220,
+    "other|1000-2000|5+|natural_gas|150-200": 9000,
+    "other|1000-2000|5+|electricity|150-200": 2400,
+    "other|1000-2000|5+|oil|150-200": 5900,
+    "other|1000-2000|5+|propane|150-200": 6080,
+    "other|1000-2000|5+|wood|150-200": 4400,
+    "other|1000-2000|1|natural_gas|200+": 9500,
+    "other|1000-2000|1|electricity|200+": 2500,
+    "other|1000-2000|1|oil|200+": 5370,
+    "other|1000-2000|1|propane|200+": 6000,
+    "other|1000-2000|1|wood|200+": 4000,
+    "other|1000-2000|2|natural_gas|200+": 10100,
+    "other|1000-2000|2|electricity|200+": 2780,
+    "other|1000-2000|2|oil|200+": 5500,
+    "other|1000-2000|2|propane|200+": 6600,
+    "other|1000-2000|2|wood|200+": 4640,
+    "other|1000-2000|3-4|natural_gas|200+": 11200,
+    "other|1000-2000|3-4|electricity|200+": 3000,
+    "other|1000-2000|3-4|oil|200+": 5800,
+    "other|1000-2000|3-4|propane|200+": 6800,
+    "other|1000-2000|3-4|wood|200+": 5000,
+    "other|1000-2000|5+|natural_gas|200+": 14000,
+    "other|1000-2000|5+|electricity|200+": 3500,
+    "other|1000-2000|5+|oil|200+": 6200,
+    "other|1000-2000|5+|propane|200+": 7400,
+    "other|1000-2000|5+|wood|200+": 5430,
+    "other|2000+|1|natural_gas|0-50": 2822,
+    "other|2000+|1|electricity|0-50": 300,
+    "other|2000+|1|oil|0-50": 2810,
+    "other|2000+|1|propane|0-50": 3340,
+    "other|2000+|1|wood|0-50": 3800,
+    "other|2000+|2|natural_gas|0-50": 3010,
+    "other|2000+|2|electricity|0-50": 560,
+    "other|2000+|2|oil|0-50": 3000,
+    "other|2000+|2|propane|0-50": 3940,
+    "other|2000+|2|wood|0-50": 4070,
+    "other|2000+|3-4|natural_gas|0-50": 3300,
+    "other|2000+|3-4|electricity|0-50": 890,
+    "other|2000+|3-4|oil|0-50": 3468,
+    "other|2000+|3-4|propane|0-50": 4840,
+    "other|2000+|3-4|wood|0-50": 5000,
+    "other|2000+|5+|natural_gas|0-50": 3600,
+    "other|2000+|5+|electricity|0-50": 1000,
+    "other|2000+|5+|oil|0-50": 3760,
+    "other|2000+|5+|propane|0-50": 5740,
+    "other|2000+|5+|wood|0-50": 5600,
+    "other|2000+|1|natural_gas|50-100": 3600,
+    "other|2000+|1|electricity|50-100": 1200,
+    "other|2000+|1|oil|50-100": 4300,
+    "other|2000+|1|propane|50-100": 5900,
+    "other|2000+|1|wood|50-100": 3500,
+    "other|2000+|2|natural_gas|50-100": 3840,
+    "other|2000+|2|electricity|50-100": 1380,
+    "other|2000+|2|oil|50-100": 4900,
+    "other|2000+|2|propane|50-100": 6330,
+    "other|2000+|2|wood|50-100": 3930,
+    "other|2000+|3-4|natural_gas|50-100": 3900,
+    "other|2000+|3-4|electricity|50-100": 1600,
+    "other|2000+|3-4|oil|50-100": 5320,
+    "other|2000+|3-4|propane|50-100": 6440,
+    "other|2000+|3-4|wood|50-100": 4360,
+    "other|2000+|5+|natural_gas|50-100": 5100,
+    "other|2000+|5+|electricity|50-100": 1750,
+    "other|2000+|5+|oil|50-100": 5800,
+    "other|2000+|5+|propane|50-100": 6900,
+    "other|2000+|5+|wood|50-100": 5000,
+    "other|2000+|1|natural_gas|100-150": 5000,
+    "other|2000+|1|electricity|100-150": 1800,
+    "other|2000+|1|oil|100-150": 5300,
+    "other|2000+|1|propane|100-150": 3510,
+    "other|2000+|1|wood|100-150": 4100,
+    "other|2000+|2|natural_gas|100-150": 6200,
+    "other|2000+|2|electricity|100-150": 2000,
+    "other|2000+|2|oil|100-150": 5690,
+    "other|2000+|2|propane|100-150": 4110,
+    "other|2000+|2|wood|100-150": 4500,
+    "other|2000+|3-4|natural_gas|100-150": 7000,
+    "other|2000+|3-4|electricity|100-150": 2200,
+    "other|2000+|3-4|oil|100-150": 6250,
+    "other|2000+|3-4|propane|100-150": 5010,
+    "other|2000+|3-4|wood|100-150": 4780,
+    "other|2000+|5+|natural_gas|100-150": 8000,
+    "other|2000+|5+|electricity|100-150": 2300,
+    "other|2000+|5+|oil|100-150": 6500,
+    "other|2000+|5+|propane|100-150": 5910,
+    "other|2000+|5+|wood|100-150": 5360,
+    "other|2000+|1|natural_gas|150-200": 8000,
+    "other|2000+|1|electricity|150-200": 2400,
+    "other|2000+|1|oil|150-200": 5440,
+    "other|2000+|1|propane|150-200": 3800,
+    "other|2000+|1|wood|150-200": 4200,
+    "other|2000+|2|natural_gas|150-200": 8300,
+    "other|2000+|2|electricity|150-200": 2500,
+    "other|2000+|2|oil|150-200": 5600,
+    "other|2000+|2|propane|150-200": 4500,
+    "other|2000+|2|wood|150-200": 4640,
+    "other|2000+|3-4|natural_gas|150-200": 9000,
+    "other|2000+|3-4|electricity|150-200": 2650,
+    "other|2000+|3-4|oil|150-200": 5800,
+    "other|2000+|3-4|propane|150-200": 5380,
+    "other|2000+|3-4|wood|150-200": 5000,
+    "other|2000+|5+|natural_gas|150-200": 9500,
+    "other|2000+|5+|electricity|150-200": 2800,
+    "other|2000+|5+|oil|150-200": 6350,
+    "other|2000+|5+|propane|150-200": 6200,
+    "other|2000+|5+|wood|150-200": 5400,
+    "other|2000+|1|natural_gas|200+": 9500,
+    "other|2000+|1|electricity|200+": 2800,
+    "other|2000+|1|oil|200+": 5670,
+    "other|2000+|1|propane|200+": 6200,
+    "other|2000+|1|wood|200+": 4300,
+    "other|2000+|2|natural_gas|200+": 1010,
+    "other|2000+|2|electricity|200+": 3000,
+    "other|2000+|2|oil|200+": 5800,
+    "other|2000+|2|propane|200+": 6900,
+    "other|2000+|2|wood|200+": 4700,
+    "other|2000+|3-4|natural_gas|200+": 10300,
+    "other|2000+|3-4|electricity|200+": 3800,
+    "other|2000+|3-4|oil|200+": 6100,
+    "other|2000+|3-4|propane|200+": 7500,
+    "other|2000+|3-4|wood|200+": 5100,
+    "other|2000+|5+|natural_gas|200+": 11000,
+    "other|2000+|5+|electricity|200+": 4300,
+    "other|2000+|5+|propane|200+": 7850,
+    "other|2000+|5+|wood|200+": 5500,
+    "condo_apartment|0-1000|1|oil|0-50": 0,
+    "condo_apartment|0-1000|2-3|oil|0-50": 0,
+    "condo_apartment|0-1000|4-5|oil|0-50": 0,
+    "condo_apartment|0-1000|5+|oil|0-50": 0,
+    "condo_apartment|1000-2000|1|oil|0-50": 0,
+    "condo_apartment|1000-2000|2-3|oil|0-50": 0,
+    "condo_apartment|1000-2000|4-5|oil|0-50": 0,
+    "condo_apartment|1000-2000|5+|oil|0-50": 0,
+    "condo_apartment|2000+|1|oil|0-50": 0,
+    "condo_apartment|2000+|2-3|oil|0-50": 0,
+    "condo_apartment|2000+|4-5|oil|0-50": 0,
+    "condo_apartment|2000+|5+|oil|0-50": 0
+  }
+}

@@ -5,3 +5,8 @@ Important requirements for .gitignore and .idea:
 
 Note on emission calculations: 
 - An assumption was made for automobile emission calculation; the rate of KG/KM of CO2E for when the user is unsure of their type of car is estimated to be 0.2 KG/KM 
+
+Model View Presenter Refactoring of Login Module: 
+- Model: LoginModel.java
+- View: LoginView.java & LoginActivity.java (LoginView is an interface implemented by LoginActivity). 
+- Presenter: LoginPresenter.java (also uses UserRepository.java to handle setup questionnaire completion logic)  

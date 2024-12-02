@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="411dp"
+    android:layout_height="70dp"
+    android:layout_gravity="bottom"
+    android:background="#D4E0E1"
+    android:translationX="0dp"
+    android:translationY="0dp"
+    tools:context=".FooterFragment">
+
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="83dp"
+        android:layout_height="match_parent"
+        android:backgroundTint="#D4E0E1"
+        android:contentDescription="Eco Gauge Navigator"
+        android:src="@drawable/ecogauge"
+        android:translationX="45dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:backgroundTint="#D4E0E1"
+        android:contentDescription="Eco Tracker Navigator"
+        android:src="@drawable/ecotracker"
+        android:translationX="150dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:layout_width="72dp"
+        android:layout_height="70dp"
+        android:backgroundTint="#D4E0E1"
+        android:contentDescription="Annual CO2 Tracker Navigator"
+        android:src="@drawable/annualco2"
+        android:translationX="280dp" />
+
+</FrameLayout>

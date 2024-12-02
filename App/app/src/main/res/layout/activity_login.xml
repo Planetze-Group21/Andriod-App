@@ -7,9 +7,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center"
-    android:background="@drawable/planetze_bg_real"
+    android:gravity="center_horizontal"
+    android:background="@drawable/planetze_bg_no_logo"
     tools:context=".LoginActivity">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:layout_width="300sp"
+        android:layout_height="80sp"
+        android:layout_marginTop="60sp"
+        android:layout_marginBottom="30sp"
+        android:contentDescription="Logo"
+        android:scaleType="fitStart"
+        android:src="@drawable/planetze_logo_cropped" />
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -33,7 +43,8 @@
                 android:textSize="36sp"
                 android:textAlignment="center"
                 android:textStyle="bold"
-                android:textColor="@color/steel"/>
+                android:textColor="@color/steel"
+                android:fontFamily="@font/poppins_bold"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -48,7 +59,8 @@
                 android:textColorHint="@color/mist"
                 android:drawableLeft="@drawable/baseline_3p_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/steel"/>
+                android:textColor="@color/steel"
+                android:fontFamily="@font/nunito_medium"/>
 
             <EditText
                 android:layout_width="match_parent"
@@ -63,7 +75,8 @@
                 android:textColorHint="@color/mist"
                 android:drawableLeft="@drawable/baseline_create_24"
                 android:drawablePadding="8dp"
-                android:textColor="@color/steel"/>
+                android:textColor="@color/steel"
+                android:fontFamily="@font/nunito_medium"/>
 
             <Button
                 android:layout_width="match_parent"
@@ -74,7 +87,8 @@
                 android:textSize="18sp"
                 android:layout_marginTop="30dp"
                 android:backgroundTint="@color/steel"
-                app:cornerRadius="20dp"/>
+                app:cornerRadius="20dp"
+                android:fontFamily="@font/poppins_bold"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +99,8 @@
                 android:padding="8dp"
                 android:layout_marginTop="10dp"
                 android:textColor="@color/steel"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"/>
 
             <TextView
                 android:layout_width="wrap_content"
@@ -96,11 +111,11 @@
                 android:padding="4dp"
                 android:layout_marginTop="2dp"
                 android:textColor="@color/steel"
-                android:textSize="18sp"/>
+                android:textSize="18sp"
+                android:fontFamily="@font/poppins_medium"/>
 
 
         </LinearLayout>
-
 
 
     </androidx.cardview.widget.CardView>
