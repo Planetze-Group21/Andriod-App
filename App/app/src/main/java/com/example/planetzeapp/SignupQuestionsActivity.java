@@ -1,6 +1,8 @@
 package com.example.planetzeapp;
 
 import android.os.Bundle;
+import android.view.WindowManager;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -14,8 +16,8 @@ public class SignupQuestionsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_signup_questions);  // Ensure this matches your layout file
-
+        EdgeToEdge.enable(this);
+        setContentView(R.layout.activity_signup_questions);
         if (savedInstanceState == null) {
             // Load the SetupQFragment initially when the activity starts
             loadFragment(new SetupQFragment());
