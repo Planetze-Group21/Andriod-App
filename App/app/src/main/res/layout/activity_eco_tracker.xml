@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/plantze_bg_no_logo" />
+        android:src="@drawable/planetze_bg_no_logo" />
 
     <!-- Scrollable Content -->
     <ScrollView
@@ -165,7 +165,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="3dp"
-                            android:text="      PERSONAL VEHICLE"
+                            android:text="      DRIVING"
                             android:textColor="@color/black"
                             android:textSize="10sp"
                             android:textStyle="bold" />
@@ -546,9 +546,9 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="3dp"
-                            android:text="      ENERGY BILLS"
+                            android:text="ENERGY BILLS"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
+                            android:textSize="11sp"
                             android:textStyle="bold" />
 
                         <TextView
