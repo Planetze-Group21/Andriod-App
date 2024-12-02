@@ -120,6 +120,10 @@ public class EcoTrackerActivity extends AppCompatActivity {
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new HabitTracker());
         transaction.commit();
+
+        FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
+        transaction2.replace(R.id.fragment_container2, new CalendarActivity());
+        transaction.commit();
     }
 
     private void ensureDailyAnswersDirectory() {

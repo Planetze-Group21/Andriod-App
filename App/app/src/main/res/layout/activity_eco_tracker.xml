@@ -580,6 +580,12 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
+            <androidx.fragment.app.FragmentContainerView
+                android:id="@+id/fragment_container2"
+                android:name="com.example.planetzeapp.CalendarActivity"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
 
         </LinearLayout>
     </ScrollView>

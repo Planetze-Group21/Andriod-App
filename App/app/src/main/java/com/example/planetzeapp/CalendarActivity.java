@@ -4,10 +4,15 @@ import static android.content.ContentValues.TAG;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.CalendarView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -16,19 +21,20 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity extends Fragment {
 
+    View view;
     private CalendarView calendarView;
     private String currentUid;
     private DatabaseReference databaseRef;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.fragment_calendar_view);
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+
+        view = inflater.inflate(R.layout.fragment_eco_tracker_answers, container, false);
 
         // Find views by ID
-        calendarView = findViewById(R.id.calendar_view);
+        calendarView = view.findViewById(R.id.calendar_view);
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
@@ -61,5 +67,6 @@ public class CalendarActivity extends AppCompatActivity {
                 }
             });
         });
+        return view;
     }
 }
