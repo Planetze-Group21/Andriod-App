@@ -32,7 +32,7 @@ public class QFragment extends SetupQFragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("QFragment", "onCreate: Initializing QFragment");
-        setupQuestions();  // Set up the questions outside onCreateView
+        setupQuestions();
     }
 
     private void setupQuestions() {
