@@ -21,6 +21,9 @@
             android:exported="false" />
 
         <activity
+            android:name=".EcoGaugeActivity"
+            android:exported="false" />
+        <activity
             android:name=".LaunchPageActivity"
             android:exported="true">
             <intent-filter>
@@ -40,7 +43,7 @@
             android:exported="false" />
         <activity
             android:name=".SignUpActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".EcoHubActivity"
             android:exported="true" />
