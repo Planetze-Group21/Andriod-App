@@ -18,8 +18,8 @@
         <activity
             android:name=".ProductsActivity"
             android:exported="false" />
-        <activity android:name=".EcoGaugeActivity" />
-        <activity android:name=".EcoTrackerActivty" />
+        <activity android:name=".DummyGaugeActivity" />
+        <activity android:name=".DummyTrackerActivity" />
         <activity
             android:name=".NewsActivity"
             android:exported="false" />

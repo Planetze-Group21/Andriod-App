@@ -12,14 +12,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
 
-public class EcoTrackerActivty  extends AppCompatActivity {
+public class DummyGaugeActivity extends AppCompatActivity {
+
     private Button ViewVideo, ViewArticle, ViewProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activty_eco_tracker);
+        setContentView(R.layout.activity_eco_gauge);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -33,23 +34,22 @@ public class EcoTrackerActivty  extends AppCompatActivity {
         ViewVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoTrackerActivty.this, EcoTrackerActivty.class));
+                startActivity(new Intent(DummyGaugeActivity.this, DummyGaugeActivity.class));
             }
         });
 
         ViewArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoTrackerActivty.this, EcoTrackerActivty.class));
+                startActivity(new Intent(DummyGaugeActivity.this, DummyGaugeActivity.class));
             }
         });
         ViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoTrackerActivty.this, EcoTrackerActivty.class));
+                startActivity(new Intent(DummyGaugeActivity.this, DummyGaugeActivity.class));
             }
         });
-
         if (savedInstanceState == null) {
             FooterFragment footerFragment = new FooterFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
