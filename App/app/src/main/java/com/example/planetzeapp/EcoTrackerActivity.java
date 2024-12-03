@@ -110,14 +110,14 @@ public class EcoTrackerActivity extends AppCompatActivity {
         resultText12 = findViewById(R.id.result_text12);
 
         imageButton2.setOnClickListener(view -> openDialog1("Transportation", "Driving", resultText2, "How many kilometres have you driven?"));
-        imageButton3.setOnClickListener(view -> openDialog2("Transportation", "Public Transportation", resultText3, "How many hours did you travelled?"));
+        imageButton3.setOnClickListener(view -> openDialog2("Transportation", "Public Transportation", resultText3, "How many hours have you travelled?"));
         imageButton4.setOnClickListener(view -> openDialog1("Transportation", "Walking", resultText4, "How many kilometres have you walked?"));
-        imageButton5.setOnClickListener(view -> openDialog2("Transportation", "Flights", resultText5, "How many hours have you fly?"));
+        imageButton5.setOnClickListener(view -> openDialog2("Transportation", "Flights", resultText5, "How many hours did you fly?"));
         imageButton7.setOnClickListener(view -> {
             List<String> foodOptions = Arrays.asList("Beef", "Pork", "Chicken", "Fish", "Plant-Based");
             openDialog3("Food", resultText7, "Select a food option", foodOptions);
         });
-        imageButton9.setOnClickListener(view -> openDialog1("Consumption", "Clothes", resultText9, "How many clothes did you buy?"));
+        imageButton9.setOnClickListener(view -> openDialog1("Consumption", "Clothing", resultText9, "How many clothes did you buy?"));
         imageButton10.setOnClickListener(view -> openDialog1("Consumption", "Electronics", resultText10, "How many electronics did you buy?"));
         imageButton11.setOnClickListener(view -> openDialog2("Consumption", "Purchases", resultText11, "How many items did you buy?"));
         imageButton12.setOnClickListener(view -> {
@@ -286,7 +286,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                     ref.child("value").setValue(value).addOnSuccessListener(aVoid -> {
                         double emissions = activity.equals("Driving") ? value * 0.02 :
                                 activity.equals("Walking") ? value * 0 :
-                                        activity.equals("Clothes") ? value * 360 :
+                                        activity.equals("Clothing") ? value * 360 :
                                                 activity.equals("Electronics") ? value * 300 : 0;
 
                         ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
@@ -318,7 +318,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.eco_tracker_dialog_options, null);
         dialog.setContentView(dialogView);
 
-        dialog.getWindow().setLayout(800, 600);
+        dialog.getWindow().setLayout(800, 800);
 
         TextView dialogTextView = dialogView.findViewById(R.id.radioMessage);
         RadioGroup radioGroup = dialogView.findViewById(R.id.radioGroup);
@@ -425,7 +425,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         View dialogView = LayoutInflater.from(this).inflate(R.layout.eco_tracker_dialog_options, null);
         dialog.setContentView(dialogView);
 
-        dialog.getWindow().setLayout(800, 600);
+        dialog.getWindow().setLayout(800, 1200);
 
         TextView dialogTextView = dialogView.findViewById(R.id.radioMessage);
         RadioGroup radioGroup = dialogView.findViewById(R.id.radioGroup);
