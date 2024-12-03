@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ecogauge"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/planetze_bg_no_logo" />
+    <!-- Charts -->
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="Eco Gauge">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="30dp">
+            <!-- Planetze Logo -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="78dp"
+                    android:layout_height="42dp"
+                    android:layout_alignParentEnd="true"
+                    android:src="@drawable/planetze_logo_cropped" />
+            </RelativeLayout>
+            <!-- Page Title -->
+            <TextView
+                android:id="@+id/pageTitle"
+                android:layout_width="246dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="0dp"
+                android:gravity="left"
+                android:text="Eco Gauge"
+                android:textSize="30sp"
+                android:textStyle="bold" />
+            <!-- Line Chart -->
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:elevation="4dp"
+                app:cardBackgroundColor="#5EA9BCD0"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                app:cardUseCompatPadding="false">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <Button
+                        android:id="@+id/btn_week"
+                        style="@style/CustomButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_selector"
+                        android:radius="20dp"
+                        android:text="week"
+                        android:textColor="@color/button_text_selector" />
+
+                    <Button
+                        android:id="@+id/btn_month"
+                        style="@style/CustomButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/button_selector"
+                        android:radius="20dp"
+                        android:text="month"
+                        android:textColor="@color/button_text_selector" />
+
+                    <Button
+                        android:id="@+id/btn_year"
+                        style="@style/CustomButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/button_selector"
+                        android:radius="20dp"
+                        android:text="year"
+                        android:textColor="@color/button_text_selector" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/totalEmissionsText"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="60dp"
+                    android:gravity="left"
+                    android:text="0 kg CO2e"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/timePeriodText"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="32dp"
+                    android:layout_marginTop="82dp"
+                    android:gravity="left"
+                    android:text="emitted this week"
+                    android:textSize="12sp" />
+
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/lineChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginHorizontal="20dp"
+                    android:layout_marginTop="98dp"
+                    android:layout_marginBottom="30dp" />
+
+                <TextView
+                    android:id="@+id/monthRangeTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="302dp"
+                    android:layout_marginRight="15dp"
+                    android:gravity="right"
+                    android:layout_alignParentEnd="true"
+                    android:text=""
+                    android:textSize="12sp" />
+            </androidx.cardview.widget.CardView>
+            <!-- Horizontal Bar Chart -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/categoryText"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="24dp"
+                    android:gravity="left"
+                    android:text="Emissions by Category"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <com.github.mikephil.charting.charts.HorizontalBarChart
+                    android:id="@+id/stackedBarChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"
+                    android:layout_marginBottom="32dp" />
+            </LinearLayout>
+            <!-- Bar Chart -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/footprintText"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="8dp"
+                    android:layout_marginTop="14dp"
+                    android:gravity="left"
+                    android:text="Your Carbon Footprint"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/perYearText"
+                    android:layout_width="246dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="12dp"
+                    android:layout_marginTop="0dp"
+                    android:gravity="left"
+                    android:text="CO2e emissions per year"
+                    android:textSize="12sp" />
+
+                <com.github.mikephil.charting.charts.BarChart
+                    android:id="@+id/barChart"
+                    android:layout_width="match_parent"
+                    android:layout_height="300dp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</FrameLayout>
