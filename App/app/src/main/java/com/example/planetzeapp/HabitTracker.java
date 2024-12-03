@@ -12,66 +12,89 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class HabitTracker extends Fragment {
     int Walk_counter = 0, No_shopping_counter = 0, Vegan_eating_counter = 0;
- //   String Energy_tracker;
+    //   String Energy_tracker;
     View view;
     CheckBox transportationCheck;
-    CheckBox foodCheck ;
-    CheckBox consumptionCheck ;
+    CheckBox foodCheck;
+    CheckBox consumptionCheck;
     CheckBox energyCheck;
-    View transportationHabitbox ;
-    View foodHabitbox ;
+    View transportationHabitbox;
+    View foodHabitbox;
     View energyHabitbox;
     View consumptionHabitbox;
     TextView transportationHabit;
-    TextView energyHabit ;
-    TextView consHabit ;
-    TextView foodHabit ;
+    TextView energyHabit;
+    TextView consHabit;
+    TextView foodHabit;
     private DatabaseReference daily_answer_ref;
-
+    private DatabaseReference monthly_answer_ref;
     View transTrack;
     View consTrack;
     View foodTrack;
     View energyTrack;
 
+    TextView transvalue;
+    TextView consvalue;
+    TextView foodvalue ;
+    TextView energyvalue ;
+
+    private FirebaseAuth mAuth;
+    private String userId;
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-         view = inflater.inflate(R.layout.habit_tracker, container, false);
+        view = inflater.inflate(R.layout.habit_tracker, container, false);
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            userId = currentUser.getUid(); // Retrieve the user ID
+        } else {
+            Log.e("HabitTracker", "No user is logged in.");
+        }
 
         List<List<String>> habits = createList();
-        daily_answer_ref = FirebaseDatabase.getInstance().getReference().child("daily_answers");
+        if (userId != null) {
+            daily_answer_ref = FirebaseDatabase.getInstance().getReference().child("daily_answers").child(userId);
+            monthly_answer_ref = FirebaseDatabase.getInstance().getReference().child("monthly_answers").child(userId);
+        } else {
+            Log.e("HabitTracker", "User ID is null. Cannot initialize daily_answer_ref.");
+            return view;
+        }
 
-         transportationCheck = view.findViewById(R.id.filterTransportation);
-         foodCheck = view.findViewById(R.id.filterFood);
-         consumptionCheck = view.findViewById(R.id.filterConsumption);
-         energyCheck = view.findViewById(R.id.filterEnergy);
-         transportationHabitbox = view.findViewById(R.id.transportationSection);
-         foodHabitbox = view.findViewById(R.id.foodSection);
-         energyHabitbox = view.findViewById(R.id.energySection);
-         consumptionHabitbox = view.findViewById(R.id.consumptionSection);
-         transportationHabit = view.findViewById(R.id.habbittrans);
-         energyHabit = view.findViewById(R.id.habbitenergy);
-         consHabit = view.findViewById(R.id.habbitcons);
-         foodHabit = view.findViewById(R.id.habbitfood);
-         transTrack= view.findViewById(R.id.tracker1);
-         consTrack= view.findViewById(R.id.tracker2);
-         foodTrack= view.findViewById(R.id.tracker3);
-         energyTrack= view.findViewById(R.id.tracker4);
-
+        transportationCheck = view.findViewById(R.id.filterTransportation);
+        foodCheck = view.findViewById(R.id.filterFood);
+        consumptionCheck = view.findViewById(R.id.filterConsumption);
+        energyCheck = view.findViewById(R.id.filterEnergy);
+        transportationHabitbox = view.findViewById(R.id.transportationSection);
+        foodHabitbox = view.findViewById(R.id.foodSection);
+        energyHabitbox = view.findViewById(R.id.energySection);
+        consumptionHabitbox = view.findViewById(R.id.consumptionSection);
+        transportationHabit = view.findViewById(R.id.habbittrans);
+        energyHabit = view.findViewById(R.id.habbitenergy);
+        consHabit = view.findViewById(R.id.habbitcons);
+        foodHabit = view.findViewById(R.id.habbitfood);
+        transTrack = view.findViewById(R.id.tracker1);
+        consTrack = view.findViewById(R.id.tracker2);
+        foodTrack = view.findViewById(R.id.tracker3);
+        energyTrack = view.findViewById(R.id.tracker4);
 
 
         transportationHabit.setText(habits.get(0).get(0));
@@ -84,18 +107,14 @@ public class HabitTracker extends Fragment {
         foodTrack.setVisibility(View.VISIBLE);
         energyTrack.setVisibility(View.VISIBLE);
 
-        TextView transvalue=view.findViewById(R.id.TransTrack);
-        TextView consvalue=view.findViewById(R.id.ConsTrack);
-        TextView foodvalue=view.findViewById(R.id.foodTrack);
-        TextView energyvalue=view.findViewById(R.id.energyTrack);
+        transvalue = view.findViewById(R.id.TransTrack);
+        consvalue = view.findViewById(R.id.ConsTrack);
+        foodvalue = view.findViewById(R.id.foodTrack);
+        energyvalue = view.findViewById(R.id.energyTrack);
         updateWalkingTracker();
         updateShoppingTracker();
         updateFoodTracker();
-        String hel="hello";
-        transvalue.setText(String.valueOf(Walk_counter));
-        consvalue.setText(String.valueOf(No_shopping_counter));
-        foodvalue.setText(String.valueOf(Vegan_eating_counter));
-        energyvalue.setText(hel);
+        energy_tracker();
 
 
         transportationHabitbox.setVisibility(View.VISIBLE);
@@ -104,36 +123,49 @@ public class HabitTracker extends Fragment {
         energyHabitbox.setVisibility(View.VISIBLE);
 
         // Set the checkbox listeners
-        transportationCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            transportationHabitbox.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-            if (isChecked) {
-                hideOtherSectionsAndTrackers(transportationHabitbox, transTrack);
-            }
-        });
+        transportationCheck.setOnCheckedChangeListener((buttonView, isChecked) -> updateVisibility());
+        foodCheck.setOnCheckedChangeListener((buttonView, isChecked) -> updateVisibility());
+        consumptionCheck.setOnCheckedChangeListener((buttonView, isChecked) -> updateVisibility());
+        energyCheck.setOnCheckedChangeListener((buttonView, isChecked) -> updateVisibility());
 
-        foodCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            foodHabitbox.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-            if (isChecked) {
-                hideOtherSectionsAndTrackers(foodHabitbox, foodTrack);
-            }
-        });
-
-        consumptionCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            consumptionHabitbox.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-            if (isChecked) {
-                hideOtherSectionsAndTrackers(consumptionHabitbox, consTrack);
-            }
-        });
-
-        energyCheck.setOnCheckedChangeListener((buttonView, isChecked) -> {
-            energyHabitbox.setVisibility(isChecked ? View.VISIBLE : View.GONE);
-            if (isChecked) {
-                hideOtherSectionsAndTrackers(energyHabitbox, energyTrack);
-            }
-        });
 
         return view;
     }
+    private void updateVisibility() {
+        boolean anyChecked = transportationCheck.isChecked() || foodCheck.isChecked()
+                || consumptionCheck.isChecked() || energyCheck.isChecked();
+
+        // Show all sections and trackers if no checkbox is checked
+        if (!anyChecked) {
+            transportationHabitbox.setVisibility(View.VISIBLE);
+            transTrack.setVisibility(View.VISIBLE);
+
+            foodHabitbox.setVisibility(View.VISIBLE);
+            foodTrack.setVisibility(View.VISIBLE);
+
+            consumptionHabitbox.setVisibility(View.VISIBLE);
+            consTrack.setVisibility(View.VISIBLE);
+
+            energyHabitbox.setVisibility(View.VISIBLE);
+            energyTrack.setVisibility(View.VISIBLE);
+            return;
+        }
+
+        // Otherwise, update visibility based on individual checkbox states
+        transportationHabitbox.setVisibility(transportationCheck.isChecked() ? View.VISIBLE : View.GONE);
+        transTrack.setVisibility(transportationCheck.isChecked() ? View.VISIBLE : View.GONE);
+
+        foodHabitbox.setVisibility(foodCheck.isChecked() ? View.VISIBLE : View.GONE);
+        foodTrack.setVisibility(foodCheck.isChecked() ? View.VISIBLE : View.GONE);
+
+        consumptionHabitbox.setVisibility(consumptionCheck.isChecked() ? View.VISIBLE : View.GONE);
+        consTrack.setVisibility(consumptionCheck.isChecked() ? View.VISIBLE : View.GONE);
+
+        energyHabitbox.setVisibility(energyCheck.isChecked() ? View.VISIBLE : View.GONE);
+        energyTrack.setVisibility(energyCheck.isChecked() ? View.VISIBLE : View.GONE);
+    }
+
+
 
     private void hideOtherSectionsAndTrackers(View visibleSection, View visibleTracker) {
         // Sections
@@ -189,7 +221,7 @@ public class HabitTracker extends Fragment {
                     }
                 }
                 Walk_counter = walkCounter;
-                // Update UI here
+                transvalue.setText(String.valueOf(Walk_counter));
                 Log.d("WalkingTracker", "Total Walk Counter: " + Walk_counter);
             }
 
@@ -207,19 +239,19 @@ public class HabitTracker extends Fragment {
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 int shoppingCounter = 0;
                 for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
-                    Double groceriesVal = dateSnapshot.child("Shopping").child("Groceries").child("value").getValue(Double.class);
-                    Double clothesVal = dateSnapshot.child("Shopping").child("Clothes").child("value").getValue(Double.class);
+                    Double clothesVal = dateSnapshot.child("Consumption").child("Clothing").child("value").getValue(Double.class);
 
-                    groceriesVal = groceriesVal == null ? 0.0 : groceriesVal;
                     clothesVal = clothesVal == null ? 0.0 : clothesVal;
 
-                    if (groceriesVal > 0 || clothesVal > 0) {
+                    if (clothesVal > 0) {
                         shoppingCounter++;
                     }
                 }
-                No_shopping_counter= shoppingCounter;
+
+                No_shopping_counter = shoppingCounter;
+                consvalue.setText(String.valueOf(No_shopping_counter));
                 Log.d("ShoppingTracker", "Total Shopping Counter: " + No_shopping_counter);
-       }
+            }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
@@ -259,7 +291,7 @@ public class HabitTracker extends Fragment {
                 }
                 Vegan_eating_counter = foodCounter;
                 Log.d("FoodTracker", "Total Food Counter: " + Vegan_eating_counter);
-                // Update UI with Food_counter value here
+                foodvalue.setText(String.valueOf(Vegan_eating_counter));
             }
 
             @Override
@@ -270,8 +302,7 @@ public class HabitTracker extends Fragment {
     }
 
 
-/*private String energy_tracker() {
-        DatabaseReference monthly_answer_ref = FirebaseDatabase.getInstance().getReference().child("monthly_answers");
+    private void energy_tracker() {
 
         Calendar calendar = Calendar.getInstance();
         String currentMonth = new SimpleDateFormat("yyyy-MM").format(calendar.getTime());
@@ -282,7 +313,6 @@ public class HabitTracker extends Fragment {
         monthly_answer_ref.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-
                 Double currentElectricity = dataSnapshot.child(currentMonth).child("Energy").child("Electricity").getValue(Double.class);
                 Double previousElectricity = dataSnapshot.child(previousMonth).child("Energy").child("Electricity").getValue(Double.class);
                 Double currentWater = dataSnapshot.child(currentMonth).child("Energy").child("Water").getValue(Double.class);
@@ -290,31 +320,27 @@ public class HabitTracker extends Fragment {
                 Double currentGas = dataSnapshot.child(currentMonth).child("Energy").child("Gas").getValue(Double.class);
                 Double previousGas = dataSnapshot.child(previousMonth).child("Energy").child("Gas").getValue(Double.class);
 
-                if (currentElectricity == null) currentElectricity = 0.0;
-                if (previousElectricity == null) previousElectricity = 0.0;
-                if (currentWater == null) currentWater = 0.0;
-                if (previousWater == null) previousWater = 0.0;
-                if (currentGas == null) currentGas = 0.0;
-                if (previousGas == null) previousGas = 0.0;
-                double currentTotal = currentWater + currentGas + currentElectricity;
-                double prevTotal = previousWater + previousGas + previousElectricity;
+                currentElectricity = currentElectricity == null ? 0.0 : currentElectricity;
+                previousElectricity = previousElectricity == null ? 0.0 : previousElectricity;
+                currentWater = currentWater == null ? 0.0 : currentWater;
+                previousWater = previousWater == null ? 0.0 : previousWater;
+                currentGas = currentGas == null ? 0.0 : currentGas;
+                previousGas = previousGas == null ? 0.0 : previousGas;
 
-                if (currentTotal > prevTotal) {
-                    Energy_tracker = "Energy consumption has increased by " + (currentTotal - prevTotal) + " this month.";
-                } else if (currentElectricity < previousElectricity) {
-                    Energy_tracker = "Energy consumption has decreased by " + (currentTotal - prevTotal) + " this month.";
-                } else {
-                    Energy_tracker = "Energy consumption has remained constant this month.";
-                }
+                double energyChange = (currentElectricity + currentWater + currentGas) - (previousElectricity + previousWater + previousGas);
+                String trend = energyChange < 0 ? "Reduced Energy Usage by " + energyChange : "Increased Energy Usage by " + energyChange ;
+
+                energyvalue = view.findViewById(R.id.energyTrack);
+                energyvalue.setText(trend);
+                Log.d("EnergyTracker", "Energy trend: " + trend);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                Log.e("ElectricityComparison", "Failed to read value: " + databaseError.getMessage());
+                Log.e("EnergyTracker", "Failed to read energy values: " + databaseError.getMessage());
             }
         });
-        return Energy_tracker ;
-    }*/
+    }
 }
 
 
