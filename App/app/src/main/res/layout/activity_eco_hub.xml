@@ -8,7 +8,6 @@
     android:background="@drawable/planetze_bg_no_logo"
     tools:context=".EcoHubActivity">
 
-    <!-- ScrollView for the main content, which is scrollable -->
     <ScrollView
         android:id="@+id/main"
         android:layout_width="match_parent"
