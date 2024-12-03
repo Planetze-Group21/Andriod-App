@@ -3,8 +3,14 @@ package com.example.planetzeapp;
 import android.graphics.Typeface;
 import android.os.Bundle;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.fragment.app.FragmentTransaction;
+
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
@@ -68,7 +74,13 @@ public class EcoGaugeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+       // EdgeToEdge.enable(this);
         setContentView(R.layout.activity_eco_gauge);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.ecogauge), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         mAuth = FirebaseAuth.getInstance();
         String currentUserId = mAuth.getCurrentUser().getUid();
@@ -109,6 +121,13 @@ public class EcoGaugeActivity extends AppCompatActivity {
         scrollView = findViewById(R.id.scrollView);
         checkIfChartIsVisible(barChart);
         setupBarChart(currentUserId, barChart);
+
+        if (savedInstanceState == null) {
+            FooterFragment footerFragment = new FooterFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.footer_container, footerFragment); // You can use add() or replace()
+            transaction.commit();
+        }
     }
 
     private void updateChart(List<Entry> data, List<String> xAxisLabels, String label) {
