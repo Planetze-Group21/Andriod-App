@@ -172,6 +172,12 @@ public class EcoTrackerActivity extends AppCompatActivity {
         transaction2.replace(R.id.fragment_container2, new CalendarFragment());
         transaction2.commit();
 
+        if (savedInstanceState == null) {
+            FooterFragment footerFragment = new FooterFragment();
+            FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+            transaction3.replace(R.id.footer_container, footerFragment); // You can use add() or replace()
+            transaction3.commit();
+        }
     }
 
     private void attachAllListeners() {

@@ -533,10 +533,16 @@
                 android:id="@+id/fragment_container2"
                 android:name="com.example.planetzeapp.CalendarFragment"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" />
+                android:layout_height="match_parent"
+                android:layout_marginBottom="50sp"/>
 
 
         </LinearLayout>
     </ScrollView>
-
+    <FrameLayout
+        android:id="@+id/footer_container"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:layout_alignParentBottom="true"
+        android:layout_gravity="bottom" />
 </FrameLayout>
