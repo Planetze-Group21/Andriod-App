@@ -85,6 +85,12 @@ public class EcoTrackerActivity extends AppCompatActivity {
             return;
         }
 
+        public int getDaysInCurrentMonth() {
+            Calendar calendar = Calendar.getInstance();
+            int daysInMonth = calendar.getActualMaximum(Calendar.DAY_OF_MONTH);
+            return daysInMonth;
+        }
+
         ensureDailyAnswersDirectory();
         ensureDateSpecificDirectory();
 
@@ -117,13 +123,19 @@ public class EcoTrackerActivity extends AppCompatActivity {
         imageButton11.setOnClickListener(view -> openDialog2("Consumption", "Purchases", resultText11));
         imageButton12.setOnClickListener(view -> openDialog3("Energy", resultText12));
 
+        updateTransportationCO2e(daysInMonth);
+        updateFoodCO2e(daysInMonth);
+        updateConsumptionCO2e(daysInMonth);
+        updateEnergyCO2e(daysInMonth);
+        updateDailyCO2e(daysInMonth);
+
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new HabitTracker());
         transaction.commit();
 
         FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
-        transaction2.replace(R.id.fragment_container2, new CalendarActivity());
-        transaction.commit();
+        transaction2.replace(R.id.fragment_container2, new CalendarFragment());
+        transaction2.commit();
     }
 
     private void ensureDailyAnswersDirectory() {
@@ -438,58 +450,307 @@ public class EcoTrackerActivity extends AppCompatActivity {
                             .child(category)
                             .child(selectedOption);
 
-                    ref.child("value").setValue(value).addOnSuccessListener(aVoid -> {
-                        double emissions = 0;
-                        if (selectedOption.equals("Beef")) {
-                            emissions = value*0.58;
-                        } else if (selectedOption.equals("Pork")) {
-                            emissions = value*0.34;
-                        } else if (selectedOption.equals("Chicken")) {
-                            emissions = value*0.19;
-                        } else if (selectedOption.equals("Fish")) {
-                            emissions = value*0.22;
-                        } else if (selectedOption.equals("Plant-Based")) {
-                            emissions = value*0.17;
-                        } else if (selectedOption.equals("Electricity")) {
-                            if (value < 100) {
-                                emissions = 1450;
-                            } else if (value > 100) {
-                                emissions = 2300;
+                    double adjustedValue = value;
+                    if (selectedOption.equals("Electricity") || selectedOption.equals("Water") || selectedOption.equals("Gas")) {
+                        adjustedValue = value / 30.0;
+
+                        ref.child("value").setValue(adjustedValue).addOnSuccessListener(aVoid -> {
+                            double emissions = 0;
+                            if (selectedOption.equals("Beef")) {
+                                emissions = adjustedValue*0.58;
+                            } else if (selectedOption.equals("Pork")) {
+                                emissions = adjustedValue*0.34;
+                            } else if (selectedOption.equals("Chicken")) {
+                                emissions = adjustedValue*0.19;
+                            } else if (selectedOption.equals("Fish")) {
+                                emissions = adjustedValue*0.22;
+                            } else if (selectedOption.equals("Plant-Based")) {
+                                emissions = adjustedValue*0.17;
+                            } else if (selectedOption.equals("Electricity")) {
+                                if (value < 100) {
+                                    emissions = 1450;
+                                } else if (value > 100) {
+                                    emissions = 2300;
+                                }
+                            } else if (selectedOption.equals("Water")) {
+                                if (value < 100) {
+                                    emissions = 1000;
+                                } else if (value > 100) {
+                                    emissions = 1860;
+                                }
+                            } else if (selectedOption.equals("Gas")) {
+                                if (value < 100) {
+                                    emissions = 3300;
+                                } else if (value > 100) {
+                                    emissions = 4700;
+                                }
                             }
-                        } else if (selectedOption.equals("Water")) {
-                            if (value < 100) {
-                                emissions = 1000;
-                            } else if (value > 100) {
-                                emissions = 1860;
-                            }
-                        } else if (selectedOption.equals("Gas")) {
-                            if (value < 100) {
-                                emissions = 3300;
-                            } else if (value > 100) {
-                                emissions = 4700;
+                            double finalEmissions = emissions;
+                            ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
+                                Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + selectedOption, Toast.LENGTH_SHORT).show();
+                                resultText.setText(String.valueOf(finalEmissions));
+                                dialog.dismiss();
+                            }).addOnFailureListener(e -> {
+                                Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
+                        }).addOnFailureListener(e -> {
+                            Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
+                    } catch (NumberFormatException e) {
+                        Toast.makeText(EcoTrackerActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    Toast.makeText(EcoTrackerActivity.this, "Text cannot be empty", Toast.LENGTH_SHORT).show();
+                }
+            });
+
+            closeButton.setOnClickListener(view -> dialog.dismiss());
+
+            dialog.show();
+        }
+    }
+
+    private void updateTransportationCO2e(String todayDate) {
+        DatabaseReference transportationRef = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(currentUid)
+                .child("daily answers")
+                .child(todayDate)
+                .child("Transportation");
+
+        transportationRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    double totalEmissions = 0;
+
+                    // Iterate over the top-level keys in the Transportation node
+                    for (DataSnapshot child : snapshot.getChildren()) {
+                        String key = child.getKey();
+                        if (key != null) {
+                            if (key.equals("Driving") || key.equals("Walking")) {
+                                // Add emissions directly for top-level keys
+                                Double emissions = child.child("emissions").getValue(Double.class);
+                                if (emissions != null) {
+                                    totalEmissions += emissions;
+                                }
+                            } else if (key.equals("Public Transport")) {
+                                // Handle nested structure under Public Transport
+                                for (DataSnapshot transportMode : child.getChildren()) {
+                                    Double emissions = transportMode.child("emissions").getValue(Double.class);
+                                    if (emissions != null) {
+                                        totalEmissions += emissions;
+                                    }
+                                }
+                            } else if (key.equals("Flights")) {
+                                // Add emissions directly from Flights
+                                for (DataSnapshot flightType : child.getChildren()) {
+                                    Double emissions = flightType.getValue(Double.class);
+                                    if (emissions != null) {
+                                        totalEmissions += emissions;
+                                    }
+                                }
                             }
                         }
-                        double finalEmissions = emissions;
-                        ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
-                            Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + selectedOption, Toast.LENGTH_SHORT).show();
-                            resultText.setText(String.valueOf(finalEmissions));
-                            dialog.dismiss();
-                        }).addOnFailureListener(e -> {
-                            Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                        });
-                    }).addOnFailureListener(e -> {
-                        Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
-                } catch (NumberFormatException e) {
-                    Toast.makeText(EcoTrackerActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
+                    }
+
+                    // Update the Transportation_Co2e value in the database
+                    transportationRef.child("Transportation_Co2e").setValue(totalEmissions)
+                            .addOnSuccessListener(aVoid -> Log.d(TAG, "Transportation_Co2e updated successfully: " + totalEmissions))
+                            .addOnFailureListener(e -> Log.e(TAG, "Failed to update Transportation_Co2e: ", e));
+                } else {
+                    Log.e(TAG, "Transportation node does not exist for the date: " + todayDate);
                 }
             } else {
-                Toast.makeText(EcoTrackerActivity.this, "Text cannot be empty", Toast.LENGTH_SHORT).show();
+                Log.e(TAG, "Failed to retrieve Transportation node: ", task.getException());
             }
         });
-
-        closeButton.setOnClickListener(view -> dialog.dismiss());
-
-        dialog.show();
     }
+
+    private void updateConsumptionCO2e(String todayDate) {
+        DatabaseReference consumptionRef = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("users")
+                .child(currentUid)
+                .child("daily answers")
+                .child(todayDate)
+                .child("Consumption");
+
+        consumptionRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    double totalEmissions = 0;
+
+                    // Iterate through top-level keys in "Consumption"
+                    for (DataSnapshot category : snapshot.getChildren()) {
+                        if (category.hasChild("emissions")) {
+                            Double emissions = category.child("emissions").getValue(Double.class);
+                            if (emissions != null) {
+                                totalEmissions += emissions;
+                            }
+                        }
+
+                        // Handle nested structure for "Purchases"
+                        if (category.getKey().equals("Purchases") && category.hasChildren()) {
+                            for (DataSnapshot purchaseType : category.getChildren()) {
+                                Double emissions = purchaseType.child("emissions").getValue(Double.class);
+                                if (emissions != null) {
+                                    totalEmissions += emissions;
+                                }
+                            }
+                        }
+                    }
+
+                    // Update the "Consumption_CO2e" field
+                    consumptionRef.child("Consumption_CO2e").setValue(totalEmissions).addOnCompleteListener(updateTask -> {
+                        if (updateTask.isSuccessful()) {
+                            Log.d("EcoTracker", "Consumption_CO2e updated successfully: " + totalEmissions);
+                        } else {
+                            Log.e("EcoTracker", "Failed to update Consumption_CO2e: ", updateTask.getException());
+                        }
+                    });
+                } else {
+                    Log.e("EcoTracker", "Consumption data does not exist for the given date.");
+                }
+            } else {
+                Log.e("EcoTracker", "Failed to retrieve Consumption data: ", task.getException());
+            }
+        });
+    }
+
+    private void updateFoodCO2e(String todayDate) {
+        DatabaseReference foodRef = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("users")
+                .child(currentUid)
+                .child("daily answers")
+                .child(todayDate)
+                .child("Food");
+
+        foodRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    double totalEmissions = 0;
+
+                    // Iterate through each food category
+                    for (DataSnapshot foodCategory : snapshot.getChildren()) {
+                        if (foodCategory.hasChild("emissions")) {
+                            Double emissions = foodCategory.child("emissions").getValue(Double.class);
+                            if (emissions != null) {
+                                totalEmissions += emissions;
+                            }
+                        }
+                    }
+
+                    // Update the "Food_Co2e" field
+                    foodRef.child("Food_Co2e").setValue(totalEmissions).addOnCompleteListener(updateTask -> {
+                        if (updateTask.isSuccessful()) {
+                            Log.d("EcoTracker", "Food_Co2e updated successfully: " + totalEmissions);
+                        } else {
+                            Log.e("EcoTracker", "Failed to update Food_Co2e: ", updateTask.getException());
+                        }
+                    });
+                } else {
+                    Log.e("EcoTracker", "Food data does not exist for the given date.");
+                }
+            } else {
+                Log.e("EcoTracker", "Failed to retrieve Food data: ", task.getException());
+            }
+        });
+    }
+
+    private void updateEnergyCO2e(String todayDate) {
+        DatabaseReference energyRef = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("users")
+                .child(currentUid)
+                .child("daily answers")
+                .child(todayDate)
+                .child("Energy");
+
+        energyRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    double totalEmissions = 0;
+
+                    // Iterate through each energy category
+                    for (DataSnapshot energyCategory : snapshot.getChildren()) {
+                        if (energyCategory.hasChild("emissions")) {
+                            Double emissions = energyCategory.child("emissions").getValue(Double.class);
+                            if (emissions != null) {
+                                totalEmissions += emissions;
+                            }
+                        }
+                    }
+
+                    // Update the "Energy_Co2e" field
+                    energyRef.child("Energy_Co2e").setValue(totalEmissions).addOnCompleteListener(updateTask -> {
+                        if (updateTask.isSuccessful()) {
+                            Log.d("EcoTracker", "Energy_Co2e updated successfully: " + totalEmissions);
+                        } else {
+                            Log.e("EcoTracker", "Failed to update Energy_Co2e: ", updateTask.getException());
+                        }
+                    });
+                } else {
+                    Log.e("EcoTracker", "Energy data does not exist for the given date.");
+                }
+            } else {
+                Log.e("EcoTracker", "Failed to retrieve Energy data: ", task.getException());
+            }
+        });
+    }
+
+    private void updateDailyCO2e(String todayDate) {
+        DatabaseReference dailyAnswersRef = FirebaseDatabase.getInstance()
+                .getReference()
+                .child("users")
+                .child(currentUid)
+                .child("daily answers")
+                .child(todayDate);
+
+        dailyAnswersRef.get().addOnCompleteListener(task -> {
+            if (task.isSuccessful()) {
+                DataSnapshot snapshot = task.getResult();
+                if (snapshot.exists()) {
+                    double transportationCO2e = snapshot.child("Transportation").child("Transportation_Co2e").getValue(Double.class) != null
+                            ? snapshot.child("Transportation").child("Transportation_Co2e").getValue(Double.class)
+                            : 0.0;
+
+                    double foodCO2e = snapshot.child("Food").child("Food_Co2e").getValue(Double.class) != null
+                            ? snapshot.child("Food").child("Food_Co2e").getValue(Double.class)
+                            : 0.0;
+
+                    double consumptionCO2e = snapshot.child("Consumption").child("Consumption_CO2e").getValue(Double.class) != null
+                            ? snapshot.child("Consumption").child("Consumption_CO2e").getValue(Double.class)
+                            : 0.0;
+
+                    double energyCO2e = snapshot.child("Energy").child("Energy_CO2e").getValue(Double.class) != null
+                            ? snapshot.child("Energy").child("Energy_CO2e").getValue(Double.class)
+                            : 0.0;
+
+                    // Calculate the daily total
+                    double dailyCO2e = transportationCO2e + foodCO2e + consumptionCO2e + energyCO2e;
+
+                    // Update the "daily_CO2e" field
+                    dailyAnswersRef.child("daily_CO2e").setValue(dailyCO2e).addOnCompleteListener(updateTask -> {
+                        if (updateTask.isSuccessful()) {
+                            Log.d("EcoTracker", "daily_CO2e updated successfully: " + dailyCO2e);
+                        } else {
+                            Log.e("EcoTracker", "Failed to update daily_CO2e: ", updateTask.getException());
+                        }
+                    });
+                } else {
+                    Log.e("EcoTracker", "Daily answers data does not exist for the given date.");
+                }
+            } else {
+                Log.e("EcoTracker", "Failed to retrieve daily answers data: ", task.getException());
+            }
+        });
+    }
+
+
+
 }
