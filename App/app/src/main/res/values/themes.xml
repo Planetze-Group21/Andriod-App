@@ -2,8 +2,10 @@
     <!-- Base application theme. -->
     <style name="Base.Theme.PlanetzeApp" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <item name="colorPrimary">@color/teal</item>
+        <item name="colorPrimary">@color/charcoal</item>
         <item name="colorSecondary">@color/mist</item>
+        <item name="android:buttonStyle">@style/CustomButton</item>
+
 
     </style>
 

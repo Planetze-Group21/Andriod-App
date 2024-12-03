@@ -65,7 +65,7 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
     @Override
     public void navigateToEcoGauge() {
-        startActivity(new Intent(this, PostSignupQuestionsActivity.class)); //CHANGE TO ECOGAUGE
+        startActivity(new Intent(this, EcoGaugeActivity.class)); //CHANGE TO ECOGAUGE
         finish();
     }
 
