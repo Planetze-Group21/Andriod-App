@@ -30,18 +30,5 @@ public class OverlayActivity extends AppCompatActivity{
     }
 
 
-    public void onFooterButtonClicked(int buttonId) {
-        Intent intent;
-        if (buttonId == R.id.imageButton4) { // Eco Gauge
-            intent = new Intent(this, PostSignupQuestionsActivity.class);
-        } else if (buttonId == R.id.imageButton5) {
-            intent = new Intent(this, PostSignupQuestionsActivity.class);
-        } else if (buttonId == R.id.imageButton1) {
-            intent = new Intent(this, PostSignupQuestionsActivity.class);
-        } else {
-            return;
-        }
-        startActivity(intent);
-    }
 
 }

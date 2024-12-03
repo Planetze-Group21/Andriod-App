@@ -18,8 +18,6 @@
         <activity
             android:name=".ProductsActivity"
             android:exported="false" />
-        <activity android:name=".DummyGaugeActivity" />
-        <activity android:name=".DummyTrackerActivity" />
         <activity
             android:name=".NewsActivity"
             android:exported="false" />

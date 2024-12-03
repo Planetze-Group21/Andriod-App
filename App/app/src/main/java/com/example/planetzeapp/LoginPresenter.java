@@ -30,12 +30,12 @@ public class LoginPresenter {
         model.login(email, password, new LoginModel.LoginCallback() {
             @Override
             public void onSetupComplete() {
-                view.navigateToEcoGauge();
+                view.navigateToEcoTracker();
             }
 
             @Override
             public void onSetupIncomplete() {
-                view.navigateToIntroduction();
+                view.navigateToSetUpQs();
             }
 
             @Override

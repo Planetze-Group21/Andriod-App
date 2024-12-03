@@ -44,7 +44,7 @@ public class VideosActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+      //  EdgeToEdge.enable(this);
         if (savedInstanceState == null) {
             FooterFragment footerFragment = new FooterFragment();
             FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();

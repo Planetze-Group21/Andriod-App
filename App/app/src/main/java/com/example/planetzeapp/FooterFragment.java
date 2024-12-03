@@ -22,7 +22,7 @@ public class FooterFragment extends Fragment {
         ImageButton button2 = view.findViewById(R.id.imageButton5); // Eco Tracker
         ImageButton button3 = view.findViewById(R.id.imageButton1); // Eco hub
 
-        button1.setOnClickListener(v -> startActivity(new Intent(getActivity(), DummyGaugeActivity.class)));
+        button1.setOnClickListener(v -> startActivity(new Intent(getActivity(), EcoGaugeActivity.class)));
         button2.setOnClickListener(v -> startActivity(new Intent(getActivity(), EcoTrackerActivity.class)));
         button3.setOnClickListener(v -> startActivity(new Intent(getActivity(), EcoHubActivity.class)));
 

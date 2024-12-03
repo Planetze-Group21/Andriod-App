@@ -3,6 +3,7 @@ package com.example.planetzeapp;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -64,14 +65,14 @@ public class LoginActivity extends AppCompatActivity implements LoginView {
 
 
     @Override
-    public void navigateToEcoGauge() {
-        startActivity(new Intent(this, EcoGaugeActivity.class)); //CHANGE TO ECOGAUGE
-        finish();
+    public void navigateToEcoTracker() {
+       startActivity(new Intent(this, EcoTrackerActivity.class));
     }
 
 
+
     @Override
-    public void navigateToIntroduction(){
+    public void navigateToSetUpQs(){
         startActivity(new Intent(this, SignupQuestionsActivity.class));
         finish();
     }
