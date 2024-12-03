@@ -12,14 +12,15 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.FragmentTransaction;
 
-public class EcoHubActivity extends AppCompatActivity {
+public class EcoGaugeActivity extends AppCompatActivity {
+
     private Button ViewVideo, ViewArticle, ViewProduct;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_eco_hub);
+        setContentView(R.layout.activity_eco_gauge);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -33,20 +34,20 @@ public class EcoHubActivity extends AppCompatActivity {
         ViewVideo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoHubActivity.this, VideosActivity.class));
+                startActivity(new Intent(EcoGaugeActivity.this, EcoGaugeActivity.class));
             }
         });
 
         ViewArticle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoHubActivity.this, NewsActivity.class));
+                startActivity(new Intent(EcoGaugeActivity.this, EcoGaugeActivity.class));
             }
         });
         ViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoHubActivity.this, ProductsActivity.class));
+                startActivity(new Intent(EcoGaugeActivity.this, EcoGaugeActivity.class));
             }
         });
         if (savedInstanceState == null) {
