@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ecotracker"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
     <!-- Background Image -->
     <ImageView
@@ -19,7 +19,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="0dp"
+        android:layout_marginTop="36dp"
         android:padding="16dp">
 
         <LinearLayout
@@ -28,12 +28,22 @@
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <!-- Top Logo Section -->
+
             <!-- ECO TRACKER Title -->
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="41dp"
                 android:padding="1dp">
 
+                <!-- Logo -->
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="78dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="1dp"
+                    android:src="@drawable/planetze_logo" />
             </RelativeLayout>
 
             <TextView
@@ -56,11 +66,11 @@
 
                 <!-- 2.3 pounds -->
                 <TextView
-                    android:id="@+id/emissions_summary"
+                    android:id="@+id/realTimeDailyEmissions"
                     android:layout_width="wrap_content"
                     android:layout_height="25dp"
                     android:fontFamily="@font/poppins_bold"
-                    android:text="2.3 pounds"
+                    android:text=""
                     android:textColor="@color/teal"
                     android:textSize="20sp" />
 
@@ -138,6 +148,17 @@
                             android:layout_marginStart="1dp"
                             android:src="@drawable/eco_tracker_car" />
 
+                        <TextView
+                            android:id="@+id/transportation_text"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -157,17 +178,6 @@
                             android:padding="3dp"
                             android:text="      DRIVING"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/result_text2"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -200,17 +210,6 @@
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/result_text3"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
                         <ImageButton
                             android:id="@+id/imageButton3"
                             android:layout_width="24dp"
@@ -240,17 +239,6 @@
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/result_text4"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
                         <ImageButton
                             android:id="@+id/imageButton4"
                             android:layout_width="24dp"
@@ -277,17 +265,6 @@
                             android:padding="3dp"
                             android:text="      FLIGHTS"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/result_text5"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -328,6 +305,17 @@
                             android:layout_marginStart="1dp"
                             android:src="@drawable/eco_tracker_food" />
 
+                        <TextView
+                            android:id="@+id/food_text"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -347,17 +335,6 @@
                             android:padding="3dp"
                             android:text="      TYPE OF FOOD"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/result_text7"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -399,6 +376,17 @@
                             android:layout_marginStart="1dp"
                             android:src="@drawable/eco_tracker_consumption" />
 
+                        <TextView
+                            android:id="@+id/consumption_text"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
                     </LinearLayout>
 
                     <LinearLayout
@@ -416,19 +404,8 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:padding="3dp"
-                            android:text="      CLOTHES"
+                            android:text="      CLOTHING"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/result_text9"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -461,17 +438,6 @@
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
-                        <TextView
-                            android:id="@+id/result_text10"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
                         <ImageButton
                             android:id="@+id/imageButton10"
                             android:layout_width="24dp"
@@ -498,17 +464,6 @@
                             android:padding="3dp"
                             android:text="      PURCHASES"
                             android:textColor="@color/black"
-                            android:textSize="10sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:id="@+id/result_text11"
-                            android:layout_width="62dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            android:paddingTop="3dp"
-                            android:text=""
-                            android:textColor="@color/charcoal"
                             android:textSize="10sp"
                             android:textStyle="bold" />
 
@@ -541,8 +496,15 @@
                             android:textSize="11sp"
                             android:textStyle="bold" />
 
+                        <ImageButton
+                            android:id="@+id/imageButton12"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
                         <TextView
-                            android:id="@+id/result_text12"
+                            android:id="@+id/energy_text"
                             android:layout_width="62dp"
                             android:layout_height="20dp"
                             android:layout_weight="1"
@@ -551,13 +513,6 @@
                             android:textColor="@color/charcoal"
                             android:textSize="10sp"
                             android:textStyle="bold" />
-
-                        <ImageButton
-                            android:id="@+id/imageButton12"
-                            android:layout_width="24dp"
-                            android:layout_height="20dp"
-                            android:layout_weight="1"
-                            app:srcCompat="@drawable/baseline_create_24" />
 
                     </LinearLayout>
 
@@ -579,11 +534,5 @@
 
         </LinearLayout>
     </ScrollView>
-    <FrameLayout
-        android:id="@+id/footer_container"
-        android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:layout_alignParentBottom="true"
-        android:layout_gravity="bottom" />
 
 </FrameLayout>

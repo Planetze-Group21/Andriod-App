@@ -208,7 +208,6 @@ public class HabitTracker extends Fragment {
         daily_answer_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int walkCounter = 0;
                 for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
                     Double walkingVal = dateSnapshot.child("Transportation").child("Walking").child("value").getValue(Double.class);
                     Double drivingVal = dateSnapshot.child("Transportation").child("Driving").child("value").getValue(Double.class);
@@ -217,10 +216,9 @@ public class HabitTracker extends Fragment {
                     drivingVal = drivingVal == null ? 0.0 : drivingVal;
 
                     if (drivingVal == 0 && walkingVal > 0) {
-                        walkCounter++;
+                        Walk_counter++;
                     }
                 }
-                Walk_counter = walkCounter;
                 transvalue.setText(String.valueOf(Walk_counter));
                 Log.d("WalkingTracker", "Total Walk Counter: " + Walk_counter);
             }
@@ -237,18 +235,16 @@ public class HabitTracker extends Fragment {
         daily_answer_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int shoppingCounter = 0;
                 for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
                     Double clothesVal = dateSnapshot.child("Consumption").child("Clothing").child("value").getValue(Double.class);
 
                     clothesVal = clothesVal == null ? 0.0 : clothesVal;
 
                     if (clothesVal > 0) {
-                        shoppingCounter++;
+                        No_shopping_counter++;
                     }
                 }
 
-                No_shopping_counter = shoppingCounter;
                 consvalue.setText(String.valueOf(No_shopping_counter));
                 Log.d("ShoppingTracker", "Total Shopping Counter: " + No_shopping_counter);
             }
@@ -265,7 +261,6 @@ public class HabitTracker extends Fragment {
         daily_answer_ref.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                int foodCounter = 0;
                 for (DataSnapshot dateSnapshot : dataSnapshot.getChildren()) {
                     DataSnapshot beefsnap = dateSnapshot.child("Food").child("Beef");
                     DataSnapshot chickensnap = dateSnapshot.child("Food").child("Chicken");
@@ -286,10 +281,10 @@ public class HabitTracker extends Fragment {
                     plantBasedVal = plantBasedVal == null ? 0.0 : plantBasedVal;
 
                     if (beefVal > 0 || chickenVal > 0 || fishVal > 0 || porkVal > 0 || plantBasedVal > 0) {
-                        foodCounter++;
+                        Vegan_eating_counter++;
                     }
                 }
-                Vegan_eating_counter = foodCounter;
+
                 Log.d("FoodTracker", "Total Food Counter: " + Vegan_eating_counter);
                 foodvalue.setText(String.valueOf(Vegan_eating_counter));
             }
