@@ -53,7 +53,6 @@ dependencies {
     androidTestImplementation(libs.espresso.core)
     implementation("com.github.kwabenberko:news-api-java:1.0.2")
     implementation("com.android.volley:volley:1.2.1")
-    implementation("com.squareup.picasso:picasso:2.8")
     implementation("com.github.bumptech.glide:glide:4.16.0")
     implementation("com.prolificinteractive:material-calendarview:1.4.3") {
         exclude(group = "com.android.support", module = "support-compat")
