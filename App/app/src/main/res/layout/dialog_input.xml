@@ -7,22 +7,12 @@
     android:background="@drawable/eco_tracker_dialog_bg"
     android:gravity="center"> <!-- Center all child elements -->
 
-    <!-- Centered Heading -->
-    <TextView
-        android:id="@+id/dialogTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Header"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:gravity="center"
-        android:layout_marginBottom="10dp" />
-
     <TextView
         android:id="@+id/dialogMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Would you like to save or close this dialog?"
+        android:textSize="18sp"
         android:gravity="center"
         android:layout_marginBottom="16dp" />
 
