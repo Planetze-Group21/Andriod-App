@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="411dp"
-    android:layout_height="70dp"
+    android:layout_height="85dp"
     android:layout_gravity="bottom"
     android:background="#EEF9F9"
     android:translationX="0dp"
@@ -13,21 +13,52 @@
 
     <ImageButton
         android:id="@+id/imageButton4"
-        android:layout_width="83dp"
-        android:layout_height="match_parent"
+        android:layout_width="70dp"
+        android:layout_height="61dp"
         android:backgroundTint="#EEF9F9"
         android:contentDescription="Eco Gauge Navigator"
         android:src="@drawable/ecogauge"
         android:translationX="45dp" />
 
+
     <ImageButton
         android:id="@+id/imageButton5"
-        android:layout_width="wrap_content"
-        android:layout_height="70dp"
+        android:layout_width="75dp"
+        android:layout_height="71dp"
         android:backgroundTint="#EEF9F9"
         android:contentDescription="Eco Tracker Navigator"
         android:src="@drawable/ecotracker"
-        android:translationX="150dp" />
+        android:translationX="170dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:translationX="160dp"
+        android:translationY="60dp"
+        android:text="Eco Tracker"
+        android:textColor="@color/navy"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:translationX="40dp"
+        android:translationY="60dp"
+        android:text="Eco Guage"
+        android:textColor="@color/navy"
+        android:textSize="16sp" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/poppins_medium"
+        android:translationX="300dp"
+        android:translationY="60dp"
+        android:text="Eco Hub"
+        android:textColor="@color/navy"
+        android:textSize="16sp" />
+
+
 
     <ImageButton
         android:id="@+id/imageButton1"
@@ -36,6 +67,6 @@
         android:backgroundTint="#EEF9F9"
         android:contentDescription="Annual CO2 Tracker Navigator"
         android:src="@drawable/annualco2"
-        android:translationX="280dp" />
+        android:translationX="290dp" />
 
 </FrameLayout>
