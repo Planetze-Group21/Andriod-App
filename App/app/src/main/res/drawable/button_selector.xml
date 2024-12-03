@@ -3,14 +3,28 @@
     <!-- Selected state -->
     <item android:state_selected="true">
         <shape android:shape="rectangle">
-            <solid android:color="#FFFFFF" />
+            <solid android:color="@color/mist" />
             <corners android:radius="20dp"/> <!-- Rounded edges -->
         </shape>
     </item>
-    <!-- Default state -->
-    <item android:state_selected="false">
+    <!-- Pressed state -->
+    <item android:state_pressed="true">
         <shape android:shape="rectangle">
-            <solid android:color="#000000" />
+            <solid android:color="@color/mist" />
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+    <!-- Checked state -->
+    <item android:state_checked="true">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/mist" />
+            <corners android:radius="20dp"/>
+        </shape>
+    </item>
+    <!-- Default state -->
+    <item android:state_pressed="false">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/black" />
             <corners android:radius="20dp"/> <!-- Rounded edges -->
         </shape>
     </item>

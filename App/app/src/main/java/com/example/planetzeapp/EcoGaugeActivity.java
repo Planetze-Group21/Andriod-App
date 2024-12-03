@@ -1,5 +1,6 @@
 package com.example.planetzeapp;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -395,7 +396,7 @@ public class EcoGaugeActivity extends AppCompatActivity {
                         totalCO2e[0] += dailyCO2e;
 
                         categoryTotals[0] += snapshot.child("Transportation").child("Transportation_CO2e")
-                                .getValue(Double.class) != null ? snapshot.child("Transportation").child("transportation_CO2e").getValue(Double.class) : 0.0;
+                                .getValue(Double.class) != null ? snapshot.child("Transportation").child("Transportation_CO2e").getValue(Double.class) : 0.0;
                         categoryTotals[1] += snapshot.child("Energy").child("Energy_CO2e")
                                 .getValue(Double.class) != null ? snapshot.child("Energy").child("Energy_CO2e").getValue(Double.class) : 0.0;
                         categoryTotals[2] += snapshot.child("Food").child("Food_CO2e")
@@ -412,9 +413,12 @@ public class EcoGaugeActivity extends AppCompatActivity {
                                 percentages[j] = 0.0f;
                             }
                         } else {
-                            for (int j = 0; j < 4; j++) {
+                            float cumulativePercentage = 0f;
+                            for (int j = 0; j < 3; j++) { // Calculate for the first three categories
                                 percentages[j] = (float) (categoryTotals[j] / totalCO2e[0]) * 100;
+                                cumulativePercentage += percentages[j];
                             }
+                            percentages[3] = 100f - cumulativePercentage; // Assign remaining percentage to the last category
                         }
                         callback.onPercentagesCalculated(percentages);
                     }
@@ -480,16 +484,16 @@ public class EcoGaugeActivity extends AppCompatActivity {
                 stackedBarChart.getDescription().setEnabled(false);
                 // Enable the legend and customize it
                 Legend legend = stackedBarChart.getLegend();
-                legend.setEnabled(true); // Enable legend
-                legend.setFormSize(10f); // Adjust the color box size
-                legend.setWordWrapEnabled(true);
-                legend.setFormToTextSpace(5f); // Adjust space between the color box and text
-                legend.setStackSpace(10f);
-                // Set legend position and alignment
                 legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
                 legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.LEFT);
                 legend.setOrientation(Legend.LegendOrientation.HORIZONTAL);
-                legend.setDrawInside(false); // Keep legend outside the chart
+                legend.setDrawInside(false);
+                legend.setXEntrySpace(35f);
+                legend.setYEntrySpace(0f);
+                legend.setWordWrapEnabled(true);
+                legend.setFormToTextSpace(3f);
+                legend.setMaxSizePercent(0.85f);
+
                 // Modify the legend entries to show percentages
                 ArrayList<LegendEntry> legendEntries = new ArrayList<>();
                 if (percentages[0] == 0.0f && percentages[1] == 0.0f && percentages[2] == 0.0f && percentages[3] == 0.0f) {
@@ -683,7 +687,7 @@ public class EcoGaugeActivity extends AppCompatActivity {
                 public void run() {
                     // Here, we animate the Y axis, but it only animates after the delay
                     barChart.setVisibility(View.VISIBLE);
-                    barChart.animateY(2000, Easing.EaseInOutQuad);  // Adjust duration for the animation
+                    barChart.animateY(1500, Easing.EaseInOutQuad);  // Adjust duration for the animation
                 }
             }, delay * (index + 1));  // Each bar has a delay based on its index
         }
