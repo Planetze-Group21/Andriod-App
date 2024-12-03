@@ -65,7 +65,7 @@ public class LoginPresenterUnitTest {
 
         presenter.handleLogin(validEmail, password);
 
-        verify(mockView).navigateToEcoGauge();
+        verify(mockView).navigateToEcoTracker();
     }
 
     @Test
@@ -84,7 +84,7 @@ public class LoginPresenterUnitTest {
 
         presenter.handleLogin(validEmail, password);
 
-        verify(mockView).navigateToIntroduction();
+        verify(mockView).navigateToSetUpQs();
     }
 
     @Test
