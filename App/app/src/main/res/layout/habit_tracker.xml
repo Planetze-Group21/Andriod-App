@@ -120,8 +120,7 @@
                 android:orientation="vertical"
                 android:background="@drawable/eco_tracker_activities_header"
                 android:padding="8dp"
-                android:layout_marginBottom="8dp">
-
+                android:layout_marginBottom="8dp"><!-- Title TextView -->
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -131,6 +130,7 @@
                     android:textSize="14sp"
                     android:paddingBottom="8dp" />
 
+                <!-- First List Item -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -147,9 +147,15 @@
                         android:text="Try walking more!"
                         android:textColor="@color/black"
                         android:textSize="12sp" />
-
-
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginVertical="8dp"/>
+
+                <!-- Second List Item -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -163,12 +169,16 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:padding="3dp"
-                        android:text="!"
+                        android:text="Take the public transport instead of   "
                         android:textColor="@color/black"
                         android:textSize="12sp" />
-
-
                 </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@android:color/darker_gray"
+                    android:layout_marginVertical="8dp"/>
             </LinearLayout>
 
             <!-- Food Section -->
