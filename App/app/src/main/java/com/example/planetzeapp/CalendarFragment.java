@@ -40,7 +40,7 @@ public class CalendarFragment extends Fragment {
 
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-        databaseRef = database.getReference("users").child(currentUid).child("daily answers");
+        databaseRef = database.getReference("users").child(currentUid).child("daily_answers");
 
         if (calendarView != null) {
             calendarView.setOnDateChangeListener((calendarView, year, month, dayOfMonth) -> {

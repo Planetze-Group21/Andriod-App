@@ -110,26 +110,29 @@ public class EcoTrackerActivity extends AppCompatActivity {
         resultText12 = findViewById(R.id.result_text12);
 
         imageButton2.setOnClickListener(view -> openDialog1("Transportation", "Driving", resultText2, "How many kilometres have you driven?"));
-        imageButton3.setOnClickListener(view -> openDialog2("Transportation", "Public Transportation", resultText3, "How many hours have you travelled?"));
+        imageButton3.setOnClickListener(view -> {
+            List<String> publicTransportations = Arrays.asList("Bus", "Subway", "Train");
+            openDialog2("Transportation", "Public Transport", resultText3, "Select a public transportation option", publicTransportations);
+        });
         imageButton4.setOnClickListener(view -> openDialog1("Transportation", "Walking", resultText4, "How many kilometres have you walked?"));
-        imageButton5.setOnClickListener(view -> openDialog2("Transportation", "Flights", resultText5, "How many hours did you fly?"));
+        imageButton5.setOnClickListener(view -> {
+            List<String> FlightsOptions = Arrays.asList("Long-Haul", "Short-Haul");
+            openDialog2("Transportation", "Flights", resultText5, "Select a flight option", FlightsOptions);
+        });
         imageButton7.setOnClickListener(view -> {
             List<String> foodOptions = Arrays.asList("Beef", "Pork", "Chicken", "Fish", "Plant-Based");
             openDialog3("Food", resultText7, "Select a food option", foodOptions);
         });
         imageButton9.setOnClickListener(view -> openDialog1("Consumption", "Clothing", resultText9, "How many clothes did you buy?"));
         imageButton10.setOnClickListener(view -> openDialog1("Consumption", "Electronics", resultText10, "How many electronics did you buy?"));
-        imageButton11.setOnClickListener(view -> openDialog2("Consumption", "Purchases", resultText11, "How many items did you buy?"));
+        imageButton11.setOnClickListener(view -> {
+            List<String> purchaseOptions = Arrays.asList("Big", "Small");
+            openDialog2("Consumption", "Purchases", resultText11, "Select a purchase option", purchaseOptions);
+        });
         imageButton12.setOnClickListener(view -> {
             List<String> energyOptions = Arrays.asList("Electricity", "Water", "Gas");
             openDialog3("Energy", resultText12, "Select an energy option", energyOptions);
         });
-
-        updateTransportationCO2e(String.valueOf(getDaysInCurrentMonth()));
-        updateFoodCO2e(String.valueOf(getDaysInCurrentMonth()));
-        updateConsumptionCO2e(String.valueOf(getDaysInCurrentMonth()));
-        updateEnergyCO2e(String.valueOf(getDaysInCurrentMonth()));
-        updateDailyCO2e(String.valueOf(getDaysInCurrentMonth()));
 
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
         transaction.replace(R.id.fragment_container, new HabitTracker());
@@ -148,11 +151,11 @@ public class EcoTrackerActivity extends AppCompatActivity {
     }
 
     private void ensureDailyAnswersDirectory() {
-        databaseRef.child("daily answers").get().addOnCompleteListener(task -> {
+        databaseRef.child("daily_answers").get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DataSnapshot snapshot = task.getResult();
                 if (!snapshot.exists()) {
-                    databaseRef.child("daily answers").setValue("Initialized")
+                    databaseRef.child("daily_answers").setValue("Initialized")
                             .addOnCompleteListener(createTask -> {
                                 if (createTask.isSuccessful()) {
                                     Log.d("Firebase", "'daily answers' directory created.");
@@ -169,56 +172,59 @@ public class EcoTrackerActivity extends AppCompatActivity {
         });
     }
 
+    private HashMap<String, Object> createInnerProduct() {
+        HashMap<String, Object> innerProduct = new HashMap<>();
+        innerProduct.put("value", 0);
+        innerProduct.put("emissions", 0);
+        return innerProduct;
+    }
+
     private void ensureDateSpecificDirectory() {
         String todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
-        DatabaseReference dateRef = databaseRef.child("daily answers").child(todayDate);
+        DatabaseReference dateRef = databaseRef.child("daily_answers").child(todayDate);
 
         dateRef.get().addOnCompleteListener(task -> {
             if (task.isSuccessful()) {
                 DataSnapshot snapshot = task.getResult();
                 if (!snapshot.exists()) {
-                    HashMap<String, Object> InnerProduct = new HashMap<>();
-                    InnerProduct.put("value", 0);
-                    InnerProduct.put("emissions", 0);
-
                     HashMap<String, Object> PublicTransportationValues = new HashMap<>();
-                    PublicTransportationValues.put("Bus", InnerProduct);
-                    PublicTransportationValues.put("Subway", InnerProduct);
-                    PublicTransportationValues.put("Train", InnerProduct);
+                    PublicTransportationValues.put("Bus", createInnerProduct());
+                    PublicTransportationValues.put("Subway", createInnerProduct());
+                    PublicTransportationValues.put("Train", createInnerProduct());
 
                     HashMap<String, Object> FlightValues = new HashMap<>();
                     FlightValues.put("Short-Haul", 0);
                     FlightValues.put("Long-Haul", 0);
 
                     HashMap<String, Object> TransportationValues = new HashMap<>();
-                    TransportationValues.put("Driving", InnerProduct);
-                    TransportationValues.put("Walking", InnerProduct);
+                    TransportationValues.put("Driving", createInnerProduct());
+                    TransportationValues.put("Walking", createInnerProduct());
                     TransportationValues.put("Public Transport", PublicTransportationValues);
                     TransportationValues.put("Flights", FlightValues);
                     TransportationValues.put("Transportation_Co2e", 0);
 
                     HashMap<String, Object> FoodValues = new HashMap<>();
-                    FoodValues.put("Beef", InnerProduct);
-                    FoodValues.put("Pork", InnerProduct);
-                    FoodValues.put("Fish", InnerProduct);
-                    FoodValues.put("Chicken", InnerProduct);
-                    FoodValues.put("Plant-Based", InnerProduct);
+                    FoodValues.put("Beef", createInnerProduct());
+                    FoodValues.put("Pork", createInnerProduct());
+                    FoodValues.put("Fish", createInnerProduct());
+                    FoodValues.put("Chicken", createInnerProduct());
+                    FoodValues.put("Plant-Based", createInnerProduct());
                     FoodValues.put("Food_Co2e", 0);
 
                     HashMap<String, Object> PurchasesValues = new HashMap<>();
-                    FlightValues.put("Big", InnerProduct);
-                    FlightValues.put("Small", InnerProduct);
+                    PurchasesValues.put("Big", createInnerProduct());
+                    PurchasesValues.put("Small", createInnerProduct());
 
                     HashMap<String, Object> ConsumptionValues = new HashMap<>();
-                    ConsumptionValues.put("Clothing", InnerProduct);
-                    ConsumptionValues.put("Electronics", InnerProduct);
+                    ConsumptionValues.put("Clothing", createInnerProduct());
+                    ConsumptionValues.put("Electronics", createInnerProduct());
                     ConsumptionValues.put("Purchases", PurchasesValues);
                     ConsumptionValues.put("Consumption_CO2e", 0);
 
                     HashMap<String, Object> EnergyValues = new HashMap<>();
-                    EnergyValues.put("Electricity", InnerProduct);
-                    EnergyValues.put("Water", InnerProduct);
-                    EnergyValues.put("Gas", InnerProduct);
+                    EnergyValues.put("Electricity", createInnerProduct());
+                    EnergyValues.put("Water", createInnerProduct());
+                    EnergyValues.put("Gas", createInnerProduct());
                     EnergyValues.put("Energy_CO2e", 0);
 
                     HashMap<String, Object> data = new HashMap<>();
@@ -278,7 +284,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                             .child("users")
                             .child(currentUid)
-                            .child("daily answers")
+                            .child("daily_answers")
                             .child(todayDate)
                             .child(category)
                             .child(activity);
@@ -292,6 +298,9 @@ public class EcoTrackerActivity extends AppCompatActivity {
                         ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
                             Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + activity, Toast.LENGTH_SHORT).show();
                             resultText.setText(String.valueOf(emissions));
+                            updateTransportationCO2e(todayDate);
+                            updateConsumptionCO2e(todayDate);
+                            updateDailyCO2e(todayDate);
                             dialog.dismiss();
                         }).addOnFailureListener(e -> {
                             Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + activity + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -312,20 +321,34 @@ public class EcoTrackerActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void openDialog2(String category, String activity, TextView resultText, String dynamicText) {
+
+    private void openDialog2(String category, String subCategory, TextView resultText, String dialogTitle, List<String> options) {
         String todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         Dialog dialog = new Dialog(EcoTrackerActivity.this);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.eco_tracker_dialog_options, null);
         dialog.setContentView(dialogView);
 
-        dialog.getWindow().setLayout(800, 800);
+        dialog.getWindow().setLayout(800, 1200);
 
         TextView dialogTextView = dialogView.findViewById(R.id.radioMessage);
         RadioGroup radioGroup = dialogView.findViewById(R.id.radioGroup);
         EditText editText = dialogView.findViewById(R.id.editText);
         Button saveButton = dialogView.findViewById(R.id.saveButton);
         Button closeButton = dialogView.findViewById(R.id.closeButton);
-        dialogTextView.setText(dynamicText);
+
+        // Set the title or message for the dialog
+        dialogTextView.setText(dialogTitle);
+
+        // Clear any existing radio buttons and add new ones based on the options
+        radioGroup.removeAllViews();
+        for (String option : options) {
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(option);
+            radioButton.setId(View.generateViewId());
+            radioButton.setTextSize(16); // Ensures text is legible
+            radioButton.setPadding(8, 8, 8, 8); // Adds some spacing
+            radioGroup.addView(radioButton);
+        }
 
         saveButton.setOnClickListener(view -> {
             int selectedOptionId = radioGroup.getCheckedRadioButtonId();
@@ -353,59 +376,26 @@ public class EcoTrackerActivity extends AppCompatActivity {
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                             .child("users")
                             .child(currentUid)
-                            .child("daily answers")
+                            .child("daily_answers")
                             .child(todayDate)
                             .child(category)
-                            .child(activity)
+                            .child(subCategory)
                             .child(selectedOption);
 
                     ref.child("value").setValue(value).addOnSuccessListener(aVoid -> {
-                        double emissions = 0;
-                        if (selectedOption.equals("Bus")) {
-                            if (value < 5) {
-                                emissions = 159.25;
-                            } else if ((5 <= value) && (value <= 10)) {
-                                emissions = 597.16;
-                            } else if (value > 10) {
-                                emissions = 796.25;
-                            }
-                        } else if (selectedOption.equals("Subway")) {
-                            if (value < 5) {
-                                emissions = 159.25;
-                            } else if ((5 <= value) && (value <= 10)) {
-                                emissions = 597.16;
-                            } else if (value > 10) {
-                                emissions = 796.25;
-                            }
-                        } else if (selectedOption.equals("Train")) {
-                            if (value < 5) {
-                                emissions = 159.25;
-                            } else if ((5 <= value) && (value <= 10)) {
-                                emissions = 597.16;
-                            } else if (value > 10) {
-                                emissions = 796.25;
-                            }
-                        } else if (selectedOption.equals("Short")) {
-                            emissions = 1600;
-                        } else if (selectedOption.equals("Long")) {
-                            emissions = 4400;
-                        } else if (selectedOption.equals("Small")) {
-                            emissions = value*800;
-                        } else if (selectedOption.equals("Large")) {
-                            emissions = value*1000;
-                        }
-
-                        double finalEmissions = emissions;
+                        double emissions = calculateEmissions2(selectedOption, value);
                         ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
-                            Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + activity, Toast.LENGTH_SHORT).show();
-                            resultText.setText(String.valueOf(finalEmissions));
-                            dialog.dismiss();
+                            Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + selectedOption, Toast.LENGTH_SHORT).show();
+                            resultText.setText(String.valueOf(emissions));
+                            updateTransportationCO2e(todayDate);
+                            updateDailyCO2e(todayDate);
+                            dialog.dismiss(); // Ensure dialog dismisses for other options
+                            }).addOnFailureListener(e -> {
+                                Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
                         }).addOnFailureListener(e -> {
-                            Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + activity + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
-                    }).addOnFailureListener(e -> {
-                        Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + activity + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    });
                 } catch (NumberFormatException e) {
                     Toast.makeText(EcoTrackerActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
                 }
@@ -473,21 +463,23 @@ public class EcoTrackerActivity extends AppCompatActivity {
                     DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
                             .child("users")
                             .child(currentUid)
-                            .child("daily answers")
+                            .child("daily_answers")
                             .child(todayDate)
                             .child(category)
                             .child(selectedOption);
 
                     double adjustedValue;
                     if (selectedOption.equals("Electricity") || selectedOption.equals("Water") || selectedOption.equals("Gas")) {
-                        adjustedValue = value / 30.0;
+                        adjustedValue = value / getDaysInCurrentMonth();
 
                         ref.child("value").setValue(adjustedValue).addOnSuccessListener(aVoid -> {
                             double emissions = calculateEmissions(selectedOption, adjustedValue, value);
                             ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
                                 Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + selectedOption, Toast.LENGTH_SHORT).show();
                                 resultText.setText(String.valueOf(emissions));
-                                dialog.dismiss();
+                                updateEnergyCO2e(todayDate);
+                                updateDailyCO2e(todayDate);
+                                dialog.dismiss(); // Dismiss dialog
                             }).addOnFailureListener(e -> {
                                 Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
                             });
@@ -495,7 +487,24 @@ public class EcoTrackerActivity extends AppCompatActivity {
                             Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
                     } else {
+                        // Handle non-energy options (e.g., food)
                         adjustedValue = value;
+                        double emissions = calculateEmissions(selectedOption, adjustedValue, value);
+                        ref.child("value").setValue(adjustedValue).addOnSuccessListener(aVoid -> {
+                            ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
+                                Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + selectedOption, Toast.LENGTH_SHORT).show();
+                                resultText.setText(String.valueOf(emissions));
+                                updateTransportationCO2e(todayDate);
+                                updateFoodCO2e(todayDate);
+                                updateConsumptionCO2e(todayDate);
+                                updateDailyCO2e(todayDate);
+                                dialog.dismiss(); // Ensure dialog dismisses for other options
+                            }).addOnFailureListener(e -> {
+                                Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                            });
+                        }).addOnFailureListener(e -> {
+                            Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
                 } catch (NumberFormatException e) {
                     Toast.makeText(EcoTrackerActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
@@ -529,13 +538,37 @@ public class EcoTrackerActivity extends AppCompatActivity {
                 emissions = adjustedValue * 0.17;
                 break;
             case "Electricity":
-                emissions = value < 100 ? 1450 : 2300;
+                emissions = value < 100 ? Math.round((float) 1450 /(getDaysInCurrentMonth())) : Math.round((float) 2300 /(getDaysInCurrentMonth()));
                 break;
             case "Water":
-                emissions = value < 100 ? 1000 : 1860;
+                emissions = value < 100 ? Math.round((float) 1000 /(getDaysInCurrentMonth())) : Math.round((float) 1860 /(getDaysInCurrentMonth()));
                 break;
             case "Gas":
-                emissions = value < 100 ? 3300 : 4700;
+                emissions = value < 100 ? Math.round((float) 3300 /(getDaysInCurrentMonth())) : Math.round((float) 4700 /(getDaysInCurrentMonth()));
+                break;
+        }
+        return emissions;
+    }
+
+    private double calculateEmissions2(String selectedOption, float value) {
+        double emissions = 0;
+        switch (selectedOption) {
+            case "Bus":
+            case "Train":
+            case "Subway":
+                emissions = value < 5 ? 159.25 : (value >= 5 && value < 10) ? 597.16 : 796.25;;
+                break;
+            case "Short-Haul":
+                emissions = 1600;
+                break;
+            case "Long-Haul":
+                emissions = 4400;
+                break;
+            case "Big":
+                emissions = value*1000;
+                break;
+            case "Small":
+                emissions = value*800;
                 break;
         }
         return emissions;
@@ -545,7 +578,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         DatabaseReference transportationRef = FirebaseDatabase.getInstance().getReference()
                 .child("users")
                 .child(currentUid)
-                .child("daily answers")
+                .child("daily_answers")
                 .child(todayDate)
                 .child("Transportation");
 
@@ -576,7 +609,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                             } else if (key.equals("Flights")) {
                                 // Add emissions directly from Flights
                                 for (DataSnapshot flightType : child.getChildren()) {
-                                    Double emissions = flightType.getValue(Double.class);
+                                    Double emissions = flightType.child("emissions").getValue(Double.class);
                                     if (emissions != null) {
                                         totalEmissions += emissions;
                                     }
@@ -604,7 +637,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                 .getReference()
                 .child("users")
                 .child(currentUid)
-                .child("daily answers")
+                .child("daily_answers")
                 .child(todayDate)
                 .child("Consumption");
 
@@ -657,7 +690,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                 .getReference()
                 .child("users")
                 .child(currentUid)
-                .child("daily answers")
+                .child("daily_answers")
                 .child(todayDate)
                 .child("Food");
 
@@ -700,7 +733,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                 .getReference()
                 .child("users")
                 .child(currentUid)
-                .child("daily answers")
+                .child("daily_answers")
                 .child(todayDate)
                 .child("Energy");
 
@@ -743,7 +776,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
                 .getReference()
                 .child("users")
                 .child(currentUid)
-                .child("daily answers")
+                .child("daily_answers")
                 .child(todayDate);
 
         dailyAnswersRef.get().addOnCompleteListener(task -> {
