@@ -483,7 +483,7 @@ public class EcoGaugeActivity extends AppCompatActivity {
                 // Create BarData and assign it to the chart
                 BarData barData = new BarData(dataSet);
                 barData.setBarWidth(1f);
-                stackedBarChart.setData(barData);
+                //stackedBarChart.setData(barData);
                 // X-axis customization
                 XAxis xAxis = stackedBarChart.getXAxis();
                 xAxis.setPosition(XAxis.XAxisPosition.BOTTOM); // Position at bottom for horizontal layout
@@ -526,6 +526,7 @@ public class EcoGaugeActivity extends AppCompatActivity {
                 }
                 // Set custom legend entries
                 legend.setCustom(legendEntries);
+                stackedBarChart.setData(barData);
                 // Disable interactions
                 stackedBarChart.setTouchEnabled(false);
                 stackedBarChart.setDragEnabled(false);
