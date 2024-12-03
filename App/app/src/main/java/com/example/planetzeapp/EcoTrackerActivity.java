@@ -113,15 +113,21 @@ public class EcoTrackerActivity extends AppCompatActivity {
         imageButton12 = findViewById(R.id.imageButton12);
         resultText12 = findViewById(R.id.result_text12);
 
-        imageButton2.setOnClickListener(view -> openDialog1("Transportation", "Driving", resultText2));
-        imageButton3.setOnClickListener(view -> openDialog2("Transportation", "Public Transportation", resultText3));
-        imageButton4.setOnClickListener(view -> openDialog1("Transportation", "Walking", resultText4));
-        imageButton5.setOnClickListener(view -> openDialog2("Transportation", "Flights", resultText5));
-        imageButton7.setOnClickListener(view -> openDialog3( "Food", resultText7));
-        imageButton9.setOnClickListener(view -> openDialog1("Consumption", "Clothes", resultText9));
-        imageButton10.setOnClickListener(view -> openDialog1("Consumption", "Electronics", resultText10));
-        imageButton11.setOnClickListener(view -> openDialog2("Consumption", "Purchases", resultText11));
-        imageButton12.setOnClickListener(view -> openDialog3("Energy", resultText12));
+        imageButton2.setOnClickListener(view -> openDialog1("Transportation", "Driving", resultText2, "How many kilometres have you driven?"));
+        imageButton3.setOnClickListener(view -> openDialog2("Transportation", "Public Transportation", resultText3, "How many hours did you travelled?"));
+        imageButton4.setOnClickListener(view -> openDialog1("Transportation", "Walking", resultText4, "How many kilometres have you walked?"));
+        imageButton5.setOnClickListener(view -> openDialog2("Transportation", "Flights", resultText5, "How many hours have you fly?"));
+        imageButton7.setOnClickListener(view -> {
+            List<String> foodOptions = Arrays.asList("Beef", "Pork", "Chicken", "Fish", "Plant-Based");
+            openDialog3("Food", resultText7, "Select a food option", foodOptions);
+        });
+        imageButton9.setOnClickListener(view -> openDialog1("Consumption", "Clothes", resultText9, "How many clothes did you buy?"));
+        imageButton10.setOnClickListener(view -> openDialog1("Consumption", "Electronics", resultText10, "How many electronics did you buy?"));
+        imageButton11.setOnClickListener(view -> openDialog2("Consumption", "Purchases", resultText11, "How many items did you buy?"));
+        imageButton12.setOnClickListener(view -> {
+            List<String> energyOptions = Arrays.asList("Electricity", "Water", "Gas");
+            openDialog3("Energy", resultText12, "Select an energy option", energyOptions);
+        });
 
         updateTransportationCO2e(daysInMonth);
         updateFoodCO2e(daysInMonth);
@@ -246,9 +252,11 @@ public class EcoTrackerActivity extends AppCompatActivity {
 
         dialog.getWindow().setLayout(800, 600);
 
+        TextView dialogTextView = dialogView.findViewById(R.id.dialogMessage);
         EditText editText = dialogView.findViewById(R.id.editText);
         Button saveButton = dialogView.findViewById(R.id.saveButton);
         Button closeButton = dialogView.findViewById(R.id.closeButton);
+        dialogTextView.setText(dynamicText);
 
         saveButton.setOnClickListener(view -> {
             String userInput = editText.getText().toString().trim();
@@ -309,10 +317,12 @@ public class EcoTrackerActivity extends AppCompatActivity {
 
         dialog.getWindow().setLayout(800, 600);
 
+        TextView dialogTextView = dialogView.findViewById(R.id.dialogMessage);
         RadioGroup radioGroup = dialogView.findViewById(R.id.radioGroup);
         EditText editText = dialogView.findViewById(R.id.editText);
         Button saveButton = dialogView.findViewById(R.id.saveButton);
         Button closeButton = dialogView.findViewById(R.id.closeButton);
+        dialogTextView.setText(dynamicText);
 
         saveButton.setOnClickListener(view -> {
             int selectedOptionId = radioGroup.getCheckedRadioButtonId();
@@ -406,7 +416,7 @@ public class EcoTrackerActivity extends AppCompatActivity {
         dialog.show();
     }
 
-    private void openDialog3(String category, TextView resultText) {
+    private void openDialog3(String category, TextView resultText, String dialogTitle, List<String> options) {
         String todayDate = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
         Dialog dialog = new Dialog(EcoTrackerActivity.this);
         View dialogView = LayoutInflater.from(this).inflate(R.layout.eco_tracker_dialog_options, null);
@@ -414,10 +424,25 @@ public class EcoTrackerActivity extends AppCompatActivity {
 
         dialog.getWindow().setLayout(800, 600);
 
+        TextView dialogTextView = dialogView.findViewById(R.id.dialogMessage);
         RadioGroup radioGroup = dialogView.findViewById(R.id.radioGroup);
         EditText editText = dialogView.findViewById(R.id.editText);
         Button saveButton = dialogView.findViewById(R.id.saveButton);
         Button closeButton = dialogView.findViewById(R.id.closeButton);
+
+        // Set the title or message for the dialog
+        dialogTextView.setText(dialogTitle);
+
+        // Clear any existing radio buttons and add new ones based on the options
+        radioGroup.removeAllViews();
+        for (String option : options) {
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(option);
+            radioButton.setId(View.generateViewId());
+            radioButton.setTextSize(16); // Ensures text is legible
+            radioButton.setPadding(8, 8, 8, 8); // Adds some spacing
+            radioGroup.addView(radioButton);
+        }
 
         saveButton.setOnClickListener(view -> {
             int selectedOptionId = radioGroup.getCheckedRadioButtonId();
@@ -455,40 +480,10 @@ public class EcoTrackerActivity extends AppCompatActivity {
                         adjustedValue = value / 30.0;
 
                         ref.child("value").setValue(adjustedValue).addOnSuccessListener(aVoid -> {
-                            double emissions = 0;
-                            if (selectedOption.equals("Beef")) {
-                                emissions = adjustedValue*0.58;
-                            } else if (selectedOption.equals("Pork")) {
-                                emissions = adjustedValue*0.34;
-                            } else if (selectedOption.equals("Chicken")) {
-                                emissions = adjustedValue*0.19;
-                            } else if (selectedOption.equals("Fish")) {
-                                emissions = adjustedValue*0.22;
-                            } else if (selectedOption.equals("Plant-Based")) {
-                                emissions = adjustedValue*0.17;
-                            } else if (selectedOption.equals("Electricity")) {
-                                if (value < 100) {
-                                    emissions = 1450;
-                                } else if (value > 100) {
-                                    emissions = 2300;
-                                }
-                            } else if (selectedOption.equals("Water")) {
-                                if (value < 100) {
-                                    emissions = 1000;
-                                } else if (value > 100) {
-                                    emissions = 1860;
-                                }
-                            } else if (selectedOption.equals("Gas")) {
-                                if (value < 100) {
-                                    emissions = 3300;
-                                } else if (value > 100) {
-                                    emissions = 4700;
-                                }
-                            }
-                            double finalEmissions = emissions;
+                            double emissions = calculateEmissions(selectedOption, adjustedValue, value);
                             ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
                                 Toast.makeText(EcoTrackerActivity.this, "Data saved successfully for " + selectedOption, Toast.LENGTH_SHORT).show();
-                                resultText.setText(String.valueOf(finalEmissions));
+                                resultText.setText(String.valueOf(emissions));
                                 dialog.dismiss();
                             }).addOnFailureListener(e -> {
                                 Toast.makeText(EcoTrackerActivity.this, "Failed to save emissions for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
@@ -496,18 +491,49 @@ public class EcoTrackerActivity extends AppCompatActivity {
                         }).addOnFailureListener(e -> {
                             Toast.makeText(EcoTrackerActivity.this, "Failed to save value for " + selectedOption + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
                         });
-                    } catch (NumberFormatException e) {
-                        Toast.makeText(EcoTrackerActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
                     }
-                } else {
-                    Toast.makeText(EcoTrackerActivity.this, "Text cannot be empty", Toast.LENGTH_SHORT).show();
+                } catch (NumberFormatException e) {
+                    Toast.makeText(EcoTrackerActivity.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
                 }
-            });
+            } else {
+                Toast.makeText(EcoTrackerActivity.this, "Text cannot be empty", Toast.LENGTH_SHORT).show();
+            }
+        });
 
-            closeButton.setOnClickListener(view -> dialog.dismiss());
+        closeButton.setOnClickListener(view -> dialog.dismiss());
 
-            dialog.show();
+        dialog.show();
+    }
+
+    private double calculateEmissions(String selectedOption, double adjustedValue, float value) {
+        double emissions = 0;
+        switch (selectedOption) {
+            case "Beef":
+                emissions = adjustedValue * 0.58;
+                break;
+            case "Pork":
+                emissions = adjustedValue * 0.34;
+                break;
+            case "Chicken":
+                emissions = adjustedValue * 0.19;
+                break;
+            case "Fish":
+                emissions = adjustedValue * 0.22;
+                break;
+            case "Plant-Based":
+                emissions = adjustedValue * 0.17;
+                break;
+            case "Electricity":
+                emissions = value < 100 ? 1450 : 2300;
+                break;
+            case "Water":
+                emissions = value < 100 ? 1000 : 1860;
+                break;
+            case "Gas":
+                emissions = value < 100 ? 3300 : 4700;
+                break;
         }
+        return emissions;
     }
 
     private void updateTransportationCO2e(String todayDate) {
