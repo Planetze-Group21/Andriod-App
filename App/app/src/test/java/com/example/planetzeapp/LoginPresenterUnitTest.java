@@ -84,7 +84,7 @@ public class LoginPresenterUnitTest {
 
         presenter.handleLogin(validEmail, password);
 
-        verify(mockView).navigateToSetupQs();
+        verify(mockView).navigateToIntroduction();
     }
 
     @Test
