@@ -91,7 +91,7 @@ public class NewsActivity extends AppCompatActivity {
         requestQueue = Volley.newRequestQueue(context);
         ProgressBar progressBar = findViewById(R.id.progress_bar);
         progressBar.setVisibility(View.VISIBLE);
-        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/1b34-b446-4e5a-bdde",
+        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/98e8-e13f-45b8-bc68",
                 new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
