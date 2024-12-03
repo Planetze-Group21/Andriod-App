@@ -1,5 +1,6 @@
 package com.example.planetzeapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +21,7 @@ import java.util.List;
 import java.util.Map;
 
 public class QFragment extends SetupQFragment {
+
     private int questionIndex;
 
     public QFragment() {
@@ -31,15 +33,14 @@ public class QFragment extends SetupQFragment {
     }
 
     public static QFragment newInstance(int index) {
-        QFragment fragment = new QFragment(index);
-        return fragment;
+        return new QFragment(index);
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Log.d("QFragment", "onCreate: Initializing QFragment");
-        setupQuestions();  // Set up the questions outside onCreateView
+        setupQuestions();
     }
 
     private void setupQuestions() {
@@ -153,6 +154,12 @@ public class QFragment extends SetupQFragment {
         }
     }
 
+
+
+    private void navigateToEcoTracker() {
+        Intent intent = new Intent(getActivity(), EcoTrackerActivity.class);
+        startActivity(intent);
+    }
 
 
 }

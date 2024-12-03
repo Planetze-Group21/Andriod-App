@@ -66,11 +66,19 @@ public class NewsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_news);
         recyclerView = findViewById(R.id.article_ui);
         context = NewsActivity.this;
+
         adapter = new ArticleAdapter(context, articleDetailsArrayList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         //loadDummyData();
         requestJsonData();
+        if (savedInstanceState == null) {
+            FooterFragment footerFragment = new FooterFragment();
+            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+            transaction.replace(R.id.footer_container, footerFragment); // You can use add() or replace()
+            transaction.commit();
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.article_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
