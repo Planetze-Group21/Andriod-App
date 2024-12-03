@@ -14,6 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.PlanetzeApp"
         tools:targetApi="31">
+
         <activity android:name=".EcoGaugeActivity"
             android:exported="false"
             android:theme="@style/Theme.PlanetzeApp"/>
@@ -22,6 +23,9 @@
             android:exported="false"
             android:label="@string/title_activity_eco_tracker_acvtivty"
             android:theme="@style/Theme.PlanetzeApp" />
+        <activity
+            android:name=".ProductsActivity"
+            android:exported="false" />
         <activity
             android:name=".NewsActivity"
             android:exported="false" />

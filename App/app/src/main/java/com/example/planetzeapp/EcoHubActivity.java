@@ -46,7 +46,7 @@ public class EcoHubActivity extends AppCompatActivity {
         ViewProduct.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(EcoHubActivity.this, SignUpActivity.class));
+                startActivity(new Intent(EcoHubActivity.this, ProductsActivity.class));
             }
         });
         if (savedInstanceState == null) {

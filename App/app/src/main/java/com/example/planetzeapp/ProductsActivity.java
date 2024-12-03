@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -31,12 +30,12 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-public class VideosActivity extends AppCompatActivity {
+public class ProductsActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
     private Context context;
     private RequestQueue requestQueue;
-    private ArrayList<ArticleDetails> videoDetailsArrayList = new ArrayList<>();
+    private ArrayList<ArticleDetails> productDetailsArrayList = new ArrayList<>();
     private StringRequest stringRequest;
 
     private ArticleAdapter adapter;
@@ -45,41 +44,32 @@ public class VideosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_videos);
-dummy_main
-        if (savedInstanceState == null) {
-            FooterFragment footerFragment = new FooterFragment();
-            FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-            transaction.replace(R.id.footer_container, footerFragment); // You can use add() or replace()
-            transaction.commit();
-        }
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-        recyclerView = findViewById(R.id.video_ui);
-        context = VideosActivity.this;
-        adapter = new ArticleAdapter(context, videoDetailsArrayList);
+        setContentView(R.layout.activity_products);
+        recyclerView = findViewById(R.id.products_ui);
+        context = ProductsActivity.this;
+        adapter = new ArticleAdapter(context, productDetailsArrayList);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
         requestJsonData();
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.video_page), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.products_page), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-
     }
+
     private void requestJsonData() {
         requestQueue = Volley.newRequestQueue(context);
-        ProgressBar progressBar = findViewById(R.id.progress_bar_video);
+        ProgressBar progressBar = findViewById(R.id.progress_bar_products);
         progressBar.setVisibility(View.VISIBLE);
-        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/bbdb-2ef5-484f-9064",
+        stringRequest = new StringRequest(Request.Method.GET, "https://dummyjson.com/c/18ec-538a-4dd9-8be7",
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         Log.d("JSONRequest", "Response received: " + response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
-                            JSONArray jsonArray = jsonObject.getJSONArray("videos");
+                            JSONArray jsonArray = jsonObject.getJSONArray("products");
                             Log.d("JSONRequest", "OnResponse");
                             progressBar.setVisibility(View.GONE);
                             fetchTheData(jsonArray);
@@ -104,15 +94,15 @@ dummy_main
         for(int i = 0;i<jsonArray.length();i++){
             try {
                 JSONObject article = jsonArray.getJSONObject(i);
-                videoDetailsArrayList.add(new ArticleDetails(article.getString("title"),
+                productDetailsArrayList.add(new ArticleDetails(article.getString("title"),
                         article.getString("url"), article.getString("description"),
                         article.getString("image")));
             } catch (Exception e) {
-                showToast("Video detail error.");
+                showToast("Product detail error.");
                 throw new RuntimeException(e);
             }
         }
-        Log.d("VideoListSize", "Size: " + videoDetailsArrayList.size());
+        Log.d("ProductListSize", "Size: " + productDetailsArrayList.size());
         adapter.notifyDataSetChanged();
     }
 
