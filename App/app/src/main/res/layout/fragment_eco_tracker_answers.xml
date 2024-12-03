@@ -1,0 +1,571 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ecotracker"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Background Image -->
+    <ImageView
+        android:id="@+id/background_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/planetze_bg_no_logo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <!-- Top Logo Section -->
+
+            <!-- ECO TRACKER Title -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="41dp"
+                android:padding="1dp">
+
+                <!-- Logo -->
+                <ImageView
+                    android:id="@+id/logo"
+                    android:layout_width="78dp"
+                    android:layout_height="70dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="1dp"
+                    android:src="@drawable/planetze_logo" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins_bold"
+                android:gravity="center"
+                android:text="ECO TRACKER"
+                android:textColor="@color/black"
+                android:textSize="28sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <!-- 2.3 pounds -->
+                <TextView
+                    android:id="@+id/emissions_summary"
+                    android:layout_width="wrap_content"
+                    android:layout_height="25dp"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="2.3 pounds"
+                    android:textColor="@color/teal"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/emissions_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_bold"
+                    android:text="CO2 EMISSIONS TODAY"
+                    android:textColor="@color/teal"
+                    android:textSize="15sp" />
+            </LinearLayout>
+
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                app:cardBackgroundColor="#DAE3EB"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <LinearLayout
+                        android:id="@+id/headerBar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities_header"
+                        android:layout_margin="0dp"
+                        android:padding="8dp">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_margin="0dp"
+                            android:fontFamily="@font/poppins_bold"
+                            android:padding="4dp"
+                            android:text="  CO2 EMISSIONS PER ACTIVITY"
+                            android:textColor="@color/black"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName1"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="  TRANSPORTATION"
+                            android:textColor="@color/black"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/car"
+                            android:layout_width="59dp"
+                            android:layout_height="21dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="1dp"
+                            android:src="@drawable/eco_tracker_car" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName2"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      DRIVING"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text2"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton2"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName3"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      PUBLIC TRANSPORTATION"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text3"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton3"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar4"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName4"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      CYCLING/WALKING"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text4"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton4"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName5"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      FLIGHTS"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text5"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton5"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar6"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName6"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="  FOOD"
+                            android:textColor="@color/black"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/food"
+                            android:layout_width="59dp"
+                            android:layout_height="21dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="1dp"
+                            android:src="@drawable/eco_tracker_food" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar7"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName7"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      TYPE OF FOOD"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text7"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton7"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:id="@+id/activitybar8"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName8"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="  CONSUMPTION"
+                            android:textColor="@color/black"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/consumption"
+                            android:layout_width="59dp"
+                            android:layout_height="21dp"
+                            android:layout_alignParentStart="true"
+                            android:layout_marginStart="1dp"
+                            android:src="@drawable/eco_tracker_consumption" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar9"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName9"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      CLOTHES"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text9"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton9"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar10"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName10"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      ELECTRONICS"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text10"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton10"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar11"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName11"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="      PURCHASES"
+                            android:textColor="@color/black"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text11"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton11"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/activitybar12"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/eco_tracker_activities"
+                        android:layout_margin="0dp"
+                        android:padding="8dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/activityName12"
+                            android:layout_width="210dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:padding="3dp"
+                            android:text="ENERGY BILLS"
+                            android:textColor="@color/black"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/result_text12"
+                            android:layout_width="62dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            android:paddingTop="3dp"
+                            android:text=""
+                            android:textColor="@color/charcoal"
+                            android:textSize="10sp"
+                            android:textStyle="bold" />
+
+                        <ImageButton
+                            android:id="@+id/imageButton12"
+                            android:layout_width="24dp"
+                            android:layout_height="20dp"
+                            android:layout_weight="1"
+                            app:srcCompat="@drawable/baseline_create_24" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+
+</FrameLayout>

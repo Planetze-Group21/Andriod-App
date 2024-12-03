@@ -63,6 +63,8 @@
         <activity
             android:name=".OverlayActivity"
             android:exported="false" />
+        <activity android:name=".EcoTrackerActivity" />
+
     </application>
 
 </manifest>
