@@ -1,0 +1,533 @@
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Header Bar -->
+    <LinearLayout
+        android:id="@+id/headerBar"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:layout_margin="0dp"
+        android:background="@drawable/eco_tracker_activities_header"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="0dp"
+            android:fontFamily="@font/poppins_bold"
+            android:padding="4dp"
+            android:text="  CO2 ACTIVITY LIST"
+            android:textColor="@color/black"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Scrollable Section -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="558dp"
+        android:layout_weight="1">
+
+        <!-- Container for Scrollable Activities -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName1"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  DRIVING"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton1"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Repeat for Additional Activities -->
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName2"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  WALKING"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton2"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName3"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  PUBLIC TRANSPORT"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton3"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton3"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName4"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  FOOD"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton4"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton4"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName5"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  CLOTHING"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton5"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton5"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName6"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  ELECTRONICS"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton6"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton6"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName7"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  PURCHASES"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton7"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton7"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName8"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  ELECTRICITY"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton8"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton8"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName9"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  WATER"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton9"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton9"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+            <!-- Example of an Activity Item -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/eco_tracker_activities"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <!-- Activity Name -->
+                <TextView
+                    android:id="@+id/activityName10"
+                    android:layout_width="210dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="3dp"
+                    android:text="  GAS"
+                    android:textColor="@color/black"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <!-- CO2 Emissions -->
+                <TextView
+                    android:id="@+id/activityEmissions10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingEnd="8dp"
+                    android:text="0.0"
+                    android:textColor="@color/charcoal"
+                    android:textSize="12sp" />
+
+                <!-- Edit Button -->
+                <ImageButton
+                    android:id="@+id/editButton10"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="?attr/selectableItemBackground"
+                    android:contentDescription="Edit"
+                    android:src="@drawable/baseline_create_24" />
+
+                <ImageButton
+                    android:id="@+id/deleteButton10"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/delete"
+                    android:contentDescription="Delete"
+                    android:src="@drawable/delete" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>
