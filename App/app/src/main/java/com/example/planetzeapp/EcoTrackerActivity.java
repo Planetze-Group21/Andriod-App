@@ -171,6 +171,15 @@ public class EcoTrackerActivity extends AppCompatActivity {
         FragmentTransaction transaction2 = getSupportFragmentManager().beginTransaction();
         transaction2.replace(R.id.fragment_container2, new CalendarFragment());
         transaction2.commit();
+/*
+        if (savedInstanceState == null) {
+            FooterFragment footerFragment = new FooterFragment();
+            FragmentTransaction transaction3 = getSupportFragmentManager().beginTransaction();
+            transaction3.replace(R.id.footer_container, footerFragment); // You can use add() or replace()
+            transaction3.commit();
+        }
+
+ */
 
     }
 
@@ -978,49 +987,6 @@ public class EcoTrackerActivity extends AppCompatActivity {
         });
     }
 
-    private void updateEnergyCO2e(String todayDate) {
-        DatabaseReference energyRef = FirebaseDatabase.getInstance()
-                .getReference()
-                .child("users")
-                .child(currentUid)
-                .child("daily_answers")
-                .child(todayDate)
-                .child("Energy");
-
-        energyRef.get().addOnCompleteListener(task -> {
-            if (task.isSuccessful()) {
-                DataSnapshot snapshot = task.getResult();
-                if (snapshot.exists()) {
-                    double totalEmissions = 0;
-
-                    // Iterate through each energy category
-                    for (DataSnapshot energyCategory : snapshot.getChildren()) {
-                        if (energyCategory.hasChild("emissions")) {
-                            Double emissions = energyCategory.child("emissions").getValue(Double.class);
-                            if (emissions != null) {
-                                totalEmissions += emissions;
-                            }
-                        }
-                    }
-
-                    // Update the "Energy_CO2e" field
-                    double finalTotalEmissions = totalEmissions;
-                    energyRef.child("Energy_CO2e").setValue(totalEmissions).addOnCompleteListener(updateTask -> {
-                        if (updateTask.isSuccessful()) {
-                            Log.d("EcoTracker", "Energy_CO2e updated successfully: " + finalTotalEmissions);
-                        } else {
-                            Log.e("EcoTracker", "Failed to update Energy_CO2e: ", updateTask.getException());
-                        }
-                    });
-                } else {
-                    Log.e("EcoTracker", "Energy data does not exist for the given date.");
-                }
-            } else {
-                Log.e("EcoTracker", "Failed to retrieve Energy data: ", task.getException());
-            }
-        });
-    }
-
     private void updateDailyCO2e(String todayDate) {
         DatabaseReference dailyAnswersRef = FirebaseDatabase.getInstance()
                 .getReference()
@@ -1068,6 +1034,8 @@ public class EcoTrackerActivity extends AppCompatActivity {
             }
         });
     }
+
+
 
 
 
