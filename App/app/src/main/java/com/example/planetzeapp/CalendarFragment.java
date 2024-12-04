@@ -6,6 +6,7 @@ import static android.content.Context.LAYOUT_INFLATER_SERVICE;
 import static androidx.core.content.ContextCompat.getSystemService;
 
 import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,7 +14,9 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -49,6 +52,17 @@ public class CalendarFragment extends Fragment {
         // Find views by ID
         calendarView = view.findViewById(R.id.calendar_view);
 
+        ImageButton editButton1;
+        ImageButton editButton2;
+        ImageButton editButton3;
+        ImageButton editButton4;
+        ImageButton editButton5;
+        ImageButton editButton6;
+        ImageButton editButton7;
+        ImageButton editButton8;
+        ImageButton editButton9;
+        ImageButton editButton10;
+
         FirebaseDatabase database = FirebaseDatabase.getInstance();
         currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
         databaseRef = database.getReference("users").child(currentUid).child("daily_answers");
@@ -61,11 +75,15 @@ public class CalendarFragment extends Fragment {
                 showPopup(calendarView);
 
 
+
             });
         } else {
             Log.e("CalendarFragment", "CalendarView not found in the layout.");
         }
         return view;
+    }
+
+    private void showPopup(CalendarView calendarView) {
     }
 
     private HashMap<String, Object> createInnerProduct() {
@@ -75,26 +93,64 @@ public class CalendarFragment extends Fragment {
         return innerProduct;
     }
 
-    public void showPopup(View anchorView) {
-        // Inflate the popup layout
-        LayoutInflater inflater = (LayoutInflater) requireContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    private void showPopup(String selectedDate, String category, String activity, String dynamicTest) {
+        // Create a custom dialog
+        final Dialog dialog = new Dialog(this);
+        dialog.setContentView(R.layout.fragment_eco_tracker); // The XML layout you created
+        dialog.setCancelable(true);
 
-        View popupView = inflater.inflate(R.layout.fragment_eco_tracker, null);
+        // Get references to the EditText and Button
+        EditText valueInput = dialog.findViewById(R.id.editText1);
+        Button saveButton = dialog.findViewById(R.id.editButton1);
 
-        // Create the PopupWindow
-        PopupWindow popupWindow = new PopupWindow(
-                popupView,
-                LinearLayout.LayoutParams.MATCH_PARENT, // Set width
-                LinearLayout.LayoutParams.WRAP_CONTENT, // Set height
-                true // Focusable
-        );
+        // Set up the button click listener
+        saveButton.setOnClickListener(view -> {
+            String userInput = editText.getText().toString().trim();
 
-        ImageButton editButton1 = popupView.findViewById(R.id.editButton1);
-        ImageButton deleteButton1 = popupView.findViewById(R.id.deleteButton1);
-        // Add other buttons here...
+            if (!userInput.isEmpty()) {
+                try {
+                    float value = Float.parseFloat(userInput);
 
-        // Show the popup at a specific location
-        popupWindow.showAtLocation(anchorView, Gravity.CENTER, 0, 0);
+                    if (value <= 0) {
+                        Toast.makeText(this, "Value must be positive", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+
+                    String currentUid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                    DatabaseReference ref = FirebaseDatabase.getInstance().getReference()
+                            .child("users")
+                            .child(currentUid)
+                            .child("daily_answers")
+                            .child(selectedDate)
+                            .child(category)
+                            .child(activity);
+
+                    ref.child("value").setValue(value).addOnSuccessListener(aVoid -> {
+                        double emissions = activity.equals("Driving") ? value * 0.02 :
+                                activity.equals("Walking") ? value * 0 :
+                                        activity.equals("Clothing") ? value * 360 :
+                                                activity.equals("Electronics") ? value * 300 : 0;
+
+                        ref.child("emissions").setValue(emissions).addOnSuccessListener(aVoid1 -> {
+                            Toast.makeText(CalendarFragment.this, "Data saved successfully for " + activity, Toast.LENGTH_SHORT).show();
+                        }).addOnFailureListener(e -> {
+                            Toast.makeText(CalendarFragment.this, "Failed to save emissions for " + activity + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
+                    }).addOnFailureListener(e -> {
+                        Toast.makeText(CalendarFragment.this, "Failed to save value for " + activity + ": " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    });
+                } catch (NumberFormatException e) {
+                    Toast.makeText(CalendarFragment.this, "Please enter a valid number", Toast.LENGTH_SHORT).show();
+                }
+            } else {
+                Toast.makeText(CalendarFragment.this, "Text cannot be empty", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        saveButton.setOnClickListener(view -> dialog.dismiss());
+
+        dialog.show();
     }
 
     private void ensureDateSpecificDirectory(String selectedDate) {
