@@ -60,8 +60,6 @@ public class CalendarFragment extends Fragment {
 
                 showPopup(calendarView);
 
-                editButton1.setOnClickListener(view -> openDialog1("Transportation", "Driving", "How many kilometres have you driven?"));
-
 
             });
         } else {

@@ -60,14 +60,16 @@
                     android:textStyle="bold" />
 
                 <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="32dp"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                <EditText
+                    android:id="@+id/editText1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
+
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -110,14 +112,15 @@
                     android:textStyle="bold" />
 
                 <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions2"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -159,14 +162,15 @@
                     android:textStyle="bold" />
 
                 <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions3"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -208,14 +212,15 @@
                     android:textStyle="bold" />
 
                 <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions4"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -257,14 +262,15 @@
                     android:textStyle="bold" />
 
                 <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions5"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText5"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -304,15 +310,16 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
-                <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions6"
-                    android:layout_width="wrap_content"
+
+                <EditText
+                    android:id="@+id/editText6"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -353,15 +360,15 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions7"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText7"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -402,15 +409,15 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions8"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText8"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -450,15 +457,16 @@
                     android:textColor="@color/black"
                     android:textSize="15sp"
                     android:textStyle="bold" />
-                <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions9"
-                    android:layout_width="wrap_content"
+
+                <EditText
+                    android:id="@+id/editText9"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
@@ -499,15 +507,15 @@
                     android:textSize="15sp"
                     android:textStyle="bold" />
 
-                <!-- CO2 Emissions -->
-                <TextView
-                    android:id="@+id/activityEmissions10"
-                    android:layout_width="wrap_content"
+                <EditText
+                    android:id="@+id/editText10"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingEnd="8dp"
-                    android:text="0.0"
-                    android:textColor="@color/charcoal"
-                    android:textSize="12sp" />
+                    android:hint="Enter number here"
+                    android:inputType="numberDecimal"
+                    android:padding="8dp"
+                    android:background="@android:drawable/editbox_background"
+                    android:layout_marginBottom="16dp" />
 
                 <!-- Edit Button -->
                 <ImageButton
